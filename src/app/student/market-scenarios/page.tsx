@@ -1,0 +1,2 @@
+import {scenarios} from "@/lib/content";
+export default function StudentScenarios(){return <main className="page-main wrap"><div className="page-heading"><span className="eyebrow">STUDENT SPACE · MARKET NOTES</span><h1>Market scenarios.</h1><p>Educational commentary for reflection, not instructions or recommendations to trade.</p></div><div className="simple-grid">{scenarios.map(s=><article className="simple-card" key={s.pair}><span className="eyebrow">{s.direction} · {s.time}</span><h2>{s.pair}</h2><p>{s.note}</p></article>)}</div></main>}
