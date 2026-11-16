@@ -72,3 +72,4 @@
 @media(min-width:901px){.site-header .nav-label{font-size:10px}.site-header .nav-value{font-size:13px}.nav-dropdown>a,.dropdown-option{font-size:13px}.dropdown-heading{font-size:9px}.dropdown-empty{font-size:12px}.dropdown-index{font-size:10px}.option-current{font-size:8px}}
 @media(min-width:641px) and (max-width:900px){.site-header .nav-label{font-size:9px}.site-header .nav-value{font-size:11px}.nav-dropdown>a,.dropdown-option{font-size:12px}.dropdown-heading{font-size:9px}.dropdown-empty{font-size:11px}}
 @media(max-width:640px){.site-header .nav-label{font-size:8px}.site-header .nav-value{font-size:10px}.nav-dropdown>a,.dropdown-option{font-size:12px}.dropdown-heading{font-size:9px}.dropdown-empty{font-size:11px}}
+.hero-visual{border-radius:0}

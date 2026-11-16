@@ -2,8 +2,6 @@ import Link from "next/link";
 import { ArrowDown, ArrowRight, ArrowUpRight, Bell, BookOpen, ChartNoAxesCombined, Home as HomeIcon, MoveUpRight, Search, Settings2 } from "lucide-react";
 import { courses, scenarios, siteContent } from "@/lib/content";
 
-function Skyline() { return <svg className="market-line" viewBox="0 0 760 220" preserveAspectRatio="none" aria-hidden="true"><path d="M0 178 C52 168 70 188 120 158 S191 145 226 155 S283 125 330 142 S382 108 425 126 S470 105 523 109 S583 56 622 81 S672 37 720 50 S748 25 760 32" fill="none" stroke="rgba(255,255,255,.76)" strokeWidth="2"/><path d="M0 178 C52 168 70 188 120 158 S191 145 226 155 S283 125 330 142 S382 108 425 126 S470 105 523 109 S583 56 622 81 S672 37 720 50 S748 25 760 32 V220 H0Z" fill="url(#fade)"/><defs><linearGradient id="fade" x1="0" y1="0" x2="0" y2="1"><stop stopColor="white" stopOpacity=".18"/><stop offset="1" stopColor="white" stopOpacity="0"/></linearGradient></defs></svg>; }
-
 export default function Home() { return <main>
   <section className="hero">
     <div className="hero-visual">
@@ -12,8 +10,6 @@ export default function Home() { return <main>
       <div className="hero-topline"><span>MARKET EDUCATION · EST. FOR THE CURIOUS</span><span className="live-tag"><b/> EDUCATION FIRST</span></div>
       <nav className="hero-rail" aria-label="Quick links"><Link className="rail-icon active" href="/" aria-label="Home"><HomeIcon size={17}/></Link><Link className="rail-icon" href="/courses" aria-label="Explore courses"><Search size={17}/></Link><Link className="rail-icon" href="/scenarios" aria-label="Market scenarios"><ChartNoAxesCombined size={17}/></Link><Link className="rail-icon" href="/about" aria-label="Learning approach"><BookOpen size={17}/></Link><Link className="rail-profile" href="/login" aria-label="Student login">C</Link><Link className="rail-icon" href="/student/dashboard" aria-label="Student dashboard"><Bell size={16}/></Link><span className="rail-divider"/><Link className="rail-icon" href="/contact" aria-label="Contact"><Settings2 size={17}/></Link></nav>
       <div className="hero-copy"><p className="eyebrow light">A CLEARER VIEW OF THE MARKETS</p><h1>{siteContent.headline}</h1></div>
-      <div className="hero-intro-card"><span className="eyebrow">EDUCATION WITH PERSPECTIVE</span><p>{siteContent.subhead}</p><div className="hero-card-bottom"><Link className="button button-orange" href="/courses">Explore the academy <ArrowUpRight size={16}/></Link><span className="hero-card-mark">C</span></div></div>
-      <div className="market-panel glass"><div className="panel-label"><span>MARKET STUDY</span><span className="illustrative">ILLUSTRATIVE</span></div><strong>Read the structure.<br/>Respect the uncertainty.</strong><div className="chart-wrap"><Skyline/><div className="chart-label">Illustrative visual · not live market data</div></div><div className="panel-bottom"><span>Learn the process, not a prediction.</span><ArrowUpRight size={16}/></div></div>
       <div className="hero-index">01 <span>/</span> 04</div>
     </div>
     <div className="hero-caption"><span>Thoughtful education. Independent decisions.</span><span>Scroll to explore <ArrowDown size={14}/></span></div>
