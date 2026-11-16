@@ -73,3 +73,7 @@
 @media(min-width:641px) and (max-width:900px){.site-header .nav-label{font-size:9px}.site-header .nav-value{font-size:11px}.nav-dropdown>a,.dropdown-option{font-size:12px}.dropdown-heading{font-size:9px}.dropdown-empty{font-size:11px}}
 @media(max-width:640px){.site-header .nav-label{font-size:8px}.site-header .nav-value{font-size:10px}.nav-dropdown>a,.dropdown-option{font-size:12px}.dropdown-heading{font-size:9px}.dropdown-empty{font-size:11px}}
 .hero-visual{border-radius:0}
+.hero-rail .rail-icon,.hero-rail .rail-profile{position:relative}
+.hero-rail .rail-icon::after,.hero-rail .rail-profile::after{content:attr(data-tooltip);position:absolute;left:calc(100% + 12px);top:50%;z-index:20;transform:translate(-4px,-50%);padding:8px 11px;border-radius:8px;background:rgba(25,25,35,.92);color:#fff;font:500 10px/1 var(--sans);white-space:nowrap;opacity:0;visibility:hidden;pointer-events:none;box-shadow:0 5px 18px rgba(0,0,0,.16);transition:opacity .16s ease,transform .16s ease,visibility .16s ease}
+.hero-rail .rail-icon:hover::after,.hero-rail .rail-icon:focus-visible::after,.hero-rail .rail-profile:hover::after,.hero-rail .rail-profile:focus-visible::after{opacity:1;visibility:visible;transform:translate(0,-50%)}
+.hero-rail .rail-icon::after,.hero-rail .rail-profile::after{left:calc(100% + 13px);padding:14px 20px;border-radius:14px;font-size:15px;line-height:1.15;letter-spacing:-.01em;box-shadow:0 10px 28px rgba(0,0,0,.2);backdrop-filter:blur(10px)}
