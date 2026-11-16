@@ -16,9 +16,9 @@
 @media(max-width:640px){.site-header{width:calc(100% - 28px);height:auto;min-height:108px;margin:12px auto -120px;padding:8px;grid-template-columns:1fr 1fr;grid-template-areas:"academy enroll" "selectors selectors";gap:6px;border-radius:22px}.nav-academy{grid-area:academy}.nav-enroll{grid-area:enroll}.nav-pill{min-height:39px;font-size:10px}.nav-selectors{grid-area:selectors;min-height:48px}.nav-selector-wrap+.nav-selector-wrap:before{top:9px;bottom:9px}.nav-selector{justify-content:center;padding:0 4px;gap:4px;border-radius:12px}.nav-selector-copy{gap:3px}.nav-label{font-size:7px}.nav-value{max-width:90px;font-size:9px}.nav-selector>svg{width:12px;height:12px}.nav-dropdown{top:calc(100% + 8px);width:min(250px,calc(100vw - 46px));max-height:52vh}.programs-dropdown{width:min(290px,calc(100vw - 46px))}.hero-topline{display:none}.hero-copy{top:26%}.hero-visual{height:calc(100svh - 90px)}}
 
 /* Reference-led full-bleed homepage composition */
-.site-header{position:absolute;top:0;left:0;right:0;width:100%;height:88px;margin:0;padding:0 clamp(24px,7.5vw,116px);display:grid;grid-template-columns:minmax(120px,1fr) minmax(480px,700px) minmax(120px,1fr);gap:0;border:0;border-radius:0;background:transparent;box-shadow:none;backdrop-filter:none}
+.site-header{position:absolute;top:0;left:0;right:0;width:100%;height:108px;margin:0;padding:0 clamp(24px,7.5vw,116px);display:grid;grid-template-columns:minmax(120px,1fr) minmax(480px,700px) minmax(120px,1fr);gap:0;border:0;border-radius:0;background:transparent;box-shadow:none;backdrop-filter:none}
 .site-header .nav-pill{justify-self:center;width:146px;min-height:48px;padding:0 18px;background:#fff;border:0;border-radius:999px;box-shadow:0 4px 18px rgba(29,40,54,.06);font-size:11px}
-.site-header .nav-selectors{width:100%;height:76px;align-self:start;justify-self:center;padding:0 26px 7px;background:#f5f4fc;border:0;border-radius:0 0 46px 46px;box-shadow:0 9px 28px rgba(27,36,49,.06)}
+.site-header .nav-selectors{width:100%;height:108px;align-self:start;justify-self:center;padding:0 26px 7px;background:#f5f4fc;border:0;border-radius:0 0 clamp(110px,12vw,170px) clamp(110px,12vw,170px) / 0 0 108px 108px;box-shadow:0 9px 28px rgba(27,36,49,.06)}
 .site-header .nav-selector-wrap+.nav-selector-wrap:before{top:21px;bottom:28px}
 .site-header .nav-selector{gap:9px;padding:0 12px}
 .site-header .nav-label{font-size:8px}.site-header .nav-value{font-size:10px}
@@ -43,3 +43,32 @@
 @media(max-width:900px){.site-header{grid-template-columns:minmax(80px,1fr) minmax(400px,620px) minmax(80px,1fr)}}
 .hero-copy{width:min(1120px,90%)}.hero h1{font-size:clamp(56px,6.3vw,88px)}
 @media(max-width:640px){.hero-copy{width:86%}.hero h1{font-size:clamp(47px,12vw,64px)}}
+
+/* One continuous, symmetric navigation shell */
+.site-header{top:14px;left:24px;right:24px;width:auto;height:94px;margin:0;padding:7px 20px;grid-template-columns:160px minmax(0,700px) 160px;justify-content:space-between;gap:18px;overflow:visible;border:1px solid rgba(25,25,35,.1);border-radius:58px;background:rgba(245,244,252,.98);box-shadow:0 10px 34px rgba(25,25,35,.08);}
+.site-header .nav-pill{width:146px;min-height:50px;margin:0;justify-self:center;border:0;box-shadow:0 3px 14px rgba(25,25,35,.045);}
+.site-header .nav-selectors{width:100%;max-width:700px;height:100%;min-height:0;padding:0 20px 0;background:transparent;border:0;border-radius:0;box-shadow:none;}
+.site-header .nav-selector-wrap+.nav-selector-wrap:before{top:22px;bottom:22px;background:rgba(25,25,35,.1)}
+@media(max-width:900px){.site-header{left:16px;right:16px;padding:7px 12px;grid-template-columns:120px minmax(0,620px) 120px;gap:10px}.site-header .nav-pill{width:112px;min-height:46px;padding:0 10px}.site-header .nav-selectors{padding-inline:8px}}
+@media(max-width:640px){.site-header{top:8px;left:8px;right:8px;width:auto;height:104px;min-height:104px;margin:0;padding:7px 10px;grid-template-columns:1fr 1fr;grid-template-areas:"academy enroll" "selectors selectors";gap:0;border-radius:30px}.site-header .nav-pill{width:auto;min-height:38px;margin:2px 5px 0;padding:0 12px}.site-header .nav-selectors{grid-area:selectors;width:100%;height:54px;min-height:54px;padding:0 8px 4px}.site-header .nav-selector-wrap+.nav-selector-wrap:before{top:15px;bottom:18px}.site-header .nav-selector{justify-content:center;gap:3px;padding:0 3px;border-radius:10px}.site-header .nav-label{font-size:7px}.site-header .nav-value{max-width:82px;font-size:8px}.site-header .nav-selector>svg{width:11px;height:11px}}
+
+/* Header geometry: image continues behind side actions; only the centered
+   selectors sit on the symmetric, curved header drop. */
+.site-header{top:0;left:0;right:0;width:100%;height:112px;margin:0;padding:0 clamp(22px,7.5vw,120px);display:grid;grid-template-columns:minmax(125px,1fr) minmax(0,760px) minmax(125px,1fr);justify-content:initial;align-items:start;gap:0;overflow:visible;border:0;border-radius:0;background:transparent;box-shadow:none;backdrop-filter:none}
+.nav-swoop{position:absolute;inset:0 0 auto;width:100%;height:112px;z-index:0;overflow:visible;pointer-events:none;fill:#f5f4fc}
+.site-header .nav-pill{position:relative;z-index:1;align-self:start;justify-self:center;width:146px;min-height:50px;margin:24px 0 0;padding:0 18px;background:#fff;border:0;border-radius:999px;box-shadow:0 4px 14px rgba(25,25,35,.07);font-size:11px}
+.site-header .nav-selectors{position:relative;z-index:1;align-self:start;justify-self:center;width:100%;max-width:760px;height:100px;min-height:0;margin:0;padding:0 34px 4px;background:transparent;border:0;border-radius:0;box-shadow:none}
+.site-header .nav-selector{justify-content:center;gap:10px;padding:0 12px}
+.site-header .nav-selector-wrap+.nav-selector-wrap:before{top:28px;bottom:28px;background:rgba(25,25,35,.09)}
+.site-header .nav-label{font-size:8px}.site-header .nav-value{font-size:10px}
+@media(max-width:900px){.site-header{padding-inline:4%;grid-template-columns:minmax(100px,1fr) minmax(0,620px) minmax(100px,1fr)}.site-header .nav-pill{width:126px;margin-top:23px}.site-header .nav-selectors{padding-inline:14px}.site-header .nav-selector{padding-inline:7px;gap:5px}.site-header .nav-label{font-size:7px}.site-header .nav-value{font-size:9px}.nav-swoop{height:106px}}
+@media(max-width:640px){.site-header{top:0;left:0;right:0;width:100%;height:108px;min-height:108px;margin:0;padding:5px 10px 0;grid-template-columns:1fr 1fr;grid-template-areas:"academy enroll" "selectors selectors";gap:0}.nav-swoop{display:none}.site-header .nav-pill{width:auto;min-height:38px;margin:7px 5px 0;padding:0 12px;justify-self:stretch;font-size:10px}.site-header .nav-academy{grid-area:academy}.site-header .nav-enroll{grid-area:enroll}.site-header .nav-selectors{grid-area:selectors;width:100%;height:55px;min-height:55px;margin-top:0;padding:0 8px 4px;background:#f5f4fc;border-radius:0 0 28px 28px;box-shadow:0 7px 18px rgba(27,36,49,.05)}.site-header .nav-selector{justify-content:center;gap:3px;padding:0 3px;border-radius:10px}.site-header .nav-selector-wrap+.nav-selector-wrap:before{top:15px;bottom:18px}.site-header .nav-label{font-size:7px}.site-header .nav-value{max-width:82px;font-size:8px}.site-header .nav-selector>svg{width:11px;height:11px}}
+/* The reference's single pale rim traces the full hero edge without breaks. */
+.hero-visual{border:3px solid rgba(255,255,255,.96);border-radius:clamp(28px,4vw,62px)}
+@media(max-width:640px){.hero-visual{border-radius:24px}}
+/* Mirror only the decorative header silhouette; keep controls upright. */
+.site-header .nav-swoop{transform:scaleY(-1);transform-origin:center}
+@media(min-width:641px){.site-header{height:96px}.site-header .nav-selectors{height:96px}.site-header .nav-swoop{height:96px}}
+@media(min-width:901px){.site-header .nav-label{font-size:10px}.site-header .nav-value{font-size:13px}.nav-dropdown>a,.dropdown-option{font-size:13px}.dropdown-heading{font-size:9px}.dropdown-empty{font-size:12px}.dropdown-index{font-size:10px}.option-current{font-size:8px}}
+@media(min-width:641px) and (max-width:900px){.site-header .nav-label{font-size:9px}.site-header .nav-value{font-size:11px}.nav-dropdown>a,.dropdown-option{font-size:12px}.dropdown-heading{font-size:9px}.dropdown-empty{font-size:11px}}
+@media(max-width:640px){.site-header .nav-label{font-size:8px}.site-header .nav-value{font-size:10px}.nav-dropdown>a,.dropdown-option{font-size:12px}.dropdown-heading{font-size:9px}.dropdown-empty{font-size:11px}}

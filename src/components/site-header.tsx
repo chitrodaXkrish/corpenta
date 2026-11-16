@@ -31,6 +31,7 @@ export function SiteHeader() {
   function toggle(menu: MenuName) { setActive(current => current === menu ? null : menu); }
 
   return <header className="site-header" ref={root}>
+    <svg className="nav-swoop" viewBox="0 0 1000 112" preserveAspectRatio="none" aria-hidden="true"><path d="M310 0H690C723 0 721 29 746 67C770 100 790 112 824 112H176C210 112 230 100 254 67C279 29 277 0 310 0Z"/></svg>
     <Link className="nav-pill nav-academy" href="/courses" onClick={() => setActive(null)}>
       <span>Academy</span><ArrowUpRight size={15} aria-hidden="true"/>
     </Link>
