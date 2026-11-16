@@ -107,3 +107,14 @@
 @media(max-width:900px) and (min-width:821px){.auth-flow-page{width:calc(100% - 64px)}.auth-flow-layout{grid-template-columns:minmax(0,1fr) minmax(360px,440px);gap:32px}.auth-flow-heading h1{font-size:clamp(48px,5.8vw,64px)}}
 @media(max-width:820px){.auth-flow-page{width:calc(100% - 36px);min-height:0;padding:136px 0 56px;display:block}.auth-flow-layout{grid-template-columns:1fr;gap:28px}.auth-flow-heading{max-width:600px}.auth-flow-heading h1{font-size:clamp(48px,10vw,66px);margin:18px 0}.auth-flow-heading>p{font-size:12px}.auth-flow-card{max-width:580px;padding:22px}}
 .register-login-link{align-items:center;margin-top:15px;padding-top:14px;border-top:1px solid var(--line)}.register-login-link a{color:var(--ink);font-weight:700;letter-spacing:.04em}
+@media(max-width:640px){.site-header{height:60px;min-height:60px;padding:0 10px;grid-template-columns:1fr;grid-template-areas:"selectors"}.site-header .nav-selectors{height:55px;min-height:55px;margin:0}}
+.site-header{grid-template-columns:minmax(0,1fr)}.site-header .nav-selectors{grid-column:1;justify-self:center;width:min(760px,100%)}
+@media(max-width:640px){.site-header{grid-template-columns:1fr;grid-template-areas:"selectors"}.site-header .nav-selectors{grid-column:1;width:100%}}
+.site-header-shape-only{z-index:30;pointer-events:none}
+@media(max-width:640px){.site-header-shape-only{height:60px;min-height:60px}.site-header-shape-only .nav-swoop{display:block;height:60px}}
+.site-header-shape-only{position:absolute;top:0;left:0;right:0;width:100%;height:96px;z-index:30;pointer-events:none}
+.site-header-shape-only .header-logo-badge{position:absolute;left:50%;top:50%;z-index:2;transform:translate(-50%,-50%);width:116px;height:92px;display:grid;place-items:center;overflow:hidden;border-radius:17px;background:#191923;box-shadow:0 8px 24px rgba(25,25,35,.15)}
+.site-header-shape-only .header-logo-badge img{display:block;width:106px;height:92px;object-fit:contain}
+@media(max-width:640px){.site-header-shape-only{height:60px;min-height:60px}.site-header-shape-only .nav-swoop{display:block;height:60px}.site-header-shape-only .header-logo-badge{width:76px;height:56px;border-radius:12px}.site-header-shape-only .header-logo-badge img{width:70px;height:56px}}
+.site-header-shape-only .nav-swoop{fill:#ffa109}
+.site-header-shape-only .header-logo-badge{background:transparent;border-radius:0;box-shadow:none;overflow:visible}
