@@ -1,4 +1,16 @@
 import Link from "next/link";
+import Image from "next/image";
+import {createPageMetadata, jsonLdScript, SITE_URL} from "@/lib/seo";
+
+export const metadata=createPageMetadata({
+  title:"Avanish Yadav, Founder and Financial Markets Educator",
+  description:"Meet Avanish Yadav, Founder and CEO of Corpenta Global, and learn about his financial markets education experience, areas of expertise and global vision.",
+  path:"/founders-desk",
+  image:"/founder%27s%20desk/founder.png",
+  imageWidth:888,
+  imageHeight:1006,
+  imageAlt:"Avanish Yadav, Founder and CEO of Corpenta Global",
+});
 
 const expertise=[
   {title:"Forex markets",copy:"Currency trading, technical analysis, market structure, and trading strategies."},
@@ -18,10 +30,12 @@ const milestones=[
 ];
 
 export default function FoundersDeskPage(){
+  const personSchema={"@context":"https://schema.org","@type":"Person","@id":`${SITE_URL}/founders-desk#avanish-yadav`,name:"Avanish Yadav",jobTitle:"Founder & CEO | Global Financial Markets Educator",image:`${SITE_URL}/founder%27s%20desk/founder.png`,worksFor:{"@id":`${SITE_URL}/#organization`},url:`${SITE_URL}/founders-desk`};
   return <main className="page-main wrap founders-desk-page">
+    <script type="application/ld+json" dangerouslySetInnerHTML={{__html:jsonLdScript(personSchema)}}/>
     <header className="founders-desk-heading">
       <span className="eyebrow">FOUNDER PROFILE</span>
-      <div className="founders-profile-hero-main"><h1>Avanish<br/><em>Yadav.</em></h1><img className="founders-profile-photo" src="/founder%27s%20desk/founder.png" alt="Avanish Yadav, Founder and CEO" width="888" height="1006"/></div>
+      <div className="founders-profile-hero-main"><h1>Avanish<br/><em>Yadav.</em></h1><Image className="founders-profile-photo" src="/founder%27s%20desk/founder.png" alt="Avanish Yadav, Founder and CEO" width={888} height={1006} sizes="(max-width: 640px) 34vw, 300px" priority/></div>
       <p className="founders-desk-role">Founder &amp; CEO <span>·</span> Global Financial Markets Educator</p>
       <p>Empowering people through financial market knowledge, education &amp; leadership.</p>
     </header>
@@ -70,12 +84,12 @@ export default function FoundersDeskPage(){
     <section className="founders-session-gallery" aria-labelledby="founder-gallery-title">
       <div className="founders-session-gallery-heading"><span className="eyebrow">IN PERSON · AROUND THE WORLD</span><h2 id="founder-gallery-title">Learning happens<br/>in <em>the room.</em></h2></div>
       <div className="founders-session-gallery-grid">
-        <figure><img src="/sessions/0a8f9ce5-6f53-4569-8fc8-69bb87df2eba.jpg" alt="A financial education seminar with attendees" loading="lazy"/></figure>
-        <figure><img src="/sessions/4269c677-3105-431c-9ba0-8ce675ffa8e9.jpg" alt="Avanish speaking at an in-person seminar" loading="lazy"/></figure>
-        <figure><img src="/sessions/9f9a00e7-7964-4c96-b538-7a5a4216f14d.jpg" alt="Avanish leading a seminar for attendees" loading="lazy"/></figure>
-        <figure><img src="/sessions/IMG_0878.JPG" alt="A large audience at an educational session" loading="lazy"/></figure>
-        <figure><img src="/sessions/IMG_5842.JPG" alt="Avanish sharing market education with a group" loading="lazy"/></figure>
-        <figure><img src="/sessions/IMG_3192.jpg" alt="Avanish at a financial markets education session" loading="lazy"/></figure>
+        <figure><Image src="/sessions/0a8f9ce5-6f53-4569-8fc8-69bb87df2eba.jpg" alt="A financial education seminar with attendees" width={1600} height={1066} sizes="(max-width: 760px) 33vw, (max-width: 1200px) 30vw, 360px" loading="lazy"/></figure>
+        <figure><Image src="/sessions/4269c677-3105-431c-9ba0-8ce675ffa8e9.jpg" alt="Avanish speaking at an in-person seminar" width={1600} height={1200} sizes="(max-width: 760px) 33vw, (max-width: 1200px) 30vw, 360px" loading="lazy"/></figure>
+        <figure><Image src="/sessions/9f9a00e7-7964-4c96-b538-7a5a4216f14d.jpg" alt="Avanish leading a seminar for attendees" width={1600} height={1200} sizes="(max-width: 760px) 33vw, (max-width: 1200px) 30vw, 360px" loading="lazy"/></figure>
+        <figure><Image src="/sessions/IMG_0878.JPG" alt="A large audience at an educational session" width={3520} height={1980} sizes="(max-width: 760px) 33vw, (max-width: 1200px) 30vw, 360px" loading="lazy"/></figure>
+        <figure><Image src="/sessions/IMG_5842.JPG" alt="Avanish sharing market education with a group" width={1280} height={853} sizes="(max-width: 760px) 33vw, (max-width: 1200px) 30vw, 360px" loading="lazy"/></figure>
+        <figure><Image src="/sessions/IMG_3192.jpg" alt="Avanish at a financial markets education session" width={4032} height={2268} sizes="(max-width: 760px) 33vw, (max-width: 1200px) 30vw, 360px" loading="lazy"/></figure>
       </div>
     </section>
 
