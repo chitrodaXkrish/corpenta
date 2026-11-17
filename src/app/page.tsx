@@ -1,13 +1,12 @@
 import Link from "next/link";
-import { ArrowDown, ArrowRight, ArrowUpRight, MoveUpRight } from "lucide-react";
+import { ArrowDown, ArrowRight, ArrowUpRight } from "lucide-react";
 import { courses, scenarios, siteContent } from "@/lib/content";
 
 export default function Home() { return <main>
   <section className="hero">
     <div className="hero-visual">
       <div className="hero-image" />
-      <div className="hero-shade" />
-      <div className="hero-copy"><h1>{siteContent.headline}</h1></div>
+      <div className="hero-copy"><h1>{siteContent.headline.split(/(markets?\.?|strategy\.?)/i).map((part,index)=>/^markets?\.?$/i.test(part)?<span className="hero-highlight" key={index}>{part}</span>:/^strategy\.?$/i.test(part)?<span className="hero-highlight hero-strategy" key={index}>{part}</span>:part)}</h1><Link className="button button-orange hero-explore-cta" href="/courses">Explore Courses</Link></div>
       <div className="hero-index">01 <span>/</span> 04</div>
     </div>
     <div className="hero-caption"><span>Thoughtful education. Independent decisions.</span><span>Scroll to explore <ArrowDown size={14}/></span></div>
@@ -21,5 +20,5 @@ export default function Home() { return <main>
 
   <section className="scenario-section"><div className="wrap scenario-inner"><div><div className="section-kicker"><span>04 / MARKET NOTES</span><span>EDUCATIONAL COMMENTARY</span></div><h2>Observation over<br/><em>prediction.</em></h2><p>Occasional market scenarios, shared for learning and discussion. Not a signal service or a recommendation to trade.</p><Link className="underlined-link" href="/scenarios">Explore market notes <ArrowUpRight size={15}/></Link></div><div className="scenario-list">{scenarios.map((s)=><article className="scenario-row" key={s.pair}><div className="scenario-symbol">↗</div><div className="scenario-info"><div><strong>{s.pair}</strong><span className="scenario-tag">{s.direction}</span></div><p>{s.note}</p></div><span className="scenario-time">{s.time}</span></article>)}<div className="scenario-footnote">ILLUSTRATIVE PLACEHOLDERS · NO LIVE DATA</div></div></div></section>
 
-  <section className="closing-section wrap"><div className="closing-card"><div className="closing-orb"/><span className="eyebrow">BEGIN WITH A BETTER QUESTION</span><h2>Curiosity is a<br/><em>good first step.</em></h2><p>Explore the academy and find the learning path that fits your starting point.</p><Link className="button button-orange" href="/courses">Explore courses <MoveUpRight size={16}/></Link><span className="closing-mark">C</span></div></section>
+  <section className="closing-section wrap"><div className="closing-card"><div className="closing-orb"/><span className="eyebrow">BEGIN WITH A BETTER QUESTION</span><h2>Curiosity is a<br/><em>good first step.</em></h2><p>Explore the academy and find the learning path that fits your starting point.</p><Link className="button button-orange" href="/courses">Explore courses</Link><span className="closing-mark">C</span></div></section>
   </main>; }
