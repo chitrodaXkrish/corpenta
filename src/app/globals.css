@@ -283,3 +283,14 @@ html,body{background:var(--paper);overscroll-behavior-y:none}
   .hero-caption{gap:12px;font-size:11px}
   .page-main:not(.auth-flow-page){padding-top:96px}
 }
+
+/* Show the complete landscape hero artwork on phones, below the headline. */
+.hero-visual .hero-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+@media(max-width:640px){
+  .header-courses,.header-get-started{display:none}
+  .hero-visual{display:flex;flex-direction:column;justify-content:flex-start;height:auto;min-height:0;max-height:none;overflow:hidden;background:transparent}
+  .hero-copy{position:relative;inset:auto;order:1;width:100%;max-width:none;padding:34px 24px 14px;transform:none;text-align:left}
+  .hero h1{max-width:100%;margin:0 0 18px;font-size:clamp(36px,10vw,44px);line-height:1.02;letter-spacing:-.06em}
+  .hero-visual .hero-image{position:relative;inset:auto;order:2;display:block;width:100%;height:auto;aspect-ratio:1837 / 856;object-fit:contain;object-position:center;z-index:0;filter:none}
+  .hero-explore-cta{margin-top:4px}
+}
