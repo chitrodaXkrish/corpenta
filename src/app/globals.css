@@ -265,3 +265,21 @@ html,body{background:var(--paper);overscroll-behavior-y:none}
   .founders-profile-prose p,.founders-profile-vision-copy>p{font-size:16px}
   .founders-profile-expertise-grid p,.founders-profile-milestone-list p{font-size:15px}
 }
+
+/* Mobile header and hero use a compact, intentional composition. */
+@media(max-width:640px){
+  .site-header-shape-only{height:68px;min-height:68px}
+  .site-header-shape-only .nav-swoop{height:68px}
+  .site-header-shape-only .header-logo-badge{top:8px;height:58px;transform:translate(-50%,0)}
+  .site-header-shape-only .header-logo-badge img{width:56px;height:48px}
+  .header-courses{position:absolute;top:12px;left:54px;right:auto;width:min(90px,calc((100vw - 164px)/2));min-width:0;height:40px;padding:0 8px;font-size:11px}
+  .header-get-started{position:absolute;top:12px;left:auto;right:12px;width:min(94px,calc((100vw - 160px)/2));min-width:0;height:40px;padding:0 8px;font-size:11px}
+  .hero-menu-toggle{position:fixed;top:12px;left:8px;width:40px;height:40px}
+  .hero-visual{height:min(78svh,680px);min-height:560px;max-height:none}
+  .hero-copy{top:19%;left:7%;right:auto;width:86%;max-width:none}
+  .hero h1{font-size:clamp(42px,11vw,54px);line-height:1;letter-spacing:-.065em}
+  .hero-image{object-position:68% center}
+  .hero-explore-cta{margin-top:20px;padding:14px 20px;font-size:14px}
+  .hero-caption{gap:12px;font-size:11px}
+  .page-main:not(.auth-flow-page){padding-top:96px}
+}
