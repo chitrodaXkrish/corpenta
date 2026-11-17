@@ -210,3 +210,7 @@
 .founders-profile-expertise-grid p,.founders-profile-milestone-list p{font-size:15px;line-height:1.75}
 .founders-profile-milestone-list strong{font-size:23px}
 @media(max-width:760px){.founders-profile-prose p,.founders-profile-vision-copy>p{font-size:15px}.founders-profile-expertise-grid h3{font-size:18px}.founders-profile-expertise-grid p,.founders-profile-milestone-list p{font-size:14px}.founders-profile-milestone-list strong{font-size:21px}}
+
+/* Keep the page canvas continuous at the browser's scroll boundaries. */
+html,body{background:var(--paper);overscroll-behavior-y:none}
+.site-header-shape-only{top:0}
