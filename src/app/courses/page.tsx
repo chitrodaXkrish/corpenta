@@ -1,2 +1,17 @@
-import Link from "next/link";import {ArrowUpRight} from "lucide-react";import {courses} from "@/lib/content";
-export default function CoursesPage(){return <main className="page-main wrap"><div className="page-heading"><span className="eyebrow">CORPENTA GLOBAL · ACADEMY</span><h1>Find your place<br/>to <em>begin.</em></h1><p>Six configurable course spaces are ready for academy content. Program details and pricing will appear once confirmed.</p></div><div className="simple-grid">{courses.map((c,i)=><Link className="simple-card" href={`/courses/${c.id}`} key={c.id}><span className="eyebrow">PROGRAM 0{i+1} · DETAILS PENDING</span><h2>{c.title}</h2><p>{c.description}</p><span className="underlined-link">View course details <ArrowUpRight size={14}/></span></Link>)}</div><p className="placeholder-note" style={{marginTop:20}}>All six records are placeholders. Course names, curriculum, duration and pricing require client confirmation.</p></main>}
+import Link from "next/link";
+import {ArrowUpRight} from "lucide-react";
+import {createClient} from "@/lib/supabase/server";
+
+export const dynamic="force-dynamic";
+
+export default async function CoursesPage(){
+  const db=await createClient();
+  let isAdmin=false;
+  if(db){const {data:{user}}=await db.auth.getUser();if(user){const {data:role}=await db.from("user_roles").select("user_id").eq("user_id",user.id).eq("role","admin").maybeSingle();isAdmin=!!role;}}
+  let query=db?.from("courses").select("id,title,short_description,price,currency,duration_label,is_published").is("archived_at",null).order("sort_order").order("created_at");
+  if(query&&!isAdmin)query=query.eq("is_published",true);
+  const {data:courses}=query?await query:{data:null};
+  return <main className="page-main wrap"><div className="page-heading"><span className="eyebrow">CORPENTA GLOBAL · ACADEMY</span><h1>Find your place<br/>to <em>begin.</em></h1><p>Explore the academy’s published programs. Course information is maintained by the Corpenta Global team.</p></div>
+    {courses?.length?<><div className="simple-grid">{courses.map((course,index)=><Link className="simple-card" href={`/courses/${course.id}`} key={course.id}><span className="eyebrow">PROGRAM {String(index+1).padStart(2,"0")}{course.duration_label?` · ${course.duration_label.toUpperCase()}`:""}</span>{isAdmin&&!course.is_published&&<span className="course-draft-preview">DRAFT · ADMIN PREVIEW</span>}<h2>{course.title}</h2><p>{course.short_description||"Course details will be shared by the academy."}</p><div className="course-bottom"><span>{course.price===null?"Enrollment details soon":`${course.currency} ${Number(course.price).toLocaleString()}`}</span><ArrowUpRight size={15}/></div></Link>)}</div></>:<div className="locked-panel"><div><strong>Courses are being prepared</strong><p>Published programs will appear here when they are ready for enrollment.</p></div></div>}
+  </main>;
+}
