@@ -8,7 +8,7 @@ import {ArrowUpRight, Menu, X} from "lucide-react";
 const primaryLinks=[
   {label:"Home",href:"/"},
   {label:"Our approach",href:"/about"},
-  {label:"Founders Desk",href:"/founders-desk"},
+  {label:"Founder’s Desk",href:"/founders-desk"},
   {label:"Academy",href:"/courses"},
   {label:"Market notes",href:"/scenarios"},
   {label:"Contact",href:"/contact"},
