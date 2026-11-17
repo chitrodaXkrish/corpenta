@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowDown, ArrowRight, ArrowUpRight, Bell, BookOpen, ChartNoAxesCombined, Home as HomeIcon, MoveUpRight, Search, Settings2 } from "lucide-react";
+import { ArrowDown, ArrowRight, ArrowUpRight, MoveUpRight } from "lucide-react";
 import { courses, scenarios, siteContent } from "@/lib/content";
 
 export default function Home() { return <main>
@@ -7,9 +7,7 @@ export default function Home() { return <main>
     <div className="hero-visual">
       <div className="hero-image" />
       <div className="hero-shade" />
-      <div className="hero-topline"><span>MARKET EDUCATION · EST. FOR THE CURIOUS</span><span className="live-tag"><b/> EDUCATION FIRST</span></div>
-      <nav className="hero-rail" aria-label="Quick links"><Link className="rail-icon active" href="/" aria-label="Home" data-tooltip="Home"><HomeIcon size={17}/></Link><Link className="rail-icon" href="/courses" aria-label="Courses" data-tooltip="Courses"><Search size={17}/></Link><Link className="rail-icon" href="/scenarios" aria-label="Market scenarios" data-tooltip="Market scenarios"><ChartNoAxesCombined size={17}/></Link><Link className="rail-icon" href="/about" aria-label="Learning approach" data-tooltip="Learning approach"><BookOpen size={17}/></Link><Link className="rail-profile" href="/login" aria-label="Student login" data-tooltip="Student login">C</Link><Link className="rail-icon" href="/student/dashboard" aria-label="Student dashboard" data-tooltip="Student dashboard"><Bell size={16}/></Link><span className="rail-divider"/><Link className="rail-icon" href="/contact" aria-label="Contact" data-tooltip="Contact"><Settings2 size={17}/></Link></nav>
-      <div className="hero-copy"><p className="eyebrow light">A CLEARER VIEW OF THE MARKETS</p><h1>{siteContent.headline}</h1></div>
+      <div className="hero-copy"><h1>{siteContent.headline}</h1></div>
       <div className="hero-index">01 <span>/</span> 04</div>
     </div>
     <div className="hero-caption"><span>Thoughtful education. Independent decisions.</span><span>Scroll to explore <ArrowDown size={14}/></span></div>
