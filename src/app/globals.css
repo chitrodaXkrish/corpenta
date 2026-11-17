@@ -287,10 +287,14 @@ html,body{background:var(--paper);overscroll-behavior-y:none}
 /* Show the complete landscape hero artwork on phones, below the headline. */
 .hero-visual .hero-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 @media(max-width:640px){
+  .site-header-shape-only{position:relative;top:auto;left:0;right:0;width:100%;height:68px;min-height:68px;margin:0}
   .header-courses,.header-get-started{display:none}
-  .hero-visual{display:flex;flex-direction:column;justify-content:flex-start;height:auto;min-height:0;max-height:none;overflow:hidden;background:transparent}
-  .hero-copy{position:relative;inset:auto;order:1;width:100%;max-width:none;padding:34px 24px 14px;transform:none;text-align:left}
-  .hero h1{max-width:100%;margin:0 0 18px;font-size:clamp(36px,10vw,44px);line-height:1.02;letter-spacing:-.06em}
-  .hero-visual .hero-image{position:relative;inset:auto;order:2;display:block;width:100%;height:auto;aspect-ratio:1837 / 856;object-fit:contain;object-position:center;z-index:0;filter:none}
+  .hero-visual{display:block;height:clamp(430px,112vw,490px);min-height:430px;max-height:none;overflow:hidden;background:#f5f4fc;isolation:isolate}
+  .hero-visual .hero-image{position:absolute;top:auto;right:0;bottom:0;left:0;width:100%;height:auto;aspect-ratio:1837 / 856;object-fit:contain;object-position:center bottom;z-index:0;filter:none}
+  .hero-visual:after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,#f5f4fc 0%,rgba(245,244,252,.96) 42%,rgba(245,244,252,.55) 68%,rgba(245,244,252,0) 100%)}
+  .hero-copy{position:absolute;top:22px;left:6%;right:auto;inset-block:auto;width:min(86%,350px);max-width:none;padding:0;transform:none;text-align:left;z-index:2}
+  .hero h1{max-width:100%;margin:0 0 14px;font-size:clamp(36px,9vw,42px);line-height:.99;letter-spacing:-.06em}
   .hero-explore-cta{margin-top:4px}
+  .page-main:not(.auth-flow-page){padding-top:42px}
+  .auth-flow-page{padding-top:82px}
 }
