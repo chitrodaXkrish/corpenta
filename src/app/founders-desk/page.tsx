@@ -31,7 +31,7 @@ const milestones=[
 
 export default function FoundersDeskPage(){
   const personSchema={"@context":"https://schema.org","@type":"Person","@id":`${SITE_URL}/founders-desk#avanish-yadav`,name:"Avanish Yadav",jobTitle:"Founder & CEO | Global Financial Markets Educator",image:`${SITE_URL}/founder%27s%20desk/founder.png`,worksFor:{"@id":`${SITE_URL}/#organization`},url:`${SITE_URL}/founders-desk`};
-  return <main className="page-main wrap founders-desk-page">
+  return <main className="page-main wrap founders-desk-page" data-market-scene="network">
     <script type="application/ld+json" dangerouslySetInnerHTML={{__html:jsonLdScript(personSchema)}}/>
     <header className="founders-desk-heading">
       <span className="eyebrow">FOUNDER PROFILE</span>
@@ -40,7 +40,7 @@ export default function FoundersDeskPage(){
       <p>Empowering people through financial market knowledge, education &amp; leadership.</p>
     </header>
 
-    <section className="founders-session-gallery" aria-labelledby="founder-gallery-title">
+    <section className="founders-session-gallery" data-market-scene="candles" aria-labelledby="founder-gallery-title">
       <div className="founders-session-gallery-heading"><span className="eyebrow">IN PERSON · AROUND THE WORLD</span><h2 id="founder-gallery-title">Learning happens<br/>in <em>the room.</em></h2></div>
       <div className="founders-session-gallery-grid">
         <figure><Image src="/sessions/0a8f9ce5-6f53-4569-8fc8-69bb87df2eba.jpg" alt="A financial education seminar with attendees" width={1600} height={1066} sizes="(max-width: 760px) 33vw, (max-width: 1200px) 30vw, 360px" loading="lazy"/></figure>
@@ -88,7 +88,7 @@ export default function FoundersDeskPage(){
       </div>
     </section>
 
-    <section className="founders-profile-expertise" aria-labelledby="founder-expertise-title">
+    <section className="founders-profile-expertise" data-market-scene="pairs" aria-labelledby="founder-expertise-title">
       <div className="founders-profile-section-label"><span>02</span><span>AREAS OF EXPERTISE</span></div>
       <div className="founders-profile-section-content">
         <h2 id="founder-expertise-title">A broad view<br/>of the <em>markets.</em></h2>
@@ -96,7 +96,7 @@ export default function FoundersDeskPage(){
       </div>
     </section>
 
-    <section className="founders-profile-milestones" aria-labelledby="founder-milestones-title">
+    <section className="founders-profile-milestones" data-market-scene="ticker" aria-labelledby="founder-milestones-title">
       <div className="founders-profile-section-label"><span>03</span><span>PROFESSIONAL MILESTONES</span></div>
       <div className="founders-profile-section-content">
         <h2 id="founder-milestones-title">A journey of<br/><em>learning and reach.</em></h2>
@@ -104,7 +104,7 @@ export default function FoundersDeskPage(){
       </div>
     </section>
 
-    <section className="founders-profile-vision" aria-labelledby="founder-vision-title">
+    <section className="founders-profile-vision" data-market-scene="network" aria-labelledby="founder-vision-title">
       <div className="founders-profile-section-label"><span>04</span><span>GLOBAL VISION</span></div>
       <div className="founders-profile-vision-copy">
         <h2 id="founder-vision-title">Make markets<br/>more <em>accessible.</em></h2>
@@ -114,7 +114,7 @@ export default function FoundersDeskPage(){
       </div>
     </section>
 
-    <section className="founders-profile-philosophy" aria-labelledby="founder-philosophy-title">
+    <section className="founders-profile-philosophy" data-market-scene="currencies" aria-labelledby="founder-philosophy-title">
       <div className="founders-profile-section-label"><span>05</span><span>HIS PHILOSOPHY</span></div>
       <div className="founders-profile-philosophy-copy">
         <h2 id="founder-philosophy-title">Knowledge.<br/>Discipline.<br/><em>Perspective.</em></h2>

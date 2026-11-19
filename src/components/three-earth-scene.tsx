@@ -51,9 +51,9 @@ function makeLandPointGeometry(maskTexture: THREE.Texture) {
   const { data } = context.getImageData(0, 0, canvas.width, canvas.height);
   const positions: number[] = [];
   const colors: number[] = [];
-  const baseColor = new THREE.Color("#087f43");
-  const primaryColor = new THREE.Color("#00b95b");
-  const highlightColor = new THREE.Color("#39d98a");
+  const baseColor = new THREE.Color("#009b56");
+  const primaryColor = new THREE.Color("#00c96b");
+  const highlightColor = new THREE.Color("#38e68b");
 
   for (let latitude = -84; latitude <= 84; latitude += DOT_SPACING_DEGREES) {
     for (let longitude = -180; longitude < 180; longitude += DOT_SPACING_DEGREES) {
@@ -108,7 +108,7 @@ function locationOnEarth(longitude: number, latitude: number, radius: number) {
 
 function makeGrid(earthGroup: THREE.Group) {
   const material = new THREE.LineBasicMaterial({
-    color: "#087f43",
+    color: "#009b56",
     transparent: true,
     opacity: 0.16,
     depthWrite: false,
@@ -144,28 +144,28 @@ function makeGrid(earthGroup: THREE.Group) {
 
 function makeNetwork(earthGroup: THREE.Group) {
   const routeMaterial = new THREE.LineBasicMaterial({
-    color: "#087f43",
+    color: "#009b56",
     transparent: true,
     opacity: 0.62,
     depthWrite: false,
     toneMapped: false,
   });
   const featuredRouteMaterial = new THREE.LineBasicMaterial({
-    color: "#00b95b",
+    color: "#00c96b",
     transparent: true,
     opacity: 0.84,
     depthWrite: false,
     toneMapped: false,
   });
-  const markerMaterial = new THREE.MeshBasicMaterial({ color: "#39d98a", toneMapped: false });
+  const markerMaterial = new THREE.MeshBasicMaterial({ color: "#38e68b", toneMapped: false });
   const haloMaterial = new THREE.MeshBasicMaterial({
-    color: "#00b95b",
+    color: "#00c96b",
     transparent: true,
     opacity: 0.2,
     depthWrite: false,
     toneMapped: false,
   });
-  const pulseMaterial = new THREE.MeshBasicMaterial({ color: "#39d98a", toneMapped: false });
+  const pulseMaterial = new THREE.MeshBasicMaterial({ color: "#38e68b", toneMapped: false });
   const markerGeometry = new THREE.SphereGeometry(0.012, 12, 8);
   const haloGeometry = new THREE.SphereGeometry(0.027, 12, 8);
   const pulseGeometry = new THREE.SphereGeometry(0.0065, 10, 8);
@@ -264,7 +264,7 @@ function GlobeScene({ reducedMotion }: { reducedMotion: boolean }) {
     const atmosphere = new THREE.Mesh(
       new THREE.SphereGeometry(RADIUS * 1.035, 72, 48),
       new THREE.MeshBasicMaterial({
-        color: "#38523c",
+        color: "#087d46",
         side: THREE.BackSide,
         transparent: true,
         opacity: 0.18,
