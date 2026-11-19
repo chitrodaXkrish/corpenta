@@ -49,6 +49,9 @@ export default function FoundersDeskPage(){
         <figure><Image src="/sessions/IMG_0878.JPG" alt="A large audience at an educational session" width={3520} height={1980} sizes="(max-width: 760px) 33vw, (max-width: 1200px) 30vw, 360px" loading="lazy"/></figure>
         <figure><Image src="/sessions/IMG_5842.JPG" alt="Avanish sharing market education with a group" width={1280} height={853} sizes="(max-width: 760px) 33vw, (max-width: 1200px) 30vw, 360px" loading="lazy"/></figure>
         <figure><Image src="/sessions/IMG_3192.jpg" alt="Avanish at a financial markets education session" width={4032} height={2268} sizes="(max-width: 760px) 33vw, (max-width: 1200px) 30vw, 360px" loading="lazy"/></figure>
+        <figure><Image src="/sessions/Zoomlive.jpeg" alt="Participants attending an online forex education session" width={1600} height={900} sizes="(max-width: 760px) 33vw, (max-width: 1200px) 30vw, 360px" loading="lazy"/></figure>
+        <figure><Image src="/sessions/zoomlive2.png" alt="Attendees in a live online learning session" width={1672} height={941} sizes="(max-width: 760px) 33vw, (max-width: 1200px) 30vw, 360px" loading="lazy"/></figure>
+        <figure><Image src="/sessions/zoomlive3.png" alt="Participants joining a remote learning session" width={1672} height={941} sizes="(max-width: 760px) 33vw, (max-width: 1200px) 30vw, 360px" loading="lazy"/></figure>
       </div>
     </section>
 
