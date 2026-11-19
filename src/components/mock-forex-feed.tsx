@@ -27,7 +27,7 @@ export function MockForexFeed(){
     return()=>window.clearInterval(timer);
   },[]);
 
-  return <div className="hero-demo-feed" aria-label="Simulated forex prices, not live market data" aria-live="off">
+  return <div className="hero-demo-feed" role="group" aria-label="Simulated forex prices, not live market data" aria-live="off">
     <div className="demo-feed-head"><span>MOCK FOREX FEED</span><b>SIMULATED · NOT LIVE</b></div>
     {mockPairs.map(({pair,precision},index)=>{
       const quote=quotes[index];
