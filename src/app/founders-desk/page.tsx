@@ -55,6 +55,24 @@ export default function FoundersDeskPage(){
       </div>
     </section>
 
+    <section className="founder-live-sessions" aria-labelledby="founder-live-sessions-title">
+      <div className="founder-live-sessions-intro">
+        <span className="eyebrow">A GLOBAL LEARNING COMMUNITY</span>
+        <h2 id="founder-live-sessions-title">Live sessions.<br/><em>Worldwide reach.</em></h2>
+        <p>Founder-led live financial markets sessions are conducted across India and in international locations.</p>
+      </div>
+      <div className="founder-live-sessions-regions">
+        <section aria-labelledby="founder-live-india-title">
+          <h3 id="founder-live-india-title">India</h3>
+          <ul><li>Hyderabad</li><li>Mumbai</li><li>Nashik</li><li>Pune</li><li>Delhi</li><li>Lucknow</li></ul>
+        </section>
+        <section aria-labelledby="founder-live-international-title">
+          <h3 id="founder-live-international-title">International</h3>
+          <ul><li>United Kingdom</li><li>Nigeria</li><li>Malaysia</li><li>Thailand</li><li>Dubai</li></ul>
+        </section>
+      </div>
+    </section>
+
     <section className="founders-profile-about" aria-labelledby="founder-about-title">
       <div className="founders-profile-section-label"><span>01</span><span>ABOUT THE FOUNDER</span></div>
       <div className="founders-profile-copy">

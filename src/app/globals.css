@@ -205,6 +205,17 @@
 /* Improve readability across the Founder’s Desk content shown in the profile sections. */
 .founders-profile-prose p,.founders-profile-vision-copy>p{font-size:16px;line-height:1.85}
 .founders-profile-expertise-grid article>span,.founders-profile-milestone-list article>span{font-size:12px}
+
+.founder-live-sessions{max-width:1120px;margin:0 auto 112px;padding:42px 0 46px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;grid-template-columns:minmax(250px,.8fr) minmax(0,1.2fr);gap:8%;align-items:center}
+.founder-live-sessions-intro h2{margin:18px 0 18px;font:500 clamp(38px,4.8vw,58px)/1.02 var(--display);letter-spacing:-.065em}
+.founder-live-sessions-intro h2 em{font:italic 400 1em var(--serif);letter-spacing:-.07em;color:var(--orange)}
+.founder-live-sessions-intro>p{max-width:360px;margin:0;color:var(--muted);font-size:15px;line-height:1.75}
+.founder-live-sessions-regions{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.founder-live-sessions-regions section{padding-top:15px;border-top:2px solid var(--orange)}
+.founder-live-sessions-regions h3{margin:0 0 16px;font:600 17px var(--display);letter-spacing:-.025em}
+.founder-live-sessions-regions ul{display:flex;flex-wrap:wrap;gap:9px 18px;margin:0;padding:0;list-style:none}
+.founder-live-sessions-regions li{color:var(--ink);font-size:14px;line-height:1.6}
+@media(max-width:760px){.founder-live-sessions{grid-template-columns:1fr;gap:30px;margin:0 auto 78px;padding:32px 0}.founder-live-sessions-intro h2{font-size:43px}.founder-live-sessions-intro>p{font-size:14px}.founder-live-sessions-regions{gap:18px}.founder-live-sessions-regions h3{font-size:15px}.founder-live-sessions-regions ul{gap:7px 12px}.founder-live-sessions-regions li{font-size:13px}}
 .founders-profile-expertise-grid h3{font-size:19px}
 .founders-profile-expertise-grid p,.founders-profile-milestone-list p{font-size:15px;line-height:1.75}
 .founders-profile-milestone-list strong{font-size:23px}
