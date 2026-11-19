@@ -18,7 +18,12 @@ export default async function Home() {
     <div className="hero-visual">
       <div className="hero-copy"><h1>{siteContent.headline.split(/(markets?\.?|strategy\.?)/i).map((part,index)=>/^markets?\.?$/i.test(part)?<span className="hero-highlight" key={index}>{part}</span>:/^strategy\.?$/i.test(part)?<span className="hero-highlight hero-strategy" key={index}>{part}</span>:part)}</h1><Link className="button button-orange hero-explore-cta" href="/courses">Explore Courses</Link></div>
       <div className="hero-globe-stage">
+        <div className="globe-orbit globe-orbit-outer" aria-hidden="true"/><div className="globe-orbit globe-orbit-inner" aria-hidden="true"/>
         <div className="hero-globe" aria-hidden="true"><RotatingForexGlobe/></div>
+        <div className="globe-data-card globe-data-card-top"><span><i/> MARKET PULSE</span><strong>24<span> / 5</span></strong><small>Global markets in motion</small></div>
+        <div className="globe-data-card globe-data-card-bottom"><span>LEARNING NOTE</span><strong>Context before conviction.</strong><small>Build a view. Review the evidence.</small></div>
+        <span className="globe-coordinate globe-coordinate-one">51°30′N&nbsp; 0°07′W</span><span className="globe-coordinate globe-coordinate-two">GLOBAL NETWORK / 01</span>
+        <div className="globe-pair globe-pair-one"><b>EUR</b><span>EURO</span><i>↗</i></div><div className="globe-pair globe-pair-two"><b>JPY</b><span>YEN</span><i>↘</i></div>
       </div>
     </div>
     <div className="hero-caption"><span>Thoughtful education. Independent decisions.</span><span>Scroll to explore <ArrowDown size={14}/></span></div>

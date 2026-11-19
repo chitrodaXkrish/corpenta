@@ -29,6 +29,23 @@ const milestones=[
   {value:"International",label:"Educational sessions in Dubai, Singapore, and other locations"},
 ];
 
+const recentlyUploadedSessions:{src:string;alt:string;width:number;height:number}[]=[
+  {src:"/sessions/11757801-d849-453a-be04-c9fbdc3160a3.jpg",alt:"Attendees applaud during an in-person financial education session.",width:1600,height:1066},
+  {src:"/sessions/469050323_556256587162020_103688542105115320_n.jpg",alt:"Attendees listen as an educator speaks at a seminar.",width:414,height:414},
+  {src:"/sessions/469099495_556256430495369_5054417133126015039_n.jpg",alt:"A seminar audience follows a presentation from the front of the room.",width:414,height:414},
+  {src:"/sessions/469235814_556256470495365_2892969306640324014_n.jpg",alt:"An educator speaks to attendees during a seminar.",width:414,height:414},
+  {src:"/sessions/469237657_556256497162029_5777819565907551968_n.jpg",alt:"Attendees seated for an in-person financial education session.",width:414,height:414},
+  {src:"/sessions/469351768_556256500495362_3748451148070726430_n.jpg",alt:"An educator walks the center aisle while speaking with attendees.",width:414,height:414},
+  {src:"/sessions/469398456_556256220495390_1588049222564727968_n.jpg",alt:"A speaker presents to a seated seminar audience.",width:414,height:414},
+  {src:"/sessions/469445964_556256230495389_3776649010904668728_n.jpg",alt:"An educator answers questions during a seminar.",width:414,height:414},
+  {src:"/sessions/IMG_0831.jpg",alt:"A moment from an in-person Corpenta Global learning session.",width:4032,height:3024},
+  {src:"/sessions/IMG_0943.JPG",alt:"A financial markets educator speaks to a large student audience.",width:3520,height:1980},
+  {src:"/sessions/IMG_7455.jpg",alt:"A moment from an in-person Corpenta Global learning session.",width:4032,height:3024},
+  {src:"/sessions/IMG_7456.jpg",alt:"A moment from an in-person Corpenta Global learning session.",width:4032,height:3024},
+  {src:"/sessions/e672e6c9-b13d-430f-ad73-715b77c94370.jpg",alt:"A group presents a bouquet during a learning event.",width:899,height:1599},
+  {src:"/sessions/fb11979c-9ca8-4070-86c2-abda6c5f044d.jpg",alt:"Educators gather for a group photograph after a learning event.",width:1600,height:718},
+];
+
 export default function FoundersDeskPage(){
   const personSchema={"@context":"https://schema.org","@type":"Person","@id":`${SITE_URL}/founders-desk#avanish-yadav`,name:"Avanish Yadav",jobTitle:"Founder & CEO | Global Financial Markets Educator",image:`${SITE_URL}/founder%27s%20desk/founder.png`,worksFor:{"@id":`${SITE_URL}/#organization`},url:`${SITE_URL}/founders-desk`};
   return <main className="page-main wrap founders-desk-page" data-market-scene="network">
@@ -52,6 +69,7 @@ export default function FoundersDeskPage(){
         <figure><Image src="/sessions/Zoomlive.jpeg" alt="Participants attending an online forex education session" width={1600} height={900} sizes="(max-width: 760px) 33vw, (max-width: 1200px) 30vw, 360px" loading="lazy"/></figure>
         <figure><Image src="/sessions/zoomlive2.png" alt="Attendees in a live online learning session" width={1672} height={941} sizes="(max-width: 760px) 33vw, (max-width: 1200px) 30vw, 360px" loading="lazy"/></figure>
         <figure><Image src="/sessions/zoomlive3.png" alt="Participants joining a remote learning session" width={1672} height={941} sizes="(max-width: 760px) 33vw, (max-width: 1200px) 30vw, 360px" loading="lazy"/></figure>
+        {recentlyUploadedSessions.map((session)=><figure key={session.src}><Image src={session.src} alt={session.alt} width={session.width} height={session.height} sizes="(max-width: 760px) 33vw, (max-width: 1200px) 30vw, 360px" loading="lazy"/></figure>)}
       </div>
     </section>
 

@@ -36,107 +36,55 @@ function drawCanvas(canvas: HTMLCanvasElement, width: number, height: number, el
 
   context.setTransform(dpr, 0, 0, dpr, 0, 0);
   context.clearRect(0, 0, width, height);
-  // A tighter fixed grid gives the background a continuous market-terminal texture
-  // while keeping each mark small and anchored in place.
-  const cellWidth = Math.max(92, Math.min(124, width / 16));
-  const cellHeight = Math.max(68, Math.min(88, height / 12));
-  const columns = Math.ceil(width / cellWidth);
-  const rows = Math.ceil(height / cellHeight);
-  const left = (width - columns * cellWidth) / 2;
-  const top = (height - rows * cellHeight) / 2;
   const phase = elapsed / 1000;
-
+  // Sparse, anchored data studies keep the environment composed instead of tiled.
+  const compact = width < 700;
+  const anchors = compact
+    ? [{ x: .07, y: .16 }, { x: .73, y: .28 }, { x: .08, y: .76 }, { x: .69, y: .84 }]
+    : [{ x: .045, y: .19 }, { x: .79, y: .16 }, { x: .035, y: .73 }, { x: .82, y: .77 }, { x: .42, y: .91 }];
+  const label = scene === "network" ? "LONDON · SINGAPORE" : scene === "research" ? "MARKET STUDY" : scene === "candles" ? "PRICE STRUCTURE" : scene === "ticker" ? "SESSION FLOW" : "GLOBAL FX";
+  const chartMode = scene === "candles" || scene === "research" || scene === "pairs";
   context.textBaseline = "middle";
   context.font = '8px ui-monospace, "SFMono-Regular", Menlo, monospace';
 
-  for (let row = 0; row < rows; row += 1) {
-    for (let column = 0; column < columns; column += 1) {
-      const index = row * columns + column;
-      const gate = (column * 7 + row * 11 + column * row) % 9;
-      if (gate > 7) continue;
-
-      const x = left + column * cellWidth + 8;
-      const y = top + row * cellHeight + 12;
-      const pulse = 0.45 + (Math.sin(phase * 0.55 + index * 1.7) + 1) * 0.2;
-      const mode = scene === "network"
-        ? index % 4 === 0 ? "network" : index % 4 === 1 ? "pair" : "currency"
-        : scene === "candles"
-          ? index % 3 === 0 ? "candles" : index % 3 === 1 ? "volume" : "digits"
-          : scene === "research"
-            ? index % 3 === 0 ? "chart" : index % 3 === 1 ? "pair" : "digits"
-            : scene === "ticker"
-              ? index % 3 === 0 ? "ticker" : index % 3 === 1 ? "digits" : "currency"
-              : scene === "pairs"
-                ? index % 3 === 0 ? "pair" : index % 3 === 1 ? "chart" : "digits"
-                : index % 3 === 0 ? "currency" : index % 3 === 1 ? "pair" : "chart";
-
-      context.globalAlpha = 0.2 + pulse * 0.14;
-      context.fillStyle = index % 5 === 0 ? IVORY : GREEN;
-      context.strokeStyle = index % 5 === 0 ? IVORY : GREEN;
-
-      if (mode === "currency") {
-        const sign = SIGNS[(index + Math.floor(phase / (4 + index % 4))) % SIGNS.length];
-        context.font = "11px ui-monospace, monospace";
-        context.fillText(sign, x, y + 7);
-        context.font = '8px ui-monospace, "SFMono-Regular", Menlo, monospace';
-        context.fillText(`${(12.8 + ((index * 13) % 70) / 10).toFixed(2)}  ${index % 2 ? "↗" : "↘"}`, x + 16, y + 7);
-      } else if (mode === "pair" || mode === "ticker") {
-        const pair = PAIRS[(index + Math.floor(phase / (5 + index % 5))) % PAIRS.length];
-        const value = 0.72 + Math.abs(Math.sin(index * 3.1 + phase * 0.32)) * 1.8;
-        context.fillText(pair, x, y + 4);
-        context.globalAlpha *= 0.72;
-        context.fillText(`${value.toFixed(4)}  ${index % 2 ? "↑" : "↓"}`, x, y + 17);
-        if (mode === "ticker") {
-          context.globalAlpha *= 0.72;
-          context.fillText("VOL  ▂▅▃▆▂", x, y + 30);
-        }
-      } else if (mode === "digits") {
-        const value = (100 + Math.abs(Math.sin(index * 0.81 + phase * 0.25)) * 990).toFixed(3);
-        context.fillText(`${index % 2 ? "−" : "+"}${value}`, x, y + 5);
-        context.globalAlpha *= 0.65;
-        context.fillText("·  ·  ·  ·  ·", x, y + 18);
-      } else if (mode === "volume") {
-        context.globalAlpha *= 0.78;
-        for (let bar = 0; bar < 8; bar += 1) {
-          const barHeight = 3 + ((bar * 7 + index * 3) % 11);
-          context.fillRect(x + bar * 5, y + 19 - barHeight, 2, barHeight);
-        }
-      } else if (mode === "candles") {
-        context.globalAlpha *= 0.84;
-        for (let candle = 0; candle < 6; candle += 1) {
-          const cx = x + candle * 7 + 2;
-          const bodyTop = y + 7 + ((candle * 5 + index * 3) % 8);
-          const bodyHeight = 4 + ((candle * 3 + index) % 7);
-          context.beginPath();
-          context.moveTo(cx, bodyTop - 4);
-          context.lineTo(cx, bodyTop + bodyHeight + 4);
-          context.stroke();
-          context.fillRect(cx - 1.5, bodyTop, 3, bodyHeight);
-        }
-      } else if (mode === "chart") {
-        context.globalAlpha *= 0.72;
-        context.beginPath();
-        context.moveTo(x, y + 18);
-        for (let point = 1; point < 12; point += 1) {
-          const px = x + point * 6;
-          const py = y + 9 + Math.sin(point * 1.27 + index * 0.9 + phase * 0.28) * 7;
-          context.lineTo(px, py);
-        }
-        context.stroke();
-      } else {
-        context.globalAlpha *= 0.72;
-        const targetX = x + cellWidth * (index % 2 ? 0.34 : 0.52);
-        const targetY = y + cellHeight * (index % 3 ? 0.35 : 0.52);
-        context.beginPath();
-        context.moveTo(x + 3, y + 12);
-        context.quadraticCurveTo(x + 25, y - 2, targetX, targetY);
-        context.stroke();
-        context.globalAlpha *= 1.4;
-        context.beginPath();
-        context.arc(targetX, targetY, 1.3, 0, Math.PI * 2);
-        context.fill();
-      }
+  anchors.forEach((anchor, index) => {
+    const x = anchor.x * width;
+    const y = anchor.y * height;
+    const alpha = .16 + (Math.sin(phase * .38 + index * 1.9) + 1) * .035;
+    context.globalAlpha = alpha;
+    context.fillStyle = index % 3 === 0 ? IVORY : GREEN;
+    context.strokeStyle = context.fillStyle;
+    context.font = '7px ui-monospace, "SFMono-Regular", Menlo, monospace';
+    context.fillText(index === 0 && scene === "network" ? label : PAIRS[(index + Math.floor(phase / 12)) % PAIRS.length], x, y);
+    context.fillText(`${(1.04 + Math.sin(phase * .08 + index) * .0024).toFixed(4)}  ${index % 2 ? "↘" : "↗"}`, x, y + 13);
+    context.globalAlpha = alpha * .8;
+    context.beginPath();
+    context.moveTo(x, y + 31);
+    for (let point = 0; point < 11; point += 1) {
+      const px = x + point * (compact ? 4 : 6);
+      const py = y + 31 + Math.sin(point * .82 + index * 1.3 + phase * .17) * (compact ? 4 : 6);
+      if (point === 0) context.moveTo(px, py); else context.lineTo(px, py);
     }
+    context.stroke();
+    if (chartMode) {
+      for (let candle = 0; candle < 5; candle += 1) {
+        const cx = x + candle * (compact ? 9 : 12) + 6;
+        const top = y + 48 + Math.sin(candle * 1.4 + index + phase * .12) * 5;
+        context.globalAlpha = alpha * .65;
+        context.beginPath(); context.moveTo(cx, top - 5); context.lineTo(cx, top + 7); context.stroke();
+        context.fillRect(cx - 1.5, top, 3, 4 + (candle % 2) * 2);
+      }
+    } else {
+      context.globalAlpha = alpha * .65;
+      context.fillText(`VOL ▂▅▃▆▂  ${SIGNS[index % SIGNS.length]}`, x, y + 49);
+    }
+  });
+  if (scene === "network" && anchors.length > 2) {
+    context.globalAlpha = .08;
+    context.strokeStyle = GREEN;
+    context.setLineDash([2, 8]);
+    context.beginPath(); context.moveTo(anchors[0].x * width + 4, anchors[0].y * height + 5); context.quadraticCurveTo(width * .46, height * .34, anchors[1].x * width, anchors[1].y * height + 5); context.stroke();
+    context.setLineDash([]);
   }
   context.globalAlpha = 1;
 }

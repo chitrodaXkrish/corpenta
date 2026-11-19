@@ -4,6 +4,7 @@ import "./globals.css";
 import { Footer } from "@/components/footer";
 import { SiteHeader } from "@/components/site-header";
 import { AsciiMarketEnvironment } from "@/components/ascii-market-environment";
+import { VisualReveal } from "@/components/visual-reveal";
 import { DEFAULT_DESCRIPTION, DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL, jsonLdScript, organizationSchema, websiteSchema } from "@/lib/seo";
 
 const dmSans=localFont({src:"./fonts/dm-sans-latin-wght-normal.woff2",variable:"--font-dm-sans",display:"swap",weight:"100 1000"});
@@ -33,5 +34,5 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const graph = jsonLdScript([organizationSchema, websiteSchema]);
-  return <html lang="en" className={`${dmSans.variable} ${manrope.variable}`}><body><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: graph }}/><AsciiMarketEnvironment/><SiteHeader/>{children}<Footer/></body></html>;
+  return <html lang="en" className={`${dmSans.variable} ${manrope.variable}`}><body><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: graph }}/><AsciiMarketEnvironment/><VisualReveal/><SiteHeader/>{children}<Footer/></body></html>;
 }
