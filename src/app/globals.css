@@ -555,3 +555,40 @@ body{font-family:var(--sans)}
   .founders-desk-page{padding-top:35px}
   .founders-desk-heading{margin-bottom:52px}
 }
+
+/* Rotating forex network globe with a clearly simulated quote panel. */
+.hero-globe-stage{position:relative;width:100%;max-width:660px;aspect-ratio:1;justify-self:center;isolation:isolate}
+.hero-globe{position:absolute;inset:2%;display:grid;place-items:center;overflow:hidden;border-radius:50%;background:#0b120d;border:1px solid #28402d;box-shadow:inset 0 0 0 1px rgba(131,164,132,.06),0 0 0 12px rgba(105,141,107,.025)}
+.hero-globe-map{display:block;width:100%;height:100%;overflow:visible}
+.globe-surface{fill:#0c150f;stroke:#35563a;stroke-width:1.5}
+.globe-meridians ellipse,.globe-meridians path,.globe-latitude-overlay ellipse{fill:none;stroke:#29442f;stroke-width:1;opacity:.68}
+.globe-meridians{transform-box:view-box;transform-origin:50% 50%;animation:meridian-sweep 11s ease-in-out infinite alternate}
+.globe-continents{transform-box:view-box;transform-origin:50% 50%;animation:globe-turn 42s linear infinite}
+.globe-continents path{fill:#14251a;stroke:#36583b;stroke-width:1.1;stroke-linejoin:round}
+.globe-routes path{fill:none;stroke:#648365;stroke-width:1.1;opacity:.72;stroke-dasharray:3 8;animation:network-drift 18s linear infinite}
+.globe-routes path:nth-child(even){animation-duration:24s;opacity:.48}
+.globe-nodes circle{fill:#9ab697;stroke:#567958;stroke-width:5;paint-order:stroke;animation:node-pulse 3.4s ease-in-out infinite}
+.globe-nodes circle:nth-child(3n){animation-delay:1.2s}.globe-nodes circle:nth-child(3n + 1){animation-delay:2s}
+.globe-rim{fill:none;stroke:#3b5d40;stroke-width:1.5;opacity:.9}
+.globe-latitude-overlay{pointer-events:none}.globe-latitude-overlay ellipse{opacity:.4}
+.globe-currency-mark{position:absolute;z-index:1;display:grid;place-items:center;width:34px;height:34px;border:1px solid #3c5940;border-radius:50%;background:#0d1710;color:#a4b99e;font:500 16px var(--display);box-shadow:0 5px 16px rgba(0,0,0,.22)}
+.globe-currency-euro{top:25%;left:16%}.globe-currency-yen{top:37%;right:12%}.globe-currency-pound{bottom:30%;right:20%}
+.globe-status{position:absolute;top:9%;right:3%;display:flex;align-items:center;gap:8px;padding:10px 12px;border:1px solid #2c4030;border-radius:5px;background:#0c130e;color:#acb9ac;font:600 8px var(--display);letter-spacing:.1em}
+.globe-status i{width:6px;height:6px;border-radius:50%;background:#83a181}.globe-status b{padding-left:9px;border-left:1px solid #344237;color:#7e907f;font-weight:500}
+.hero-demo-feed{position:absolute;z-index:2;left:-2%;bottom:4%;width:254px;padding:12px 14px 9px;border:1px solid #354639;border-radius:8px;background:#0d130f;box-shadow:0 12px 30px rgba(0,0,0,.32)}
+.demo-feed-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:7px;padding-bottom:9px;border-bottom:1px solid #26352a}
+.demo-feed-head span{color:#d4ded4;font:600 9px var(--display);letter-spacing:.08em}.demo-feed-head b{color:#899a8a;font:500 7px var(--display);letter-spacing:.07em}
+.demo-pair-row{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:10px;padding:6px 0;color:#99a79a;font:500 8px var(--display);letter-spacing:.035em}
+.demo-pair-row strong{color:#d7e0d7;font:600 10px var(--display);letter-spacing:0}.demo-pair-row em{color:#8cad88;font:500 8px var(--display);font-style:normal}.demo-pair-row em.demo-down{color:#b48179}
+@keyframes globe-turn{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+@keyframes meridian-sweep{0%{transform:scaleX(.58)}50%{transform:scaleX(.96)}100%{transform:scaleX(.63)}}
+@keyframes network-drift{to{stroke-dashoffset:-44}}
+@keyframes node-pulse{0%,100%{opacity:.52}50%{opacity:1}}
+@media(max-width:760px){
+  .hero-globe-stage{width:min(100%,520px);margin:0 auto;aspect-ratio:1}
+  .hero-globe{inset:2.5%}
+  .hero-demo-feed{left:50%;bottom:0;width:min(254px,78%);transform:translateX(-50%)}
+  .globe-status{top:5%;right:1%;font-size:7px;padding:8px 9px}
+  .globe-currency-mark{width:29px;height:29px;font-size:13px}
+}
+@media(prefers-reduced-motion:reduce){.globe-meridians,.globe-continents,.globe-routes path,.globe-nodes circle{animation:none}}
