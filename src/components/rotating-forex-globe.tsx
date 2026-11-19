@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 
 const ThreeEarthScene = dynamic(() => import("./three-earth-scene"), {
   ssr: false,
-  loading: () => <div className="hero-globe-fallback" role="img" aria-label="Earth globe loading" />,
+  loading: () => null,
 });
 
 export function RotatingForexGlobe() {
