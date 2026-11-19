@@ -54,7 +54,7 @@ async function main() {
     }
   }
 
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><defs><radialGradient id="shade"><stop offset="73%" stop-color="#050806" stop-opacity="0"/><stop offset="100%" stop-color="#050806" stop-opacity=".8"/></radialGradient></defs><circle cx="256" cy="256" r="226" fill="#050806" stroke="#17452d" stroke-width="1"/><g fill="#00b95b">${circles.join("")}</g><circle cx="256" cy="256" r="226" fill="url(#shade)"/></svg>`;
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><defs><radialGradient id="shade"><stop offset="73%" stop-color="#050806" stop-opacity="0"/><stop offset="100%" stop-color="#050806" stop-opacity=".8"/></radialGradient></defs><circle cx="256" cy="256" r="226" fill="#050806"/><g fill="#00b95b">${circles.join("")}</g><circle cx="256" cy="256" r="226" fill="url(#shade)"/></svg>`;
   fs.writeFileSync(fallbackOutput, svg);
   console.log(`Created ${land.reduce((total, value) => total + value, 0)} land pixels and ${circles.length} fallback dots.`);
 }
