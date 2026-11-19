@@ -4,6 +4,7 @@ import { siteContent } from "@/lib/content";
 import { createPageMetadata } from "@/lib/seo";
 import { getPublicCourses, getPublicScenarios } from "@/lib/public-content";
 import { MockForexFeed } from "@/components/mock-forex-feed";
+import { RotatingForexGlobe } from "@/components/rotating-forex-globe";
 
 export const metadata = createPageMetadata({
   title: "Forex Education for Clearer Market Decisions",
@@ -18,38 +19,7 @@ export default async function Home() {
     <div className="hero-visual">
       <div className="hero-copy"><span className="hero-brand-line"><i/> CORPENTA GLOBAL <span>·</span> FOREX EDUCATION</span><h1>{siteContent.headline.split(/(markets?\.?|strategy\.?)/i).map((part,index)=>/^markets?\.?$/i.test(part)?<span className="hero-highlight" key={index}>{part}</span>:/^strategy\.?$/i.test(part)?<span className="hero-highlight hero-strategy" key={index}>{part}</span>:part)}</h1><Link className="button button-orange hero-explore-cta" href="/courses">Explore Courses</Link></div>
       <div className="hero-globe-stage">
-        <div className="hero-globe" aria-hidden="true">
-          <svg className="hero-globe-map" viewBox="0 0 700 700" role="presentation">
-            <defs><clipPath id="globeClip"><circle cx="350" cy="350" r="314"/></clipPath></defs>
-            <circle className="globe-surface" cx="350" cy="350" r="314"/>
-            <g clipPath="url(#globeClip)">
-              <g className="globe-meridians"><ellipse cx="350" cy="350" rx="104" ry="314"/><ellipse cx="350" cy="350" rx="214" ry="314"/><path d="M36 350h628M56 250h588M56 450h588M104 160h492M104 540h492"/></g>
-              <g className="globe-continents">
-                <path d="M91 207l30-31 42-8 28 16 16 27 31 8 16 23-6 26-24 14-12 24-29 9-14 29-24-7-8-28-20-13-5-33-27-18-11-25-18-8 3-28z"/>
-                <path d="M224 326l24 4 17 22 2 29-14 32-5 37-18 32-3 42-16 38-17-24-3-38-15-31 7-36-7-27 12-35 20-26z"/>
-                <path d="M324 182l20-21 29 6 14 18 26 2 16 18-8 18-22 4-10 19-23 2-13-16-24-5-12-19 7-26z"/>
-                <path d="M330 253l29-15 29 12 20 29-7 40 17 31-8 42-22 39-9 46-23 37-21-20-9-38-23-23 5-35-17-25 9-40-12-33 22-27z"/>
-                <path d="M404 182l38-17 40 10 22-8 50 22 31 30-19 20-36-8-18 23-33 2-16 19-28-14-20 9-20-20-24-2-21-23 14-20-10-23z"/>
-                <path d="M512 347l27-8 22 17 30 4 19 24-13 25-26 4-13 20-29-5-16-20-24-7 5-27-12-17z"/>
-                <path d="M543 481l28-7 22 15-9 22-24 8-21-14z"/>
-              </g>
-              <g className="globe-routes">
-                <path d="M160 264Q266 146 361 227T541 286"/>
-                <path d="M215 361Q310 250 405 318T551 369"/>
-                <path d="M300 222Q391 168 453 244T546 286"/>
-                <path d="M206 342Q300 411 390 360T525 333"/>
-              </g>
-              <g className="globe-nodes">
-                <circle cx="160" cy="264" r="5"/><circle cx="276" cy="188" r="4"/><circle cx="361" cy="227" r="6"/><circle cx="433" cy="250" r="4"/><circle cx="541" cy="286" r="5"/>
-                <circle cx="215" cy="361" r="4"/><circle cx="310" cy="306" r="5"/><circle cx="405" cy="318" r="6"/><circle cx="482" cy="350" r="4"/><circle cx="551" cy="369" r="5"/>
-                <circle cx="453" cy="244" r="4"/><circle cx="390" cy="360" r="4"/><circle cx="525" cy="333" r="5"/>
-              </g>
-            </g>
-            <circle className="globe-rim" cx="350" cy="350" r="314"/>
-            <g className="globe-latitude-overlay"><ellipse cx="350" cy="350" rx="314" ry="105"/><ellipse cx="350" cy="350" rx="314" ry="218"/></g>
-          </svg>
-          <span className="globe-currency-mark globe-currency-euro">€</span><span className="globe-currency-mark globe-currency-yen">¥</span><span className="globe-currency-mark globe-currency-pound">£</span>
-        </div>
+        <div className="hero-globe" aria-hidden="true"><RotatingForexGlobe/></div>
         <div className="globe-status"><i/><span>GLOBAL FX NETWORK</span><b>ROTATING STUDY VIEW</b></div>
         <MockForexFeed/>
       </div>
