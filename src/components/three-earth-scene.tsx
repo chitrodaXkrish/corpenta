@@ -5,7 +5,7 @@ import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { Component, type ErrorInfo, type ReactNode, useEffect, useMemo, useRef, useState } from "react";
 
 const RADIUS = 1.12;
-const ROTATION_SECONDS = 100;
+const ROTATION_SECONDS = 60;
 
 const FINANCIAL_CENTRES = [
   { name: "London", region: "EUROPE", longitude: -0.1276, latitude: 51.5072 },
@@ -32,6 +32,10 @@ const NETWORK_LINKS = [
   [1, 3], // New York — Dubai
   [8, 9], // Tokyo — Sydney
   [9, 6], // Sydney — Singapore
+  [1, 8], // New York — Tokyo
+  [1, 7], // New York — Hong Kong
+  [9, 1], // Sydney — New York
+  [2, 7], // Frankfurt — Hong Kong
 ] as const;
 
 const DOT_SPACING_DEGREES = 0.8;
@@ -104,9 +108,9 @@ function locationOnEarth(longitude: number, latitude: number, radius: number) {
 
 function makeGrid(earthGroup: THREE.Group) {
   const material = new THREE.LineBasicMaterial({
-    color: "#758579",
+    color: "#087f43",
     transparent: true,
-    opacity: 0.105,
+    opacity: 0.16,
     depthWrite: false,
   });
   const gridRadius = RADIUS + 0.004;
@@ -138,26 +142,11 @@ function makeGrid(earthGroup: THREE.Group) {
   }
 }
 
-function makeOrbit() {
-  const points: THREE.Vector3[] = [];
-  const radius = RADIUS * 1.17;
-  for (let step = 0; step <= 180; step += 1) {
-    const angle = (step / 180) * Math.PI * 2;
-    points.push(new THREE.Vector3(Math.cos(angle) * radius, Math.sin(angle) * radius, 0));
-  }
-  const orbit = new THREE.LineLoop(
-    new THREE.BufferGeometry().setFromPoints(points),
-    new THREE.LineBasicMaterial({ color: "#17653b", transparent: true, opacity: 0.14, depthWrite: false }),
-  );
-  orbit.rotation.set(THREE.MathUtils.degToRad(67), 0, THREE.MathUtils.degToRad(-18));
-  return orbit;
-}
-
 function makeNetwork(earthGroup: THREE.Group) {
   const routeMaterial = new THREE.LineBasicMaterial({
     color: "#087f43",
     transparent: true,
-    opacity: 0.48,
+    opacity: 0.62,
     depthWrite: false,
     toneMapped: false,
   });
@@ -248,6 +237,7 @@ function GlobeScene({ reducedMotion }: { reducedMotion: boolean }) {
   const landMaskTexture = useLoader(THREE.TextureLoader, "/textures/earth-land-mask.png");
   const resources = useMemo(() => {
     const earthGroup = new THREE.Group();
+    earthGroup.rotation.y = THREE.MathUtils.degToRad(-90);
     const ocean = new THREE.Mesh(
       new THREE.SphereGeometry(RADIUS, 96, 72),
       new THREE.MeshBasicMaterial({ color: "#050806" }),
@@ -285,13 +275,11 @@ function GlobeScene({ reducedMotion }: { reducedMotion: boolean }) {
     earthGroup.add(atmosphere);
     makeGrid(earthGroup);
     const network = makeNetwork(earthGroup);
-    const orbit = makeOrbit();
-    return { earthGroup, network, orbit, dotTexture };
+    return { earthGroup, network, dotTexture };
   }, [landMaskTexture]);
 
   useEffect(() => () => {
     disposeScene(resources.earthGroup);
-    disposeScene(resources.orbit);
     resources.dotTexture.dispose();
   }, [resources]);
 
@@ -321,7 +309,6 @@ function GlobeScene({ reducedMotion }: { reducedMotion: boolean }) {
 
   return <>
     <primitive object={resources.earthGroup} dispose={null} />
-    <primitive object={resources.orbit} dispose={null} />
     <ambientLight color="#849187" intensity={0.58} />
     <directionalLight color="#fff0d8" intensity={1.65} position={[-3, 2.4, 4]} />
     <directionalLight color="#6d8b73" intensity={0.48} position={[3, -1, -2]} />
