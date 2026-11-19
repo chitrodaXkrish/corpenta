@@ -1,6 +1,6 @@
 # Dotted Earth assets
 
-`earth-dots.svg` is a locally hosted equirectangular field of dots, generated from Natural Earth country polygons. The Three.js sphere wraps this texture directly, so coastlines and land distribution follow real geographic data without rendering satellite terrain.
+`earth-dots.svg` is a locally hosted equirectangular field of dots sampled every two degrees from Natural Earth country polygons. The Three.js sphere wraps this denser texture directly, so coastlines and land distribution follow real geographic data without rendering satellite terrain.
 
 `earth-dot-globe.svg` is a static orthographic projection of the same dots used when WebGL is unavailable.
 

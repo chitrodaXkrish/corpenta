@@ -81,13 +81,15 @@ def main():
         raise SystemExit("usage: generate-earth-dot-globes.py input.geojson output-texture.svg output-fallback.svg")
     source = json.loads(Path(sys.argv[1]).read_text())
     polygons = polygons_from_geojson(source)
-    columns, rows = 96, 48
+    # Two-degree sampling keeps the coastline detailed while avoiding oversized points.
+    columns, rows = 180, 90
     points = []
     for row in range(rows):
         latitude = 90 - (row + 0.5) * 180 / rows
+        row_polygons = [polygon for polygon in polygons if polygon[2] <= latitude <= polygon[3]]
         for column in range(columns):
             longitude = -180 + (column + 0.5) * 360 / columns
-            if land_at(longitude, latitude, polygons):
+            if land_at(longitude, latitude, row_polygons):
                 points.append((longitude, latitude))
 
     texture = [
@@ -97,7 +99,7 @@ def main():
     for longitude, latitude in points:
         x = (longitude + 180) * 1024 / 360
         y = (90 - latitude) * 512 / 180
-        texture.append(f'<circle cx="{x:.2f}" cy="{y:.2f}" r="2.65"/>')
+        texture.append(f'<circle cx="{x:.2f}" cy="{y:.2f}" r="1.55"/>')
     texture.extend(["</g>", "</svg>"])
     Path(sys.argv[2]).write_text("\n".join(texture))
 
@@ -115,7 +117,7 @@ def main():
             continue
         x = 256 - radius * math.cos(lat) * math.sin(lon)
         y = 256 - radius * math.sin(lat)
-        dot_radius = 1.1 + 0.9 * math.sqrt(depth)
+        dot_radius = 0.8 + 0.55 * math.sqrt(depth)
         opacity = 0.34 + 0.58 * depth
         fallback.append(f'<circle cx="{x:.2f}" cy="{y:.2f}" r="{dot_radius:.2f}" opacity="{opacity:.2f}"/>')
     fallback.extend(["</g>", "</svg>"])
