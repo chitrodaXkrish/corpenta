@@ -4,7 +4,7 @@ import * as THREE from "three";
 import { useEffect, useRef, useState } from "react";
 
 const RADIUS = 1.12;
-const ROTATION_SECONDS = 105;
+const ROTATION_SECONDS = 60;
 const FINANCIAL_CENTRES = [
   { name: "London", longitude: -0.12, latitude: 51.5 },
   { name: "New York", longitude: -74, latitude: 40.7 },
@@ -158,57 +158,27 @@ export default function ThreeEarthScene() {
     const textureLoader = new THREE.TextureLoader();
     let disposed = false;
     let textureFailed = false;
-    const earthTexture = textureLoader.load(
-      "/textures/earth-natural-color.jpg",
+    const dotTexture = textureLoader.load(
+      "/textures/earth-dots.svg",
       () => { if (!disposed) renderer.render(scene, camera); },
       undefined,
       () => { if (!disposed) { textureFailed = true; setWebglUnavailable(true); } },
     );
-    earthTexture.colorSpace = THREE.SRGBColorSpace;
-    earthTexture.anisotropy = Math.min(renderer.capabilities.getMaxAnisotropy(), 4);
+    dotTexture.colorSpace = THREE.SRGBColorSpace;
+    dotTexture.anisotropy = Math.min(renderer.capabilities.getMaxAnisotropy(), 4);
 
-    const earthMaterial = new THREE.ShaderMaterial({
-      uniforms: { uEarthMap: { value: earthTexture } },
-      vertexShader: `
-        varying vec2 vUv;
-        varying vec3 vNormalView;
-        varying vec3 vViewPosition;
-        void main() {
-          vUv = uv;
-          vec4 viewPosition = modelViewMatrix * vec4(position, 1.0);
-          vViewPosition = -viewPosition.xyz;
-          vNormalView = normalize(normalMatrix * normal);
-          gl_Position = projectionMatrix * viewPosition;
-        }
-      `,
-      fragmentShader: `
-        uniform sampler2D uEarthMap;
-        varying vec2 vUv;
-        varying vec3 vNormalView;
-        varying vec3 vViewPosition;
-        void main() {
-          vec3 source = texture2D(uEarthMap, vUv).rgb;
-          float luma = dot(source, vec3(0.299, 0.587, 0.114));
-          float blueBias = source.b - max(source.r, source.g) * 0.55;
-          float snowMask = smoothstep(0.72, 0.94, luma);
-          float oceanMask = smoothstep(0.025, 0.11, blueBias) * (1.0 - snowMask);
-          vec3 land = mix(vec3(0.012, 0.026, 0.015), vec3(0.052, 0.105, 0.057), smoothstep(0.04, 0.52, luma));
-          vec3 ocean = mix(vec3(0.003, 0.008, 0.006), vec3(0.012, 0.027, 0.019), smoothstep(0.015, 0.3, luma));
-          vec3 surface = mix(land, ocean, oceanMask);
-          vec3 normal = normalize(vNormalView);
-          vec3 viewDirection = normalize(vViewPosition);
-          vec3 lightDirection = normalize(vec3(-0.48, 0.38, 0.8));
-          float daylight = 0.3 + 0.7 * max(dot(normal, lightDirection), 0.0);
-          float rim = pow(1.0 - max(dot(normal, viewDirection), 0.0), 3.2);
-          vec3 color = surface * daylight + vec3(0.012, 0.034, 0.018) * rim;
-          gl_FragColor = vec4(color, 1.0);
-          #include <tonemapping_fragment>
-          #include <colorspace_fragment>
-        }
-      `,
-    });
-    const earth = new THREE.Mesh(new THREE.SphereGeometry(RADIUS, 96, 64), earthMaterial);
+    const earthGeometry = new THREE.SphereGeometry(RADIUS, 96, 64);
+    const earth = new THREE.Mesh(earthGeometry, new THREE.MeshBasicMaterial({ color: "#030806" }));
     earthGroup.add(earth);
+    const dottedLand = new THREE.Mesh(earthGeometry, new THREE.MeshBasicMaterial({
+      map: dotTexture,
+      transparent: true,
+      depthWrite: false,
+      toneMapped: false,
+    }));
+    dottedLand.scale.setScalar(1.002);
+    dottedLand.renderOrder = 1;
+    earthGroup.add(dottedLand);
 
     const atmosphere = new THREE.Mesh(
       new THREE.SphereGeometry(RADIUS * 1.035, 64, 48),
@@ -271,7 +241,7 @@ export default function ThreeEarthScene() {
       window.cancelAnimationFrame(animationFrame);
       reducedMotion.removeEventListener("change", onMotionPreferenceChange);
       resizeObserver.disconnect();
-      earthTexture.dispose();
+      dotTexture.dispose();
       disposeScene(scene);
       renderer.dispose();
       renderer.forceContextLoss();

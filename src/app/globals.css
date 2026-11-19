@@ -561,7 +561,7 @@ body{font-family:var(--sans)}
 .hero-globe{position:absolute;inset:3%;overflow:hidden;border-radius:50%;background:#07100b;border:1px solid #28402d;box-shadow:0 0 0 1px rgba(103,143,106,.08)}
 .hero-globe-webgl,.hero-globe-fallback{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .hero-globe-canvas{display:block;width:100%;height:100%;pointer-events:none}
-.hero-globe-fallback{border-radius:50%;background:#07100b url('/textures/earth-natural-color.jpg') center/auto 100% no-repeat;filter:brightness(.32) saturate(.35) sepia(.24) hue-rotate(70deg)}
+.hero-globe-fallback{border-radius:50%;background:#030806 url('/textures/earth-dot-globe.svg') center/100% 100% no-repeat}
 .globe-status{position:absolute;z-index:3;top:9%;right:3%;display:flex;align-items:center;gap:8px;padding:10px 12px;border:1px solid #2c4030;border-radius:5px;background:#0c130e;color:#acb9ac;font:600 8px var(--display);letter-spacing:.1em;pointer-events:none}
 .globe-status i{width:6px;height:6px;border-radius:50%;background:#83a181}.globe-status b{padding-left:9px;border-left:1px solid #344237;color:#7e907f;font-weight:500}
 .hero-demo-feed{position:absolute;z-index:4;left:-2%;bottom:4%;width:254px;padding:12px 14px 9px;border:1px solid #354639;border-radius:8px;background:#0d130f;box-shadow:0 12px 30px rgba(0,0,0,.32)}
