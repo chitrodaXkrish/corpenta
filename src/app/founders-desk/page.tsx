@@ -40,6 +40,18 @@ export default function FoundersDeskPage(){
       <p>Empowering people through financial market knowledge, education &amp; leadership.</p>
     </header>
 
+    <section className="founders-session-gallery" aria-labelledby="founder-gallery-title">
+      <div className="founders-session-gallery-heading"><span className="eyebrow">IN PERSON · AROUND THE WORLD</span><h2 id="founder-gallery-title">Learning happens<br/>in <em>the room.</em></h2></div>
+      <div className="founders-session-gallery-grid">
+        <figure><Image src="/sessions/0a8f9ce5-6f53-4569-8fc8-69bb87df2eba.jpg" alt="A financial education seminar with attendees" width={1600} height={1066} sizes="(max-width: 760px) 33vw, (max-width: 1200px) 30vw, 360px" loading="lazy"/></figure>
+        <figure><Image src="/sessions/4269c677-3105-431c-9ba0-8ce675ffa8e9.jpg" alt="Avanish speaking at an in-person seminar" width={1600} height={1200} sizes="(max-width: 760px) 33vw, (max-width: 1200px) 30vw, 360px" loading="lazy"/></figure>
+        <figure><Image src="/sessions/9f9a00e7-7964-4c96-b538-7a5a4216f14d.jpg" alt="Avanish leading a seminar for attendees" width={1600} height={1200} sizes="(max-width: 760px) 33vw, (max-width: 1200px) 30vw, 360px" loading="lazy"/></figure>
+        <figure><Image src="/sessions/IMG_0878.JPG" alt="A large audience at an educational session" width={3520} height={1980} sizes="(max-width: 760px) 33vw, (max-width: 1200px) 30vw, 360px" loading="lazy"/></figure>
+        <figure><Image src="/sessions/IMG_5842.JPG" alt="Avanish sharing market education with a group" width={1280} height={853} sizes="(max-width: 760px) 33vw, (max-width: 1200px) 30vw, 360px" loading="lazy"/></figure>
+        <figure><Image src="/sessions/IMG_3192.jpg" alt="Avanish at a financial markets education session" width={4032} height={2268} sizes="(max-width: 760px) 33vw, (max-width: 1200px) 30vw, 360px" loading="lazy"/></figure>
+      </div>
+    </section>
+
     <section className="founders-profile-about" aria-labelledby="founder-about-title">
       <div className="founders-profile-section-label"><span>01</span><span>ABOUT THE FOUNDER</span></div>
       <div className="founders-profile-copy">
@@ -78,18 +90,6 @@ export default function FoundersDeskPage(){
         <p>Avanish believes that financial education is one of the most powerful tools for creating informed and confident individuals.</p>
         <p>His vision is to build a globally recognized financial education ecosystem that combines practical market knowledge, structured learning, professional mentorship, and responsible trading practices.</p>
         <p>Through continuous innovation, education, and leadership, he aims to make global financial markets more accessible to individuals who aspire to develop their understanding of Forex, Cryptocurrency, and Stock Markets.</p>
-      </div>
-    </section>
-
-    <section className="founders-session-gallery" aria-labelledby="founder-gallery-title">
-      <div className="founders-session-gallery-heading"><span className="eyebrow">IN PERSON · AROUND THE WORLD</span><h2 id="founder-gallery-title">Learning happens<br/>in <em>the room.</em></h2></div>
-      <div className="founders-session-gallery-grid">
-        <figure><Image src="/sessions/0a8f9ce5-6f53-4569-8fc8-69bb87df2eba.jpg" alt="A financial education seminar with attendees" width={1600} height={1066} sizes="(max-width: 760px) 33vw, (max-width: 1200px) 30vw, 360px" loading="lazy"/></figure>
-        <figure><Image src="/sessions/4269c677-3105-431c-9ba0-8ce675ffa8e9.jpg" alt="Avanish speaking at an in-person seminar" width={1600} height={1200} sizes="(max-width: 760px) 33vw, (max-width: 1200px) 30vw, 360px" loading="lazy"/></figure>
-        <figure><Image src="/sessions/9f9a00e7-7964-4c96-b538-7a5a4216f14d.jpg" alt="Avanish leading a seminar for attendees" width={1600} height={1200} sizes="(max-width: 760px) 33vw, (max-width: 1200px) 30vw, 360px" loading="lazy"/></figure>
-        <figure><Image src="/sessions/IMG_0878.JPG" alt="A large audience at an educational session" width={3520} height={1980} sizes="(max-width: 760px) 33vw, (max-width: 1200px) 30vw, 360px" loading="lazy"/></figure>
-        <figure><Image src="/sessions/IMG_5842.JPG" alt="Avanish sharing market education with a group" width={1280} height={853} sizes="(max-width: 760px) 33vw, (max-width: 1200px) 30vw, 360px" loading="lazy"/></figure>
-        <figure><Image src="/sessions/IMG_3192.jpg" alt="Avanish at a financial markets education session" width={4032} height={2268} sizes="(max-width: 760px) 33vw, (max-width: 1200px) 30vw, 360px" loading="lazy"/></figure>
       </div>
     </section>
 
