@@ -80,11 +80,11 @@ export default function FoundersDeskPage(){
         <p>Founder-led live financial markets sessions are conducted across India and in international locations.</p>
       </div>
       <div className="founder-live-sessions-regions">
-        <section aria-labelledby="founder-live-india-title">
+        <section className="founder-region-india" aria-labelledby="founder-live-india-title">
           <h3 id="founder-live-india-title">India</h3>
           <ul><li>Hyderabad</li><li>Mumbai</li><li>Nashik</li><li>Pune</li><li>Delhi</li><li>Lucknow</li></ul>
         </section>
-        <section aria-labelledby="founder-live-international-title">
+        <section className="founder-region-international" aria-labelledby="founder-live-international-title">
           <h3 id="founder-live-international-title">International</h3>
           <ul><li>United Kingdom</li><li>Nigeria</li><li>Malaysia</li><li>Thailand</li><li>Dubai</li></ul>
         </section>

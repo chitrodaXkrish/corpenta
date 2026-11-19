@@ -893,3 +893,21 @@ body{font-family:var(--sans)}
   .about-editorial-scene img,.simple-card,.founders-profile-photo,.market-note-line .market-note-plot{transition:none}
   .market-note-line .market-note-plot{stroke-dashoffset:0}
 }
+
+/* Founder’s Desk: turn the session locations into an editorial typographic feature. */
+.founder-live-sessions{position:relative;max-width:1120px;padding:54px 0 62px;border:0;border-block:1px solid #344137;border-radius:0;background:transparent;grid-template-columns:minmax(250px,.72fr) minmax(0,1.28fr);gap:7%;align-items:start}
+.founder-live-sessions::before{content:"FIELD NOTES  /  01—11";position:absolute;right:0;top:18px;color:#849286;font:10px ui-monospace,monospace;letter-spacing:.14em}
+.founder-live-sessions-intro{padding-top:22px}
+.founder-live-sessions-intro .eyebrow{color:#00c96b}
+.founder-live-sessions-intro h2{max-width:390px;margin:20px 0 20px;font-size:clamp(44px,5.6vw,70px);line-height:.96;letter-spacing:-.075em}
+.founder-live-sessions-intro h2 em{color:#00c96b}
+.founder-live-sessions-intro>p{max-width:315px;color:#a3ada4;font-size:15px}
+.founder-live-sessions-regions{grid-template-columns:1fr 1fr;gap:34px;align-items:start;padding-top:8px}
+.founder-live-sessions-regions section{position:relative;min-width:0;padding:17px 0 0;border:0;border-top:1px solid #546258;background:transparent}
+.founder-live-sessions-regions h3{margin:0 0 24px;color:#a3ada4;font:11px ui-monospace,monospace;letter-spacing:.16em;text-transform:uppercase}
+.founder-live-sessions-regions ul{display:flex;flex-direction:column;align-items:flex-start;gap:0;margin:0;padding:0;list-style:none}
+.founder-live-sessions-regions li{padding:0;background:none;color:#e5ebe5;font-size:clamp(20px,2.2vw,29px);font-weight:700;line-height:1.45;letter-spacing:.035em;text-transform:uppercase;transition:color .2s ease,transform .2s ease}
+.founder-live-sessions-regions li:first-child{color:#e5ebe5;font-size:clamp(20px,2.2vw,29px);line-height:1.45;letter-spacing:-.045em}
+.founder-live-sessions-regions li:hover{color:#00c96b;transform:translateX(5px)}
+@media(max-width:760px){.founder-live-sessions{grid-template-columns:1fr;gap:34px;padding:48px 0 42px}.founder-live-sessions::before{top:14px;font-size:8px}.founder-live-sessions-intro{padding-top:14px}.founder-live-sessions-intro h2{max-width:460px;font-size:clamp(46px,11vw,62px)}.founder-live-sessions-regions{grid-template-columns:1fr 1fr;gap:24px;padding:0}.founder-live-sessions-regions section{padding-top:13px}.founder-live-sessions-regions h3{margin-bottom:17px;font-size:9px}.founder-live-sessions-regions li{font-size:clamp(18px,4vw,23px)}.founder-live-sessions-regions li:first-child{font-size:clamp(18px,4vw,23px)}}
+@media(max-width:390px){.founder-live-sessions-regions{gap:16px}.founder-live-sessions-regions li{font-size:17px}.founder-live-sessions-regions li:first-child{font-size:17px}}
