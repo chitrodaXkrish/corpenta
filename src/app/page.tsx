@@ -4,6 +4,7 @@ import { siteContent } from "@/lib/content";
 import { createPageMetadata } from "@/lib/seo";
 import { getPublicCourses, getPublicScenarios } from "@/lib/public-content";
 import { RotatingForexGlobe } from "@/components/rotating-forex-globe";
+import { PublicMarketTicker } from "@/components/public-market-ticker";
 
 export const metadata = createPageMetadata({
   title: "Forex Education for Clearer Market Decisions",
@@ -20,14 +21,13 @@ export default async function Home() {
       <div className="hero-globe-stage">
         <div className="globe-orbit globe-orbit-outer" aria-hidden="true"/><div className="globe-orbit globe-orbit-inner" aria-hidden="true"/>
         <div className="hero-globe" aria-hidden="true"><RotatingForexGlobe/></div>
-        <div className="globe-data-card globe-data-card-top"><span><i/> MARKET PULSE</span><strong>24<span> / 5</span></strong><small>Global markets in motion</small></div>
-        <div className="globe-data-card globe-data-card-bottom"><span>LEARNING NOTE</span><strong>Context before conviction.</strong><small>Build a view. Review the evidence.</small></div>
         <span className="globe-coordinate globe-coordinate-one">51°30′N&nbsp; 0°07′W</span><span className="globe-coordinate globe-coordinate-two">GLOBAL NETWORK / 01</span>
-        <div className="globe-pair globe-pair-one"><b>EUR</b><span>EURO</span><i>↗</i></div><div className="globe-pair globe-pair-two"><b>JPY</b><span>YEN</span><i>↘</i></div>
       </div>
     </div>
     <div className="hero-caption"><span>Thoughtful education. Independent decisions.</span><span>Scroll to explore <ArrowDown size={14}/></span></div>
   </section>
+
+  <PublicMarketTicker/>
 
   <section className="intro-section wrap section-pad" data-market-scene="currencies"><div className="section-kicker"><span>01 / THE ACADEMY</span></div><div className="intro-grid"><h2>Markets reward<br/><em>preparation,</em><br/>not certainty.</h2><div className="intro-copy"><p>Corpenta Global is a home for people who want to understand how financial markets, including forex, move and build a more disciplined relationship with risk.</p><p>We bring structured learning and market context together—without promises, shortcuts, or the noise of prediction.</p><Link className="underlined-link" href="/about">Get to know our approach <ArrowUpRight size={15}/></Link></div></div></section>
 
