@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { ArrowDown, ArrowRight, ArrowUpRight } from "lucide-react";
 import { siteContent } from "@/lib/content";
 import { createPageMetadata } from "@/lib/seo";
@@ -11,13 +10,37 @@ export const metadata = createPageMetadata({
   path: "/",
 });
 
+const illustrativeCandles=[
+  [300,354,314,331],[272,326,329,289],[280,344,293,326],[248,310,324,269],
+  [252,318,275,302],[222,286,299,241],[232,302,246,278],[208,266,281,224],
+  [218,286,229,267],[192,252,270,205],[202,272,210,241],[178,238,246,193],
+  [188,252,198,226],[166,226,231,181],[174,241,185,218],[151,213,220,169],
+  [164,232,176,207],[142,201,210,158],[151,219,165,194],[128,190,198,146],
+  [141,211,153,184],[119,180,190,137],[128,202,142,171],[105,173,179,122],
+];
+
 export default async function Home() {
   const [courses, scenarios] = await Promise.all([getPublicCourses(), getPublicScenarios()]);
   return <main>
   <section className="hero">
     <div className="hero-visual">
-      <Image className="hero-image" src="/sessions/IMG_5842.JPG" alt="Founder leading an in-person financial markets education session" width={1280} height={853} priority sizes="100vw" />
-      <div className="hero-copy"><h1>{siteContent.headline.split(/(markets?\.?|strategy\.?)/i).map((part,index)=>/^markets?\.?$/i.test(part)?<span className="hero-highlight" key={index}>{part}</span>:/^strategy\.?$/i.test(part)?<span className="hero-highlight hero-strategy" key={index}>{part}</span>:part)}</h1><Link className="button button-orange hero-explore-cta" href="/courses">Explore Courses</Link></div>
+      <div className="hero-copy"><span className="hero-brand-line"><i/> CORPENTA GLOBAL <span>·</span> FOREX EDUCATION</span><h1>{siteContent.headline.split(/(markets?\.?|strategy\.?)/i).map((part,index)=>/^markets?\.?$/i.test(part)?<span className="hero-highlight" key={index}>{part}</span>:/^strategy\.?$/i.test(part)?<span className="hero-highlight hero-strategy" key={index}>{part}</span>:part)}</h1><Link className="button button-orange hero-explore-cta" href="/courses">Explore Courses</Link></div>
+      <div className="hero-market-terminal" role="img" aria-label="Illustrative forex candlestick chart and currency pairs. Not live market data.">
+        <div className="hero-terminal-top"><span><i/> MARKET STRUCTURE <b>/</b> STUDY VIEW</span><span className="terminal-tag">ILLUSTRATIVE</span></div>
+        <div className="hero-chart-heading"><div><span>MAJOR PAIR</span><strong>EUR <i>/</i> USD</strong></div><div className="chart-period">FX · 4H</div></div>
+        <div className="hero-chart-area">
+          <svg className="hero-candlestick-chart" viewBox="0 0 720 430" preserveAspectRatio="none" aria-hidden="true">
+            <g className="chart-grid">{[70,140,210,280,350].map(y=><line key={`h${y}`} x1="0" x2="720" y1={y} y2={y}/>)}{[90,210,330,450,570,690].map(x=><line key={`v${x}`} x1={x} x2={x} y1="35" y2="350"/>)}</g>
+            <g className="chart-axis-labels"><text x="650" y="65">—</text><text x="650" y="137">—</text><text x="650" y="209">—</text><text x="650" y="281">—</text><text x="650" y="353">—</text></g>
+            <g className="chart-candles">{illustrativeCandles.map(([high,low,open,close],index)=>{const x=20+index*27.5,up=close<open,top=Math.min(open,close),height=Math.max(7,Math.abs(close-open));return <g key={index} className={up?"candle-up":"candle-down"}><line x1={x} x2={x} y1={high} y2={low}/><rect x={x-6} y={top} width="12" height={height}/></g>})}</g>
+            <line className="chart-current-rule" x1="0" x2="720" y1="122" y2="122"/>
+          </svg>
+          <div className="hero-currency-watermark" aria-hidden="true">€ <span>/</span> $</div>
+          <div className="hero-chart-stamp"><span>PRICE ACTION</span><strong>Study the movement.</strong><small>Illustrative visual · not live market data</small></div>
+        </div>
+        <div className="hero-chart-footer"><span>EUR / USD</span><span>GBP / USD</span><span>USD / JPY</span><span className="chart-footer-note"><i/> EDUCATIONAL VIEW</span></div>
+      </div>
+      <div className="hero-market-footnote"><span>01</span><span>FOREX · STRUCTURE · DISCIPLINE</span><span>MARKET STUDY / NOT LIVE DATA</span></div>
     </div>
     <div className="hero-caption"><span>Thoughtful education. Independent decisions.</span><span>Scroll to explore <ArrowDown size={14}/></span></div>
   </section>
