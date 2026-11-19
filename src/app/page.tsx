@@ -3,7 +3,6 @@ import { ArrowDown, ArrowRight, ArrowUpRight } from "lucide-react";
 import { siteContent } from "@/lib/content";
 import { createPageMetadata } from "@/lib/seo";
 import { getPublicCourses, getPublicScenarios } from "@/lib/public-content";
-import { MockForexFeed } from "@/components/mock-forex-feed";
 import { RotatingForexGlobe } from "@/components/rotating-forex-globe";
 
 export const metadata = createPageMetadata({
@@ -20,10 +19,8 @@ export default async function Home() {
       <div className="hero-copy"><span className="hero-brand-line"><i/> CORPENTA GLOBAL <span>·</span> FOREX EDUCATION</span><h1>{siteContent.headline.split(/(markets?\.?|strategy\.?)/i).map((part,index)=>/^markets?\.?$/i.test(part)?<span className="hero-highlight" key={index}>{part}</span>:/^strategy\.?$/i.test(part)?<span className="hero-highlight hero-strategy" key={index}>{part}</span>:part)}</h1><Link className="button button-orange hero-explore-cta" href="/courses">Explore Courses</Link></div>
       <div className="hero-globe-stage">
         <div className="hero-globe" aria-hidden="true"><RotatingForexGlobe/></div>
-        <div className="globe-status"><i/><span>GLOBAL FX NETWORK</span><b>ROTATING STUDY VIEW</b></div>
-        <MockForexFeed/>
       </div>
-      <div className="hero-market-footnote"><span>01</span><span>FOREX · STRUCTURE · DISCIPLINE</span><span>MARKET STUDY / NOT LIVE DATA</span></div>
+      <div className="hero-market-footnote"><span>FOREX · STRUCTURE · DISCIPLINE</span><span>SIMULATED NETWORK · NOT LIVE MARKET DATA</span></div>
     </div>
     <div className="hero-caption"><span>Thoughtful education. Independent decisions.</span><span>Scroll to explore <ArrowDown size={14}/></span></div>
   </section>

@@ -27,13 +27,14 @@ export function MockForexFeed(){
     return()=>window.clearInterval(timer);
   },[]);
 
-  return <div className="hero-demo-feed" role="group" aria-label="Simulated forex prices, not live market data" aria-live="off">
-    <div className="demo-feed-head"><span>MOCK FOREX FEED</span><b>SIMULATED · NOT LIVE</b></div>
+  return <div className="hero-demo-feed" role="group" aria-label="Illustrative simulated forex quotes, not live market data" aria-live="off">
+    <div className="demo-feed-head"><span>MARKET OVERVIEW</span><b>SIMULATED · NOT LIVE DATA</b></div>
     {mockPairs.map(({pair,precision},index)=>{
       const quote=quotes[index];
       if(!quote)return null;
       const positive=quote.change>=0;
-      return <div className="demo-pair-row" key={pair}><span>{pair}</span><strong>{quote.price.toFixed(precision)}</strong><em className={positive?"":"demo-down"}>{positive?"+":"−"}{Math.abs(quote.change).toFixed(2)}%</em></div>;
+      const formattedPrice = quote.price.toFixed(precision);
+      return <div className="demo-pair-row" key={pair}><span>{pair}</span><strong className="demo-quote-price" key={formattedPrice}>{formattedPrice}</strong><em className={positive?"":"demo-down"}>{positive?"+":"−"}{Math.abs(quote.change).toFixed(2)}%</em></div>;
     })}
   </div>;
 }

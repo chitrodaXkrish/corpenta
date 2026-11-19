@@ -1,13 +1,13 @@
-# Dotted Earth assets
+# Earth visualization assets
 
-`earth-dots.svg` is a locally hosted equirectangular field of dots sampled every two degrees from Natural Earth country polygons. The Three.js sphere wraps this denser texture directly, so coastlines and land distribution follow real geographic data without rendering satellite terrain.
+`earth-land-mask.png` is a locally stored 2,048 × 1,024 equirectangular land mask derived from NASA's Blue Marble: Next Generation base map. It is sampled on a regular latitude/longitude grid to place the individual points that form the 3D continents. `earth-dot-fallback.svg` is a static, orthographic dot globe used only when WebGL is unavailable.
 
-`earth-dot-globe.svg` is a static orthographic projection of the same dots used when WebGL is unavailable.
+NASA source page: https://science.nasa.gov/earth/earth-observatory/blue-marble-next-generation/base-map/
 
-Source data: [datasets/geo-countries](https://github.com/datasets/geo-countries), derived from Natural Earth public-domain data.
-
-Regenerate with Python's standard library:
+Regenerate the mask and fallback from a source image with:
 
 ```sh
-python3 scripts/generate-earth-dot-globes.py input.geojson public/textures/earth-dots.svg public/textures/earth-dot-globe.svg
+node scripts/generate-earth-dot-mask.cjs path/to/world.200401.3x5400x2700.jpg public/textures/earth-land-mask.png public/textures/earth-dot-fallback.svg
 ```
+
+The visualization depicts simulated financial-centre routes and illustrative market context. It is not a live data service.

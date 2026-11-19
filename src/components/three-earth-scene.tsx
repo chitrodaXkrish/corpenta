@@ -1,38 +1,115 @@
 "use client";
 
 import * as THREE from "three";
-import { useEffect, useRef, useState } from "react";
+import { Canvas, useFrame, useLoader } from "@react-three/fiber";
+import { Component, type ErrorInfo, type ReactNode, useEffect, useMemo, useRef, useState } from "react";
 
 const RADIUS = 1.12;
-const ROTATION_SECONDS = 60;
+const ROTATION_SECONDS = 100;
+
 const FINANCIAL_CENTRES = [
-  { name: "London", longitude: -0.12, latitude: 51.5 },
-  { name: "New York", longitude: -74, latitude: 40.7 },
-  { name: "Dubai", longitude: 55.3, latitude: 25.2 },
-  { name: "Mumbai", longitude: 72.9, latitude: 19.1 },
-  { name: "Singapore", longitude: 103.8, latitude: 1.3 },
-  { name: "Tokyo", longitude: 139.7, latitude: 35.7 },
+  { name: "London", region: "EUROPE", longitude: -0.1276, latitude: 51.5072 },
+  { name: "New York", region: "NORTH AMERICA", longitude: -74.006, latitude: 40.7128 },
+  { name: "Frankfurt", region: "EUROPE", longitude: 8.6821, latitude: 50.1109 },
+  { name: "Dubai", region: "MIDDLE EAST", longitude: 55.2708, latitude: 25.2048 },
+  { name: "Mumbai", region: "SOUTH ASIA", longitude: 72.8777, latitude: 19.076 },
+  { name: "Delhi", region: "SOUTH ASIA", longitude: 77.209, latitude: 28.6139 },
+  { name: "Singapore", region: "SOUTHEAST ASIA", longitude: 103.8198, latitude: 1.3521 },
+  { name: "Hong Kong", region: "EAST ASIA", longitude: 114.1694, latitude: 22.3193 },
+  { name: "Tokyo", region: "EAST ASIA", longitude: 139.6917, latitude: 35.6895 },
+  { name: "Sydney", region: "AUSTRALIA", longitude: 151.2093, latitude: -33.8688 },
 ];
-const NETWORK_LINKS = [[0, 1], [0, 2], [2, 3], [2, 4], [4, 5], [1, 2]] as const;
+
+const NETWORK_LINKS = [
+  [0, 1], // London — New York
+  [0, 2], // London — Frankfurt
+  [2, 3], // Frankfurt — Dubai
+  [3, 4], // Dubai — Mumbai
+  [4, 5], // Mumbai — Delhi
+  [4, 6], // Mumbai — Singapore
+  [6, 7], // Singapore — Hong Kong
+  [7, 8], // Hong Kong — Tokyo
+  [1, 3], // New York — Dubai
+  [8, 9], // Tokyo — Sydney
+  [9, 6], // Sydney — Singapore
+] as const;
+
+const DOT_SPACING_DEGREES = 0.8;
+
+function makeLandPointGeometry(maskTexture: THREE.Texture) {
+  const image = maskTexture.image as HTMLImageElement;
+  const canvas = document.createElement("canvas");
+  canvas.width = image.naturalWidth || image.width;
+  canvas.height = image.naturalHeight || image.height;
+  const context = canvas.getContext("2d", { willReadFrequently: true });
+  if (!context) throw new Error("Canvas is unavailable for reading the local Earth mask.");
+  context.drawImage(image, 0, 0, canvas.width, canvas.height);
+  const { data } = context.getImageData(0, 0, canvas.width, canvas.height);
+  const positions: number[] = [];
+  const colors: number[] = [];
+  const baseColor = new THREE.Color("#087f43");
+  const primaryColor = new THREE.Color("#00b95b");
+  const highlightColor = new THREE.Color("#39d98a");
+
+  for (let latitude = -84; latitude <= 84; latitude += DOT_SPACING_DEGREES) {
+    for (let longitude = -180; longitude < 180; longitude += DOT_SPACING_DEGREES) {
+      const x = Math.min(canvas.width - 1, Math.max(0, Math.round(((longitude + 180) / 360) * canvas.width)));
+      const y = Math.min(canvas.height - 1, Math.max(0, Math.round(((90 - latitude) / 180) * canvas.height)));
+      const index = (y * canvas.width + x) * 4;
+      if (data[index] < 128) continue;
+
+      const point = locationOnEarth(longitude, latitude, RADIUS + 0.006);
+      positions.push(point.x, point.y, point.z);
+
+      const terrainTone = data[index + 2] / 255;
+      const color = baseColor.clone()
+        .lerp(primaryColor, 0.2 + terrainTone * 0.3)
+        .lerp(highlightColor, terrainTone * 0.24);
+      colors.push(color.r, color.g, color.b);
+    }
+  }
+
+  const geometry = new THREE.BufferGeometry();
+  geometry.setAttribute("position", new THREE.Float32BufferAttribute(positions, 3));
+  geometry.setAttribute("color", new THREE.Float32BufferAttribute(colors, 3));
+  geometry.computeBoundingSphere();
+  return geometry;
+}
+
+function makeDotSprite() {
+  const canvas = document.createElement("canvas");
+  canvas.width = 32;
+  canvas.height = 32;
+  const context = canvas.getContext("2d");
+  if (!context) throw new Error("Canvas is unavailable for drawing the Earth dot sprite.");
+  context.fillStyle = "#ffffff";
+  context.beginPath();
+  context.arc(16, 16, 14.5, 0, Math.PI * 2);
+  context.fill();
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.colorSpace = THREE.SRGBColorSpace;
+  return texture;
+}
 
 function locationOnEarth(longitude: number, latitude: number, radius: number) {
-  const phi = THREE.MathUtils.degToRad(longitude + 180);
-  const theta = THREE.MathUtils.degToRad(90 - latitude);
+  const longitudeRadians = THREE.MathUtils.degToRad(longitude);
+  const latitudeRadians = THREE.MathUtils.degToRad(latitude);
+  const horizontalRadius = radius * Math.cos(latitudeRadians);
   return new THREE.Vector3(
-    -radius * Math.sin(theta) * Math.sin(phi),
-    radius * Math.cos(theta),
-    radius * Math.sin(theta) * Math.cos(phi),
+    horizontalRadius * Math.sin(longitudeRadians),
+    radius * Math.sin(latitudeRadians),
+    horizontalRadius * Math.cos(longitudeRadians),
   );
 }
 
-function makeGrid(scene: THREE.Group) {
+function makeGrid(earthGroup: THREE.Group) {
   const material = new THREE.LineBasicMaterial({
-    color: "#4b7450",
+    color: "#758579",
     transparent: true,
-    opacity: 0.19,
+    opacity: 0.105,
     depthWrite: false,
   });
-  const gridRadius = RADIUS + 0.006;
+  const gridRadius = RADIUS + 0.004;
   const segments = 96;
 
   for (let latitude = -75; latitude <= 75; latitude += 25) {
@@ -43,10 +120,7 @@ function makeGrid(scene: THREE.Group) {
       const angle = (step / segments) * Math.PI * 2;
       points.push(new THREE.Vector3(ringRadius * Math.cos(angle), y, ringRadius * Math.sin(angle)));
     }
-    const geometry = new THREE.BufferGeometry().setFromPoints(points);
-    const line = new THREE.LineLoop(geometry, material);
-    line.renderOrder = 2;
-    scene.add(line);
+    earthGroup.add(new THREE.LineLoop(new THREE.BufferGeometry().setFromPoints(points), material));
   }
 
   for (let longitude = 0; longitude < 180; longitude += 30) {
@@ -60,53 +134,107 @@ function makeGrid(scene: THREE.Group) {
         gridRadius * Math.cos(latitude) * Math.cos(meridian),
       ));
     }
-    const geometry = new THREE.BufferGeometry().setFromPoints(points);
-    const line = new THREE.Line(geometry, material);
-    line.renderOrder = 2;
-    scene.add(line);
+    earthGroup.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(points), material));
   }
 }
 
-function makeNetwork(scene: THREE.Group) {
-  const lineMaterial = new THREE.LineBasicMaterial({
-    color: "#68906b",
-    transparent: true,
-    opacity: 0.42,
-    depthWrite: false,
-  });
-  const nodeMaterial = new THREE.MeshBasicMaterial({ color: "#96b795", toneMapped: false });
-  const nodeGeometry = new THREE.SphereGeometry(0.012, 12, 8);
-  const nodes: THREE.Mesh[] = [];
+function makeOrbit() {
+  const points: THREE.Vector3[] = [];
+  const radius = RADIUS * 1.17;
+  for (let step = 0; step <= 180; step += 1) {
+    const angle = (step / 180) * Math.PI * 2;
+    points.push(new THREE.Vector3(Math.cos(angle) * radius, Math.sin(angle) * radius, 0));
+  }
+  const orbit = new THREE.LineLoop(
+    new THREE.BufferGeometry().setFromPoints(points),
+    new THREE.LineBasicMaterial({ color: "#17653b", transparent: true, opacity: 0.14, depthWrite: false }),
+  );
+  orbit.rotation.set(THREE.MathUtils.degToRad(67), 0, THREE.MathUtils.degToRad(-18));
+  return orbit;
+}
 
-  for (const [from, to] of NETWORK_LINKS) {
+function makeNetwork(earthGroup: THREE.Group) {
+  const routeMaterial = new THREE.LineBasicMaterial({
+    color: "#087f43",
+    transparent: true,
+    opacity: 0.48,
+    depthWrite: false,
+    toneMapped: false,
+  });
+  const featuredRouteMaterial = new THREE.LineBasicMaterial({
+    color: "#00b95b",
+    transparent: true,
+    opacity: 0.84,
+    depthWrite: false,
+    toneMapped: false,
+  });
+  const markerMaterial = new THREE.MeshBasicMaterial({ color: "#39d98a", toneMapped: false });
+  const haloMaterial = new THREE.MeshBasicMaterial({
+    color: "#00b95b",
+    transparent: true,
+    opacity: 0.2,
+    depthWrite: false,
+    toneMapped: false,
+  });
+  const pulseMaterial = new THREE.MeshBasicMaterial({ color: "#39d98a", toneMapped: false });
+  const markerGeometry = new THREE.SphereGeometry(0.012, 12, 8);
+  const haloGeometry = new THREE.SphereGeometry(0.027, 12, 8);
+  const pulseGeometry = new THREE.SphereGeometry(0.0065, 10, 8);
+  const nodes: THREE.Mesh[] = [];
+  const flows: { mesh: THREE.Mesh; start: THREE.Vector3; rotation: THREE.Quaternion; height: number; offset: number; duration: number }[] = [];
+
+  const routePoint = (start: THREE.Vector3, rotation: THREE.Quaternion, amount: number, height: number) => {
+    const interpolation = new THREE.Quaternion().identity().slerp(rotation, amount);
+    const direction = start.clone().applyQuaternion(interpolation).normalize();
+    return direction.multiplyScalar(RADIUS + 0.018 + Math.sin(amount * Math.PI) * height);
+  };
+
+  NETWORK_LINKS.forEach(([from, to], routeIndex) => {
     const start = FINANCIAL_CENTRES[from];
     const end = FINANCIAL_CENTRES[to];
-    const startPoint = locationOnEarth(start.longitude, start.latitude, RADIUS + 0.012);
-    const endPoint = locationOnEarth(end.longitude, end.latitude, RADIUS + 0.012);
-    const midpoint = startPoint.clone().add(endPoint).normalize().multiplyScalar(RADIUS + 0.075);
-    const curve = new THREE.QuadraticBezierCurve3(startPoint, midpoint, endPoint);
-    const geometry = new THREE.BufferGeometry().setFromPoints(curve.getPoints(40));
-    const line = new THREE.Line(geometry, lineMaterial);
+    const startPoint = locationOnEarth(start.longitude, start.latitude, 1).normalize();
+    const endPoint = locationOnEarth(end.longitude, end.latitude, 1).normalize();
+    const angle = startPoint.angleTo(endPoint);
+    const rotation = new THREE.Quaternion().setFromUnitVectors(startPoint, endPoint);
+    const height = 0.045 + angle * 0.055;
+    const routePoints = Array.from({ length: 81 }, (_, index) =>
+      routePoint(startPoint, rotation, index / 80, height),
+    );
+    const geometry = new THREE.BufferGeometry().setFromPoints(routePoints);
+    const isMumbaiDelhiRoute = (start.name === "Mumbai" && end.name === "Delhi") ||
+      (start.name === "Delhi" && end.name === "Mumbai");
+    const line = new THREE.Line(geometry, isMumbaiDelhiRoute ? featuredRouteMaterial : routeMaterial);
     line.renderOrder = 3;
-    scene.add(line);
-  }
+    earthGroup.add(line);
 
-  FINANCIAL_CENTRES.forEach(({ longitude, latitude }) => {
-    const node = new THREE.Mesh(nodeGeometry, nodeMaterial);
-    node.position.copy(locationOnEarth(longitude, latitude, RADIUS + 0.016));
-    node.renderOrder = 4;
-    scene.add(node);
-    nodes.push(node);
+    const pulse = new THREE.Mesh(pulseGeometry, pulseMaterial);
+    pulse.renderOrder = 4;
+    earthGroup.add(pulse);
+    flows.push({ mesh: pulse, start: startPoint, rotation, height, offset: routeIndex / NETWORK_LINKS.length, duration: 8200 + routeIndex * 410 });
   });
 
-  return { nodes, nodeGeometry, nodeMaterial, lineMaterial };
+  FINANCIAL_CENTRES.forEach(({ longitude, latitude }) => {
+    const position = locationOnEarth(longitude, latitude, RADIUS + 0.016);
+    const halo = new THREE.Mesh(haloGeometry, haloMaterial);
+    halo.position.copy(position);
+    halo.renderOrder = 4;
+    earthGroup.add(halo);
+
+    const marker = new THREE.Mesh(markerGeometry, markerMaterial);
+    marker.position.copy(position);
+    marker.renderOrder = 5;
+    earthGroup.add(marker);
+    nodes.push(marker);
+  });
+
+  return { nodes, flows };
 }
 
-function disposeScene(scene: THREE.Scene) {
+function disposeScene(scene: THREE.Object3D) {
   const geometries = new Set<THREE.BufferGeometry>();
   const materials = new Set<THREE.Material>();
   scene.traverse((object) => {
-    if (object instanceof THREE.Mesh || object instanceof THREE.Line) {
+    if (object instanceof THREE.Mesh || object instanceof THREE.Line || object instanceof THREE.Points) {
       geometries.add(object.geometry);
       const material = object.material;
       (Array.isArray(material) ? material : [material]).forEach((entry) => materials.add(entry));
@@ -116,142 +244,133 @@ function disposeScene(scene: THREE.Scene) {
   materials.forEach((material) => material.dispose());
 }
 
-export default function ThreeEarthScene() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [webglUnavailable, setWebglUnavailable] = useState(false);
-
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    let renderer: THREE.WebGLRenderer;
-    try {
-      renderer = new THREE.WebGLRenderer({
-        alpha: true,
-        antialias: true,
-        powerPreference: "low-power",
-        depth: true,
-        stencil: false,
-      });
-    } catch {
-      setWebglUnavailable(true);
-      return;
-    }
-
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
-    renderer.setClearColor(0x000000, 0);
-    renderer.outputColorSpace = THREE.SRGBColorSpace;
-    renderer.domElement.className = "hero-globe-canvas";
-    renderer.domElement.setAttribute("aria-hidden", "true");
-    renderer.domElement.style.pointerEvents = "none";
-    container.appendChild(renderer.domElement);
-
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(40, 1, 0.1, 20);
-    camera.position.set(0, 0, 3.65);
-
+function GlobeScene({ reducedMotion }: { reducedMotion: boolean }) {
+  const landMaskTexture = useLoader(THREE.TextureLoader, "/textures/earth-land-mask.png");
+  const resources = useMemo(() => {
     const earthGroup = new THREE.Group();
-    // Center the Atlantic and Africa initially, matching the reference composition.
-    earthGroup.rotation.y = Math.PI;
-    scene.add(earthGroup);
-
-    const textureLoader = new THREE.TextureLoader();
-    let disposed = false;
-    let textureFailed = false;
-    const dotTexture = textureLoader.load(
-      "/textures/earth-dots.svg",
-      () => { if (!disposed) renderer.render(scene, camera); },
-      undefined,
-      () => { if (!disposed) { textureFailed = true; setWebglUnavailable(true); } },
+    const ocean = new THREE.Mesh(
+      new THREE.SphereGeometry(RADIUS, 96, 72),
+      new THREE.MeshBasicMaterial({ color: "#050806" }),
     );
-    dotTexture.colorSpace = THREE.SRGBColorSpace;
-    dotTexture.anisotropy = Math.min(renderer.capabilities.getMaxAnisotropy(), 4);
+    earthGroup.add(ocean);
 
-    const earthGeometry = new THREE.SphereGeometry(RADIUS, 96, 64);
-    const earth = new THREE.Mesh(earthGeometry, new THREE.MeshBasicMaterial({ color: "#030806" }));
-    earthGroup.add(earth);
-    const dottedLand = new THREE.Mesh(earthGeometry, new THREE.MeshBasicMaterial({
-      map: dotTexture,
-      transparent: true,
-      depthWrite: false,
-      toneMapped: false,
-    }));
-    dottedLand.scale.setScalar(1.002);
-    dottedLand.renderOrder = 1;
-    earthGroup.add(dottedLand);
+    const dotTexture = makeDotSprite();
+    const landDots = new THREE.Points(
+      makeLandPointGeometry(landMaskTexture),
+      new THREE.PointsMaterial({
+        map: dotTexture,
+        size: 0.0115,
+        sizeAttenuation: true,
+        vertexColors: true,
+        transparent: true,
+        alphaTest: 0.15,
+        depthWrite: false,
+        toneMapped: false,
+      }),
+    );
+    landDots.renderOrder = 2;
+    earthGroup.add(landDots);
 
     const atmosphere = new THREE.Mesh(
-      new THREE.SphereGeometry(RADIUS * 1.035, 64, 48),
+      new THREE.SphereGeometry(RADIUS * 1.035, 72, 48),
       new THREE.MeshBasicMaterial({
-        color: "#3f6745",
+        color: "#38523c",
         side: THREE.BackSide,
         transparent: true,
-        opacity: 0.22,
+        opacity: 0.18,
         depthWrite: false,
       }),
     );
-    atmosphere.renderOrder = 5;
+    atmosphere.renderOrder = 6;
     earthGroup.add(atmosphere);
-
     makeGrid(earthGroup);
     const network = makeNetwork(earthGroup);
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    let animationFrame = 0;
-    let previousTime: number | null = null;
-    let isAnimating = !reducedMotion.matches;
-    const resize = () => {
-      const { width, height } = container.getBoundingClientRect();
-      if (!width || !height) return;
-      renderer.setSize(width, height, false);
-      camera.aspect = width / height;
-      camera.updateProjectionMatrix();
-    };
-    const resizeObserver = new ResizeObserver(resize);
-    resizeObserver.observe(container);
-    resize();
+    const orbit = makeOrbit();
+    return { earthGroup, network, orbit, dotTexture };
+  }, [landMaskTexture]);
 
-    const render = (time: number) => {
-      if (textureFailed) return;
-      if (previousTime !== null && !reducedMotion.matches) {
-        earthGroup.rotation.y += ((time - previousTime) / 1000) * (Math.PI * 2 / ROTATION_SECONDS);
-      }
-      previousTime = time;
-      const pulse = reducedMotion.matches ? 1 : 1 + Math.sin(time / 1650) * 0.1;
-      network.nodes.forEach((node, index) => {
-        const nodePulse = 1 + Math.sin(time / 1450 + index * 1.4) * 0.11;
-        node.scale.setScalar(nodePulse * pulse);
-      });
-      renderer.render(scene, camera);
-      if (isAnimating) animationFrame = window.requestAnimationFrame(render);
-    };
-    if (isAnimating) animationFrame = window.requestAnimationFrame(render);
-    else render(performance.now());
+  useEffect(() => () => {
+    disposeScene(resources.earthGroup);
+    disposeScene(resources.orbit);
+    resources.dotTexture.dispose();
+  }, [resources]);
 
-    const onMotionPreferenceChange = () => {
-      previousTime = null;
-      isAnimating = !reducedMotion.matches;
-      window.cancelAnimationFrame(animationFrame);
-      if (isAnimating) animationFrame = window.requestAnimationFrame(render);
-      else render(performance.now());
-    };
-    reducedMotion.addEventListener("change", onMotionPreferenceChange);
+  const elapsed = useRef(0);
+  const routeInterpolation = useMemo(() => new THREE.Quaternion(), []);
+  useFrame((_, frameDelta) => {
+    const delta = Math.min(frameDelta, 0.05);
+    const time = elapsed.current * 1000;
+    if (!reducedMotion) {
+      resources.earthGroup.rotation.y += delta * (Math.PI * 2 / ROTATION_SECONDS);
+      elapsed.current += delta;
+    }
+    resources.earthGroup.updateMatrixWorld(true);
 
-    return () => {
-      disposed = true;
-      window.cancelAnimationFrame(animationFrame);
-      reducedMotion.removeEventListener("change", onMotionPreferenceChange);
-      resizeObserver.disconnect();
-      dotTexture.dispose();
-      disposeScene(scene);
-      renderer.dispose();
-      renderer.forceContextLoss();
-      renderer.domElement.remove();
-    };
-  }, []);
+    resources.network.nodes.forEach((node, index) => {
+      const nodePulse = reducedMotion ? 1 : 1 + Math.sin(time / 1750 + index * 1.1) * 0.06;
+      node.scale.setScalar(nodePulse);
+    });
+    resources.network.flows.forEach(({ mesh, start, rotation, height, offset, duration }) => {
+      const progress = (time / duration + offset) % 1;
+      const direction = start.clone()
+        .applyQuaternion(routeInterpolation.identity().slerp(rotation, progress))
+        .normalize();
+      mesh.position.copy(direction.multiplyScalar(RADIUS + 0.018 + Math.sin(progress * Math.PI) * height));
+    });
+  });
 
-  if (webglUnavailable) {
-    return <div className="hero-globe-fallback" role="img" aria-label="Static Earth map preview; 3D globe rendering is unavailable" />;
+  return <>
+    <primitive object={resources.earthGroup} dispose={null} />
+    <primitive object={resources.orbit} dispose={null} />
+    <ambientLight color="#849187" intensity={0.58} />
+    <directionalLight color="#fff0d8" intensity={1.65} position={[-3, 2.4, 4]} />
+    <directionalLight color="#6d8b73" intensity={0.48} position={[3, -1, -2]} />
+  </>;
+}
+
+class GlobeErrorBoundary extends Component<{ children: ReactNode }, { failed: boolean }> {
+  state = { failed: false };
+
+  static getDerivedStateFromError() {
+    return { failed: true };
   }
 
-  return <div ref={containerRef} className="hero-globe-webgl" aria-label="Rotating Earth visualization" role="img" />;
+  componentDidCatch(_error: Error, _info: ErrorInfo) {
+    this.setState({ failed: true });
+  }
+
+  render() {
+    if (this.state.failed) {
+      return <div className="hero-globe-fallback" role="img" aria-label="Earth visualization is unavailable in this browser" />;
+    }
+    return this.props.children;
+  }
+}
+
+export default function ThreeEarthScene() {
+  const [reducedMotion, setReducedMotion] = useState(() =>
+    typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+  );
+
+  useEffect(() => {
+    const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updatePreference = () => setReducedMotion(preference.matches);
+    preference.addEventListener("change", updatePreference);
+    return () => preference.removeEventListener("change", updatePreference);
+  }, []);
+
+  return <GlobeErrorBoundary>
+    <Canvas
+      className="hero-globe-webgl"
+      camera={{ position: [0, 0, 3.65], fov: 40, near: 0.1, far: 20 }}
+      dpr={[1, 1.5]}
+      frameloop={reducedMotion ? "demand" : "always"}
+      gl={{ alpha: true, antialias: true, powerPreference: "low-power", depth: true, stencil: false }}
+      fallback={<div className="hero-globe-fallback" role="img" aria-label="Static Earth preview; 3D rendering is unavailable" />}
+      aria-label="Rotating Earth with simulated financial-centre routes"
+      role="img"
+    >
+      <GlobeScene reducedMotion={reducedMotion} />
+    </Canvas>
+  </GlobeErrorBoundary>;
 }
