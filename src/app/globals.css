@@ -517,7 +517,7 @@ body{font-family:var(--sans)}
 }
 @media(max-width:900px){
   .site-header-terminal{width:calc(100% - 32px);padding-left:66px}
-  .hero-visual{grid-template-columns:minmax(300px,.85fr) minmax(360px,1.15fr);gap:24px;padding:36px}
+  .hero-visual{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:24px;padding:36px}
   .hero h1{font-size:clamp(49px,6.3vw,72px)}
   .hero-market-terminal{min-height:430px;padding:17px}
   .hero-chart-area{height:285px}
@@ -557,18 +557,20 @@ body{font-family:var(--sans)}
 }
 
 /* Orthographic Earth-style globe with real geographic silhouettes and simulated market routes. */
-.hero-globe-stage{position:relative;width:100%;max-width:660px;aspect-ratio:1;justify-self:center;isolation:isolate}
-.hero-globe{position:absolute;inset:2%;overflow:hidden;border-radius:50%;background:#07100b;border:1px solid #28402d;box-shadow:inset 0 0 22px rgba(91,139,94,.08),0 0 0 12px rgba(105,141,107,.025)}
-.hero-globe-canvas{display:block;width:100%;height:100%;}
-.globe-status{position:absolute;top:9%;right:3%;display:flex;align-items:center;gap:8px;padding:10px 12px;border:1px solid #2c4030;border-radius:5px;background:#0c130e;color:#acb9ac;font:600 8px var(--display);letter-spacing:.1em}
+.hero-globe-stage{position:relative;width:100%;max-width:570px;aspect-ratio:1;justify-self:center;isolation:isolate;overflow:visible}
+.hero-globe{position:absolute;inset:3%;overflow:hidden;border-radius:50%;background:#07100b;border:1px solid #28402d;box-shadow:0 0 0 1px rgba(103,143,106,.08)}
+.hero-globe-webgl,.hero-globe-fallback{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.hero-globe-canvas{display:block;width:100%;height:100%;pointer-events:none}
+.hero-globe-fallback{border-radius:50%;background:#07100b url('/textures/earth-natural-color.jpg') center/auto 100% no-repeat;filter:brightness(.32) saturate(.35) sepia(.24) hue-rotate(70deg)}
+.globe-status{position:absolute;z-index:3;top:9%;right:3%;display:flex;align-items:center;gap:8px;padding:10px 12px;border:1px solid #2c4030;border-radius:5px;background:#0c130e;color:#acb9ac;font:600 8px var(--display);letter-spacing:.1em;pointer-events:none}
 .globe-status i{width:6px;height:6px;border-radius:50%;background:#83a181}.globe-status b{padding-left:9px;border-left:1px solid #344237;color:#7e907f;font-weight:500}
-.hero-demo-feed{position:absolute;z-index:2;left:-2%;bottom:4%;width:254px;padding:12px 14px 9px;border:1px solid #354639;border-radius:8px;background:#0d130f;box-shadow:0 12px 30px rgba(0,0,0,.32)}
+.hero-demo-feed{position:absolute;z-index:4;left:-2%;bottom:4%;width:254px;padding:12px 14px 9px;border:1px solid #354639;border-radius:8px;background:#0d130f;box-shadow:0 12px 30px rgba(0,0,0,.32)}
 .demo-feed-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:7px;padding-bottom:9px;border-bottom:1px solid #26352a}
 .demo-feed-head span{color:#d4ded4;font:600 9px var(--display);letter-spacing:.08em}.demo-feed-head b{color:#899a8a;font:500 7px var(--display);letter-spacing:.07em}
 .demo-pair-row{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:10px;padding:6px 0;color:#99a79a;font:500 8px var(--display);letter-spacing:.035em}
 .demo-pair-row strong{color:#d7e0d7;font:600 10px var(--display);letter-spacing:0}.demo-pair-row em{color:#8cad88;font:500 8px var(--display);font-style:normal}.demo-pair-row em.demo-down{color:#b48179}
 @media(max-width:760px){
-  .hero-globe-stage{width:min(100%,520px);margin:0 auto;aspect-ratio:1}
+  .hero-globe-stage{width:min(100%,470px);margin:0 auto;aspect-ratio:1}
   .hero-globe{inset:2.5%}
   .hero-demo-feed{left:50%;bottom:0;width:min(254px,78%);transform:translateX(-50%)}
   .globe-status{top:5%;right:1%;font-size:7px;padding:8px 9px}
