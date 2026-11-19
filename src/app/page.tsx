@@ -16,7 +16,7 @@ export default async function Home() {
   return <main>
   <section className="hero">
     <div className="hero-visual">
-      <Image className="hero-image" src="/hero.png" alt="" width={1837} height={856} priority sizes="100vw" />
+      <Image className="hero-image" src="/sessions/IMG_5842.JPG" alt="Founder leading an in-person financial markets education session" width={1280} height={853} priority sizes="100vw" />
       <div className="hero-copy"><h1>{siteContent.headline.split(/(markets?\.?|strategy\.?)/i).map((part,index)=>/^markets?\.?$/i.test(part)?<span className="hero-highlight" key={index}>{part}</span>:/^strategy\.?$/i.test(part)?<span className="hero-highlight hero-strategy" key={index}>{part}</span>:part)}</h1><Link className="button button-orange hero-explore-cta" href="/courses">Explore Courses</Link></div>
     </div>
     <div className="hero-caption"><span>Thoughtful education. Independent decisions.</span><span>Scroll to explore <ArrowDown size={14}/></span></div>
