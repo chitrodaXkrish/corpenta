@@ -62,6 +62,9 @@ const onlineSessions:{src:string;alt:string;width:number;height:number}[]=[
   {src:"/sessions/zoomlive3.png",alt:"Participants joining a remote learning session.",width:1672,height:941},
   {src:"/sessions/zoomlive5.png",alt:"Online participants follow a lesson on market structure and higher highs and higher lows.",width:1672,height:941},
   {src:"/sessions/zoomlive6.png",alt:"Avanish leads a live online session with participants joining by video.",width:1672,height:941},
+  {src:"/sessions/zoomlive7.png",alt:"Online participants join a live financial markets learning session on Zoom.",width:1672,height:941},
+  {src:"/sessions/zoomlive8.png",alt:"A live online trading lesson with a market chart and video participants.",width:1672,height:941},
+  {src:"/sessions/zoomlive9.png",alt:"A Zoom group follows a shared forex chart during an online session.",width:1536,height:1024},
 ];
 
 const seminarCityGroups=[
