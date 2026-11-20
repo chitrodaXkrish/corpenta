@@ -25,7 +25,7 @@ const milestones=[
   {value:"10+ years",label:"Financial markets industry experience"},
   {value:"8+ years",label:"Financial market education & mentorship"},
   {value:"5,000–7,000+",label:"Individuals educated"},
-  {value:"500+",label:"Offline educational seminars across India"},
+  {value:"50+",label:"Offline educational seminars across India"},
   {value:"International",label:"Educational sessions in Dubai, Singapore, and other locations"},
 ];
 
@@ -46,31 +46,46 @@ const recentlyUploadedSessions:{src:string;alt:string;width:number;height:number
   {src:"/sessions/fb11979c-9ca8-4070-86c2-abda6c5f044d.jpg",alt:"Educators gather for a group photograph after a learning event.",width:1600,height:718},
 ];
 
+const offlineSeminars:{src:string;alt:string;width:number;height:number}[]=[
+  {src:"/sessions/0a8f9ce5-6f53-4569-8fc8-69bb87df2eba.jpg",alt:"Attendees at an in-person financial education seminar.",width:1600,height:1066},
+  {src:"/sessions/4269c677-3105-431c-9ba0-8ce675ffa8e9.jpg",alt:"Avanish speaking with an in-person audience.",width:1600,height:1200},
+  {src:"/sessions/9f9a00e7-7964-4c96-b538-7a5a4216f14d.jpg",alt:"Avanish leading a seminar for attendees.",width:1600,height:1200},
+  {src:"/sessions/IMG_0878.JPG",alt:"A large audience at an educational session.",width:3520,height:1980},
+  {src:"/sessions/IMG_5842.JPG",alt:"Avanish sharing market education with a group.",width:1280,height:853},
+  {src:"/sessions/IMG_3192.jpg",alt:"Avanish at a financial markets education session.",width:4032,height:2268},
+  ...recentlyUploadedSessions,
+];
+
+const onlineSessions:{src:string;alt:string;width:number;height:number}[]=[
+  {src:"/sessions/Zoomlive.jpeg",alt:"Participants attending an online financial education session.",width:1600,height:900},
+  {src:"/sessions/zoomlive2.png",alt:"Attendees in a live online learning session.",width:1672,height:941},
+  {src:"/sessions/zoomlive3.png",alt:"Participants joining a remote learning session.",width:1672,height:941},
+  {src:"/sessions/zoomlive5.png",alt:"Online participants follow a lesson on market structure and higher highs and higher lows.",width:1672,height:941},
+  {src:"/sessions/zoomlive6.png",alt:"Avanish leads a live online session with participants joining by video.",width:1672,height:941},
+];
+
+const seminarCityGroups=[
+  {city:"Hyderabad",photos:["/sessions/4269c677-3105-431c-9ba0-8ce675ffa8e9.jpg","/sessions/9f9a00e7-7964-4c96-b538-7a5a4216f14d.jpg","/sessions/469050323_556256587162020_103688542105115320_n.jpg","/sessions/469099495_556256430495369_5054417133126015039_n.jpg","/sessions/469235814_556256470495365_2892969306640324014_n.jpg","/sessions/469237657_556256497162029_5777819565907551968_n.jpg","/sessions/469351768_556256500495362_3748451148070726430_n.jpg","/sessions/469398456_556256220495390_1588049222564727968_n.jpg","/sessions/469445964_556256230495389_3776649010904668728_n.jpg"]},
+  {city:"Mumbai",photos:["/sessions/IMG_0831.jpg","/sessions/IMG_0878.JPG","/sessions/IMG_0943.JPG"]},
+  {city:"Pune",photos:["/sessions/IMG_5842.JPG","/sessions/IMG_3192.jpg","/sessions/IMG_7455.jpg","/sessions/IMG_7456.jpg"]},
+  {city:"Delhi",photos:["/sessions/0a8f9ce5-6f53-4569-8fc8-69bb87df2eba.jpg","/sessions/11757801-d849-453a-be04-c9fbdc3160a3.jpg","/sessions/e672e6c9-b13d-430f-ad73-715b77c94370.jpg","/sessions/fb11979c-9ca8-4070-86c2-abda6c5f044d.jpg"]},
+];
+
 export default function FoundersDeskPage(){
   const personSchema={"@context":"https://schema.org","@type":"Person","@id":`${SITE_URL}/founders-desk#avanish-yadav`,name:"Avanish Yadav",jobTitle:"Founder & CEO | Global Financial Markets Educator",image:`${SITE_URL}/founder%27s%20desk/founder.png`,worksFor:{"@id":`${SITE_URL}/#organization`},url:`${SITE_URL}/founders-desk`};
   return <main className="page-main wrap founders-desk-page" data-market-scene="network">
     <script type="application/ld+json" dangerouslySetInnerHTML={{__html:jsonLdScript(personSchema)}}/>
-    <header className="founders-desk-heading">
+    <header className="founders-desk-heading" id="home">
       <span className="eyebrow">FOUNDER PROFILE</span>
       <div className="founders-profile-hero-main"><h1>Avanish<br/><em>Yadav.</em></h1><Image className="founders-profile-photo" src="/founder%27s%20desk/founder.png" alt="Avanish Yadav, Founder and CEO" width={888} height={1006} sizes="(max-width: 640px) 34vw, 300px" priority/></div>
       <p className="founders-desk-role">Founder &amp; CEO <span>·</span> Global Financial Markets Educator</p>
       <p>Empowering people through financial market knowledge, education &amp; leadership.</p>
     </header>
 
-    <section className="founders-session-gallery" data-market-scene="candles" aria-labelledby="founder-gallery-title">
-      <div className="founders-session-gallery-heading"><span className="eyebrow">IN PERSON · AROUND THE WORLD</span><h2 id="founder-gallery-title">Learning happens<br/>in <em>the room.</em></h2></div>
-      <div className="founders-session-gallery-grid">
-        <figure><Image src="/sessions/0a8f9ce5-6f53-4569-8fc8-69bb87df2eba.jpg" alt="A financial education seminar with attendees" width={1600} height={1066} sizes="(max-width: 760px) 33vw, (max-width: 1200px) 30vw, 360px" loading="lazy"/></figure>
-        <figure><Image src="/sessions/4269c677-3105-431c-9ba0-8ce675ffa8e9.jpg" alt="Avanish speaking at an in-person seminar" width={1600} height={1200} sizes="(max-width: 760px) 33vw, (max-width: 1200px) 30vw, 360px" loading="lazy"/></figure>
-        <figure><Image src="/sessions/9f9a00e7-7964-4c96-b538-7a5a4216f14d.jpg" alt="Avanish leading a seminar for attendees" width={1600} height={1200} sizes="(max-width: 760px) 33vw, (max-width: 1200px) 30vw, 360px" loading="lazy"/></figure>
-        <figure><Image src="/sessions/IMG_0878.JPG" alt="A large audience at an educational session" width={3520} height={1980} sizes="(max-width: 760px) 33vw, (max-width: 1200px) 30vw, 360px" loading="lazy"/></figure>
-        <figure><Image src="/sessions/IMG_5842.JPG" alt="Avanish sharing market education with a group" width={1280} height={853} sizes="(max-width: 760px) 33vw, (max-width: 1200px) 30vw, 360px" loading="lazy"/></figure>
-        <figure><Image src="/sessions/IMG_3192.jpg" alt="Avanish at a financial markets education session" width={4032} height={2268} sizes="(max-width: 760px) 33vw, (max-width: 1200px) 30vw, 360px" loading="lazy"/></figure>
-        <figure><Image src="/sessions/Zoomlive.jpeg" alt="Participants attending an online forex education session" width={1600} height={900} sizes="(max-width: 760px) 33vw, (max-width: 1200px) 30vw, 360px" loading="lazy"/></figure>
-        <figure><Image src="/sessions/zoomlive2.png" alt="Attendees in a live online learning session" width={1672} height={941} sizes="(max-width: 760px) 33vw, (max-width: 1200px) 30vw, 360px" loading="lazy"/></figure>
-        <figure><Image src="/sessions/zoomlive3.png" alt="Participants joining a remote learning session" width={1672} height={941} sizes="(max-width: 760px) 33vw, (max-width: 1200px) 30vw, 360px" loading="lazy"/></figure>
-        {recentlyUploadedSessions.map((session)=><figure key={session.src}><Image src={session.src} alt={session.alt} width={session.width} height={session.height} sizes="(max-width: 760px) 33vw, (max-width: 1200px) 30vw, 360px" loading="lazy"/></figure>)}
-      </div>
+    <section className="founders-session-gallery" id="sessions" data-market-scene="candles" aria-labelledby="founder-gallery-title">
+      <div className="founders-session-gallery-heading"><span className="eyebrow">03 · SESSIONS CONDUCTED</span><h2 id="founder-gallery-title">Learning in<br/><em>every format.</em></h2></div>
+      <section className="founders-session-group" aria-labelledby="founder-offline-title"><div className="founders-session-group-heading"><h3 id="founder-offline-title">Offline Seminars</h3><p>In-person seminars, workshops and learning events.</p></div>{seminarCityGroups.map((group)=><section className="founders-session-city" key={group.city} aria-labelledby={`founder-city-${group.city.toLowerCase()}`}><header className="founders-session-city-heading"><h3 id={`founder-city-${group.city.toLowerCase()}`}>{group.city}</h3></header><div className="founders-session-gallery-grid">{offlineSeminars.filter((session)=>group.photos.includes(session.src)).map((session)=><figure key={session.src}><Image src={session.src} alt={session.alt} width={session.width} height={session.height} sizes="(max-width: 760px) 33vw, (max-width: 1200px) 30vw, 360px" loading="lazy"/></figure>)}</div></section>)}</section>
+      <section className="founders-session-group" aria-labelledby="founder-online-title"><div className="founders-session-group-heading"><h3 id="founder-online-title">Online Sessions</h3><p>Live remote sessions with participants joining digitally.</p></div><div className="founders-session-gallery-grid">{onlineSessions.map((session)=><figure key={session.src}><Image src={session.src} alt={session.alt} width={session.width} height={session.height} sizes="(max-width: 760px) 33vw, (max-width: 1200px) 30vw, 360px" loading="lazy"/></figure>)}</div></section>
     </section>
 
     <section className="founder-live-sessions" aria-labelledby="founder-live-sessions-title">
@@ -91,7 +106,19 @@ export default function FoundersDeskPage(){
       </div>
     </section>
 
-    <section className="founders-profile-about" aria-labelledby="founder-about-title">
+    <section className="founders-profile-milestones" id="impact" data-market-scene="ticker" aria-labelledby="founder-milestones-title">
+      <div className="founders-profile-section-label"><span>04</span><span>ACHIEVEMENTS &amp; IMPACT</span></div>
+      <div className="founders-profile-section-content">
+        <h2 id="founder-milestones-title">A journey of<br/><em>learning and reach.</em></h2>
+        <div className="founders-profile-milestone-list">{milestones.map((item,index)=><article key={item.label}><span>{String(index+1).padStart(2,"0")}</span><strong>{item.value}</strong><p>{item.label}</p></article>)}</div>
+      </div>
+    </section>
+
+    <nav className="founders-profile-nav" aria-label="Founder profile sections">
+      <a href="#home">Home</a><a href="#about">About</a><a href="#sessions">Sessions</a><a href="#impact">Impact</a><a href="#projects">Projects &amp; Activities</a><a href="#contact">Contact</a>
+    </nav>
+
+    <section className="founders-profile-about" id="about" aria-labelledby="founder-about-title">
       <div className="founders-profile-section-label"><span>01</span><span>ABOUT THE FOUNDER</span></div>
       <div className="founders-profile-copy">
         <h2 id="founder-about-title">Education shaped<br/>by <em>experience.</em></h2>
@@ -114,16 +141,8 @@ export default function FoundersDeskPage(){
       </div>
     </section>
 
-    <section className="founders-profile-milestones" data-market-scene="ticker" aria-labelledby="founder-milestones-title">
-      <div className="founders-profile-section-label"><span>03</span><span>PROFESSIONAL MILESTONES</span></div>
-      <div className="founders-profile-section-content">
-        <h2 id="founder-milestones-title">A journey of<br/><em>learning and reach.</em></h2>
-        <div className="founders-profile-milestone-list">{milestones.map((item,index)=><article key={item.label}><span>{String(index+1).padStart(2,"0")}</span><strong>{item.value}</strong><p>{item.label}</p></article>)}</div>
-      </div>
-    </section>
-
     <section className="founders-profile-vision" data-market-scene="network" aria-labelledby="founder-vision-title">
-      <div className="founders-profile-section-label"><span>04</span><span>GLOBAL VISION</span></div>
+      <div className="founders-profile-section-label"><span>03</span><span>MISSION &amp; VISION</span></div>
       <div className="founders-profile-vision-copy">
         <h2 id="founder-vision-title">Make markets<br/>more <em>accessible.</em></h2>
         <p>Avanish believes that financial education is one of the most powerful tools for creating informed and confident individuals.</p>
@@ -133,7 +152,7 @@ export default function FoundersDeskPage(){
     </section>
 
     <section className="founders-profile-philosophy" data-market-scene="currencies" aria-labelledby="founder-philosophy-title">
-      <div className="founders-profile-section-label"><span>05</span><span>HIS PHILOSOPHY</span></div>
+      <div className="founders-profile-section-label"><span>04</span><span>HIS PHILOSOPHY</span></div>
       <div className="founders-profile-philosophy-copy">
         <h2 id="founder-philosophy-title">Knowledge.<br/>Discipline.<br/><em>Perspective.</em></h2>
         <blockquote>“Success in financial markets is not just about identifying opportunities. It is about developing knowledge, discipline, patience, and the ability to manage risk.”</blockquote>
@@ -141,7 +160,20 @@ export default function FoundersDeskPage(){
       </div>
     </section>
 
-    <section className="founders-profile-contact"><div><h2>Begin with a<br/><em>better question.</em></h2><p>Explore the academy or contact the team for current program information.</p></div><div className="founders-desk-contact-actions"><Link className="button button-dark" href="/courses">Explore courses</Link></div></section>
+    <section className="founders-profile-activities" id="projects" aria-labelledby="founder-activities-title">
+      <div className="founders-profile-section-label"><span>05</span><span>PROJECTS &amp; ACTIVITIES</span></div>
+      <div className="founders-profile-section-content">
+        <h2 id="founder-activities-title">Education put<br/>into <em>practice.</em></h2>
+        <div className="founders-profile-activities-grid">
+          <article><span>01</span><h3>Financial markets education</h3><p>Seminars, workshops and learning sessions focused on Forex, cryptocurrency and stock markets.</p></article>
+          <article><span>02</span><h3>Student learning &amp; mentorship</h3><p>Education and mentorship for individuals learning market analysis, trading methods, risk management and trading psychology.</p></article>
+          <article><span>03</span><h3>Online learning sessions</h3><p>Live remote sessions that extend founder-led financial education to online participants.</p></article>
+          <article><span>04</span><h3>Market initiatives</h3><p>Experience supporting business organizations with financial market initiatives and fund-management-related operations.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section className="founders-profile-contact" id="contact" aria-labelledby="founder-contact-title"><div><span className="eyebrow">CONTACT &amp; COLLABORATION</span><h2 id="founder-contact-title">Begin with a<br/><em>better question.</em></h2><p>For course information, training enquiries and collaboration requests, contact the Corpenta Global team.</p></div><div className="founders-desk-contact-actions"><Link className="button button-dark" href="/contact">Send an enquiry</Link><Link className="button button-dark" href="/courses">Explore courses</Link></div></section>
 
     <p className="founders-desk-risk">Forex and leveraged trading involve substantial financial risk. Educational material is not personalized financial advice and does not guarantee profitability.</p>
   </main>;

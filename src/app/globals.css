@@ -296,6 +296,33 @@ html,body{background:var(--paper);overscroll-behavior-y:none}
   .page-main:not(.auth-flow-page){padding-top:96px}
 }
 
+/* Founder profile session gallery: distinguish in-person and remote teaching. */
+.founders-session-group{margin:32px 0 48px}
+.founders-session-group-heading{display:flex;align-items:baseline;justify-content:space-between;gap:20px;margin:0 0 16px;padding-bottom:12px;border-bottom:1px solid #29362c}
+.founders-session-group-heading h3{margin:0;color:#e5ebe5;font:600 clamp(20px,2vw,26px)/1.2 var(--display);letter-spacing:-.035em}
+.founders-session-group-heading p{margin:0;color:#a3ada4;font-size:13px;line-height:1.6}
+.founders-session-group .founders-session-gallery-grid{margin:0}
+@media(max-width:760px){.founders-session-group{margin:26px 0 38px}.founders-session-group-heading{align-items:flex-start;flex-direction:column;gap:5px}.founders-session-group-heading p{font-size:12px}}
+.founders-profile-nav{max-width:1120px;margin:-36px auto 82px;padding:13px 0;display:flex;flex-wrap:wrap;gap:8px 25px;border-block:1px solid #29362c}
+.founders-profile-nav a{color:#a3ada4;font-size:11px;letter-spacing:.07em;text-decoration:none;text-transform:uppercase;transition:color .2s ease}
+.founders-profile-nav a:hover,.founders-profile-nav a:focus-visible{color:#00c96b}
+.founders-profile-activities{max-width:1120px;margin:0 auto 72px;padding:30px 0;border-top:1px solid #29362c}
+.founders-profile-activities .founders-profile-section-content{display:grid;grid-template-columns:minmax(220px,.65fr) minmax(0,1.35fr);gap:7%;align-items:start}
+.founders-profile-activities .founders-profile-section-content>h2{margin:0;color:#e5ebe5;font:500 clamp(38px,4.8vw,58px)/1.02 var(--display);letter-spacing:-.065em}
+.founders-profile-activities-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 28px}
+.founders-profile-activities-grid article{padding:18px 0;border-top:1px solid #29362c}
+.founders-profile-activities-grid article>span{color:#00c96b;font:10px ui-monospace,monospace;letter-spacing:.12em}
+.founders-profile-activities-grid h3{margin:9px 0;color:#e5ebe5;font:600 17px var(--display);letter-spacing:-.025em}
+.founders-profile-activities-grid p{margin:0;color:#a3ada4;font-size:13px;line-height:1.75}
+.founders-profile-contact .founders-desk-contact-actions{display:flex;flex-wrap:wrap;gap:10px}
+.founders-profile-contact .button-dark{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:12px 18px;text-decoration:none}
+.founders-session-city{margin:24px 0 30px;padding:18px 20px 20px;border:1px solid #344137;border-radius:10px;background:linear-gradient(135deg,#101712 0%,#0d120e 100%)}
+.founders-session-city-heading{display:flex;align-items:center;margin:0 0 16px;padding:0 0 14px;border-bottom:1px solid #344137}
+.founders-session-city-heading h3{margin:0;color:#edf2ed;font:600 clamp(25px,3vw,34px)/1.05 var(--display);letter-spacing:-.045em}
+.founders-session-city .founders-session-gallery-grid{gap:12px}
+@media(max-width:760px){.founders-profile-nav{margin:-24px auto 58px;gap:11px 16px}.founders-profile-activities{margin-bottom:52px;padding:25px 0}.founders-profile-activities .founders-profile-section-content{grid-template-columns:1fr;gap:20px}.founders-profile-activities-grid{grid-template-columns:1fr}.founders-profile-activities-grid h3{font-size:16px}}
+@media(max-width:760px){.founders-session-city{margin:18px 0 22px;padding:14px 12px 14px;border-radius:8px}.founders-session-city-heading{margin-bottom:12px;padding-bottom:11px}.founders-session-city .founders-session-gallery-grid{gap:8px}}
+
 /* Keep the hero image and copy within one continuous banner. */
 .hero-visual .hero-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 @media(max-width:640px){
