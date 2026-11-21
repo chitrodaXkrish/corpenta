@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowDown, ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowDown, ArrowRight, ArrowUpRight, ChartNoAxesColumnIncreasing, Globe2, Monitor, ShieldCheck } from "lucide-react";
 import { createPageMetadata } from "@/lib/seo";
 import { getPublicCourses, getPublicScenarios } from "@/lib/public-content";
 import { PublicMarketTicker } from "@/components/public-market-ticker";
@@ -16,8 +16,20 @@ export default async function Home() {
   <section className="hero" data-market-scene="network">
     <div className="hero-visual">
       <img className="hero-photo" src="/hero.png" alt="" fetchPriority="high" />
+      <div className="hero-copy">
+        <span className="hero-kicker">MARKET EDUCATION FOR CLEARER DECISIONS</span>
+        <h1>Learn forex trading.<br/>Build <span>real market skills.</span></h1>
+        <p>Structured learning to help you understand currency markets, develop a process, and approach risk with care.</p>
+        <Link className="button button-orange hero-explore-cta" href="/courses">Explore Courses <ArrowRight size={18}/></Link>
+        <div className="hero-points" aria-label="Learning features">
+          <div><ChartNoAxesColumnIncreasing/><span>Structured<br/>learning</span></div>
+          <div><Monitor/><span>Online<br/>courses</span></div>
+          <div><ShieldCheck/><span>Risk-aware<br/>practice</span></div>
+          <div><Globe2/><span>Global<br/>markets</span></div>
+        </div>
+      </div>
     </div>
-    <div className="hero-caption"><Link className="button button-orange hero-explore-cta" href="/courses">Explore Courses</Link><span>Thoughtful education. Independent decisions.</span><span>Scroll to explore <ArrowDown size={14}/></span></div>
+    <div className="hero-caption"><span>Thoughtful education. Independent decisions.</span><span>Scroll to explore <ArrowDown size={14}/></span></div>
   </section>
 
   <PublicMarketTicker/>

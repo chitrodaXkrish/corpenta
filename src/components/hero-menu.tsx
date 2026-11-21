@@ -58,7 +58,9 @@ export function HeroMenu(){
     </div>,document.body):null;
 
   return <>
-    <button ref={toggleRef} className="hero-menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded={open} aria-controls="site-navigation-overlay" onClick={()=>setOpen(true)}><Menu size={21}/></button>
+    <div className="header-menu-slot">
+      <button ref={toggleRef} className="hero-menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded={open} aria-controls="site-navigation-overlay" onClick={()=>setOpen(true)}><Menu size={21}/></button>
+    </div>
     {menu}
   </>;
 }
