@@ -6,7 +6,7 @@ type Scene = "network" | "currencies" | "pairs" | "candles" | "ticker" | "resear
 
 const PAIRS = ["EUR/USD", "GBP/USD", "USD/JPY"] as const;
 const SIGNS = ["$", "€", "£", "¥"] as const;
-const GREEN = "#00c96b";
+const ORANGE = "#ed8025";
 const IVORY = "#e5ebe5";
 
 function readScene(path: string): Scene {
@@ -52,7 +52,7 @@ function drawCanvas(canvas: HTMLCanvasElement, width: number, height: number, el
     const y = anchor.y * height;
     const alpha = .16 + (Math.sin(phase * .38 + index * 1.9) + 1) * .035;
     context.globalAlpha = alpha;
-    context.fillStyle = index % 3 === 0 ? IVORY : GREEN;
+    context.fillStyle = index % 3 === 0 ? IVORY : ORANGE;
     context.strokeStyle = context.fillStyle;
     context.font = '7px ui-monospace, "SFMono-Regular", Menlo, monospace';
     context.fillText(index === 0 && scene === "network" ? label : PAIRS[(index + Math.floor(phase / 12)) % PAIRS.length], x, y);
@@ -81,7 +81,7 @@ function drawCanvas(canvas: HTMLCanvasElement, width: number, height: number, el
   });
   if (scene === "network" && anchors.length > 2) {
     context.globalAlpha = .08;
-    context.strokeStyle = GREEN;
+    context.strokeStyle = ORANGE;
     context.setLineDash([2, 8]);
     context.beginPath(); context.moveTo(anchors[0].x * width + 4, anchors[0].y * height + 5); context.quadraticCurveTo(width * .46, height * .34, anchors[1].x * width, anchors[1].y * height + 5); context.stroke();
     context.setLineDash([]);
