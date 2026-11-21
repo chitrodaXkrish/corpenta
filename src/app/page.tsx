@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowDown, ArrowRight, ArrowUpRight, ChartNoAxesColumnIncreasing, Globe2, Monitor, ShieldCheck } from "lucide-react";
 import { createPageMetadata } from "@/lib/seo";
 import { getPublicCourses, getPublicScenarios } from "@/lib/public-content";
@@ -33,6 +34,19 @@ export default async function Home() {
   </section>
 
   <PublicMarketTicker/>
+
+  <section className="home-founder-section" aria-labelledby="home-founder-name">
+    <div className="home-founder-portrait">
+      <Image src="/founder%27s%20desk/founder.png" alt="Avanish Yadav, Founder and CEO of Corpenta Global" fill sizes="(max-width: 760px) 100vw, 38vw" priority />
+    </div>
+    <div className="home-founder-copy">
+      <span className="home-founder-kicker">A NOTE FROM THE FOUNDER</span>
+      <h2 id="home-founder-name">Avanish<br/><em>Yadav.</em></h2>
+      <p className="home-founder-role">Founder &amp; CEO <i>·</i> Global Financial Markets Educator</p>
+      <p className="home-founder-intro">More than a decade in financial markets informs Avanish’s approach to education: build understanding, develop discipline, and treat risk with care.</p>
+      <Link className="home-founder-cta" href="/founders-desk">Know More <ArrowRight size={17}/></Link>
+    </div>
+  </section>
 
   <section className="intro-section wrap section-pad" data-market-scene="currencies"><div className="section-kicker"><span>01 / THE ACADEMY</span></div><div className="intro-grid"><h2>Markets reward<br/><em>preparation,</em><br/>not certainty.</h2><div className="intro-copy"><p>Corpenta Global is a home for people who want to understand how financial markets, including forex, move and build a more disciplined relationship with risk.</p><p>We bring structured learning and market context together—without promises, shortcuts, or the noise of prediction.</p><Link className="underlined-link" href="/about">Get to know our approach <ArrowUpRight size={15}/></Link></div></div></section>
 

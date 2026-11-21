@@ -1800,6 +1800,26 @@ html{scroll-behavior:auto}
 .site-header-terminal{position:absolute;top:0;left:0;right:0;height:76px;margin:0 auto;}
 .homepage-main .hero-visual{height:auto;min-height:0;aspect-ratio:6550 / 3418;}
 @media(max-width:640px){.site-header-terminal{top:0;height:64px;margin:0 auto}.homepage-main .hero-visual{aspect-ratio:6550 / 3418}.homepage-main .hero-copy{top:17%}}
+.home-founder-section{width:min(1240px,calc(100% - 96px));margin:0 auto;padding:clamp(72px,9vw,118px) 0;display:grid;grid-template-columns:minmax(280px,.86fr) minmax(0,1.14fr);align-items:center;gap:clamp(44px,8vw,118px);border-bottom:1px solid #e8d8c8;color:#2b2520}
+.home-founder-portrait{position:relative;overflow:hidden;aspect-ratio:1672/941;border:1px solid rgba(112,83,60,.22);border-radius:12px;background:transparent}
+.home-founder-portrait img{object-fit:contain;object-position:center}
+.home-founder-copy{min-height:410px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center}
+.home-founder-kicker{color:#a86130;font:700 10px var(--display);letter-spacing:.16em}
+.home-founder-copy h2{margin:24px 0 12px;color:#2b2520;font:600 clamp(58px,7vw,96px)/.88 var(--display);letter-spacing:-.085em}
+.home-founder-copy h2 em{color:#d87524;font:italic 400 1em var(--serif);letter-spacing:-.07em}
+.home-founder-role{margin:0;color:#725c4a;font:600 clamp(13px,1.2vw,16px) var(--display)}
+.home-founder-role i{padding-inline:7px;color:#d87524;font-style:normal}
+.home-founder-intro{max-width:510px;margin:27px 0 30px;color:#62564d;font-size:clamp(15px,1.25vw,18px);line-height:1.7}
+.home-founder-cta{min-height:52px;margin-top:auto;padding:0 22px;display:inline-flex;align-items:center;gap:22px;border-radius:999px;background:#ed8025;color:#fff;font:600 14px var(--display);transition:background .2s,transform .2s}
+.home-founder-cta:hover{background:#d96b16;transform:translateY(-2px)}
+@media(max-width:760px){
+  .home-founder-section{width:calc(100% - 36px);padding:62px 0 68px;grid-template-columns:1fr;gap:32px}
+  .home-founder-portrait{width:100%;aspect-ratio:1672/941}
+  .home-founder-copy{min-height:0}
+  .home-founder-copy h2{margin:17px 0 10px;font-size:clamp(58px,15vw,76px)}
+  .home-founder-intro{margin:20px 0 25px;font-size:15px}
+  .home-founder-cta{margin-top:0}
+}
 .homepage-main .hero-points{position:relative;inset:auto;width:fit-content;max-width:100%;grid-template-columns:repeat(4,max-content);gap:0;margin-top:28px}
 .homepage-main .hero-points>div{padding-inline:9px}
 .homepage-main .hero-points>div:first-child{padding-left:0}
@@ -1809,3 +1829,32 @@ html{scroll-behavior:auto}
 
 /* Keep the Founder’s Desk portrait at the complete source image ratio. */
 .founders-profile-photo{width:100%;height:auto;max-height:none;aspect-ratio:1672/941;object-fit:contain;object-position:center;border-radius:8px}
+
+/* Founder’s Desk: balance the native portrait with the heading and restore clear text contrast. */
+.founders-profile-hero-main{grid-template-columns:minmax(0,1fr) minmax(320px,.95fr);gap:clamp(28px,5vw,64px)}
+.founders-desk-page{color:#2b2520}
+.founders-desk-heading .eyebrow,.founders-profile-section-label,.founders-session-gallery-heading .eyebrow{color:#805d43}
+.founders-desk-heading h1,.founders-profile-copy h2,.founders-profile-section-content>h2,.founders-profile-vision-copy h2,.founders-profile-contact h2,.founders-session-gallery-heading h2,.founder-live-sessions-intro h2{color:#2b2520}
+.founders-profile-hero-main h1 em,.founder-live-sessions-intro h2 em{color:#c9681e}
+.founders-desk-heading .founders-desk-role{color:#3f342c!important}
+.founders-desk-heading>p:last-child{color:#62564d}
+.founders-profile-section-label span:first-child,.founders-profile-activities-grid article>span{color:#a95720}
+.founders-profile-prose p,.founders-profile-vision-copy>p,.founders-profile-expertise-grid p,.founders-profile-milestone-list p,.founder-live-sessions-intro>p,.founders-profile-contact>div>p,.founders-profile-activities-grid p{color:#55483e}
+.founders-profile-expertise-grid article,.founders-profile-milestone-list article,.founders-profile-milestone-list article:last-child,.founders-profile-activities-grid article{background:#fffaf5;border-color:#e2d5c8}
+.founders-profile-expertise-grid h3,.founders-profile-milestone-list strong,.founders-profile-activities-grid h3{color:#30251e}
+.founders-profile-philosophy{background:#482a1b;color:#fff7ef}
+.founders-profile-philosophy .founders-profile-section-label,.founders-profile-philosophy .founders-profile-section-label span:first-child{color:#f1c9a8}
+.founders-profile-philosophy-copy h2{color:#fff7ef}
+.founders-profile-philosophy-copy blockquote{color:#f5dfce}
+.founders-profile-philosophy-copy>p{color:#fff7ef}
+.founders-profile-philosophy-copy>p span{color:#e3c5ad}
+.founders-profile-nav{background:rgba(255,250,245,.98);border-color:#e2d5c8}
+.founders-profile-nav a{color:#55483e}
+.founders-desk-risk{color:#5f5147;border-color:#e2d5c8}
+.founders-session-group-heading h3,.founders-session-city-heading h3{color:#38291e}
+.founders-session-group-heading p{color:#65584d}
+.founder-live-sessions::before{color:#80624f}
+.founder-live-sessions-intro .eyebrow{color:#9b561f}
+.founder-live-sessions-regions h3{color:#685344}
+.founder-live-sessions-regions li,.founder-live-sessions-regions li:first-child{color:#30251e}
+@media(max-width:760px){.founders-profile-hero-main{grid-template-columns:minmax(0,1fr) minmax(170px,.8fr);gap:20px}.founders-profile-photo{max-width:100%}}
