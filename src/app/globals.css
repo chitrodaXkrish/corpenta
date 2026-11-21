@@ -1683,3 +1683,10 @@ body::before{
 @media(max-width:760px){
   .hero-visual{background-image:radial-gradient(ellipse at 76% 45%,rgba(237,128,37,.1),transparent 43%),linear-gradient(118deg,#fffaf5 0%,#f8f1e9 52%,#f2e4d6 100%);background-size:auto,auto;background-position:center}
 }
+
+/* Full-bleed homepage hero, with no inset frame or side gutters. */
+.hero{width:100%;max-width:none;margin:0;padding:0}
+.hero-visual{width:100%;border:0;border-radius:0}
+@media(max-width:760px){
+  .hero-visual{border-radius:0}
+}
