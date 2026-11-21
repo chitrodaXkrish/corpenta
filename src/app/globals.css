@@ -597,9 +597,6 @@ body{font-family:var(--sans)}
 /* Add a compact instrument layer around the Earth so the hero reads as a complete market-learning environment. */
 .hero-globe-stage{min-width:0}
 .hero-globe{inset:10%;z-index:1;border:1px solid rgba(113,152,118,.2);box-shadow:0 0 0 16px rgba(0,201,107,.025),0 0 90px rgba(0,201,107,.09)}
-.globe-orbit{position:absolute;left:50%;top:50%;z-index:0;border:1px solid rgba(111,143,113,.22);border-radius:50%;transform:translate(-50%,-50%);pointer-events:none}
-.globe-orbit-outer{width:96%;height:43%;transform:translate(-50%,-50%) rotate(-27deg)}
-.globe-orbit-inner{width:83%;height:66%;transform:translate(-50%,-50%) rotate(34deg);border-color:rgba(111,143,113,.13)}
 .globe-data-card{position:absolute;z-index:2;display:grid;gap:7px;padding:13px 15px;border:1px solid #2b3b2e;border-radius:7px;background:rgba(13,19,14,.92);box-shadow:0 12px 30px rgba(0,0,0,.22);backdrop-filter:blur(12px)}
 .globe-data-card>span{color:#8ea08f;font:600 8px var(--display);letter-spacing:.14em}
 .globe-data-card-top{top:11%;right:-1%;min-width:154px}
@@ -616,7 +613,6 @@ body{font-family:var(--sans)}
 @media(max-width:640px){
   .hero-globe-stage{width:min(100%,390px);margin:-8px auto 0}
   .hero-globe{inset:12%}
-  .globe-orbit-outer{width:95%;height:44%}.globe-orbit-inner{width:84%;height:65%}
   .globe-data-card{padding:9px 10px;gap:5px}.globe-data-card-top{top:9%;right:-1%;min-width:112px}.globe-data-card-top>span{font-size:6px}.globe-data-card-top strong{font-size:21px}.globe-data-card-top strong span{font-size:10px}.globe-data-card small{font-size:7px}.globe-data-card-bottom{left:-1%;bottom:8%;min-width:170px}.globe-data-card-bottom>span{font-size:6px}.globe-data-card-bottom strong{font-size:10px}.globe-data-card-bottom small{font-size:7px}
   .globe-pair{gap:5px;padding:6px 7px;font-size:8px}.globe-pair span{font-size:6px}.globe-pair-one{top:37%;left:-1%}.globe-pair-two{right:-1%;bottom:35%}.globe-coordinate{font-size:6px}.globe-coordinate-one{right:4%;bottom:5%}.globe-coordinate-two{left:5%;top:10%}
 }
@@ -1469,6 +1465,13 @@ h1 em,h2 em,.founders-profile-hero-main h1 em,.founder-live-sessions-intro h2 em
 .seo-breadcrumbs{color:#75675b}
 .seo-breadcrumbs li+li:before{color:#b6a99b}
 .seo-breadcrumbs a:hover{color:#b65c1a}
+
+/* White and orange Earth palette. */
+.hero-globe{inset:0;background:transparent;border:0;border-radius:0;box-shadow:none;overflow:visible}
+.hero-globe-fallback{background:#f5f1eb url('/textures/earth-dot-fallback.svg') center/contain no-repeat}
+.globe-data-card-top i{background:#ed8025;box-shadow:0 0 0 4px rgba(237,128,37,.16)}
+.globe-pair i{color:#ed8025}
+.ascii-market-environment{z-index:0}
 
 @media(max-width:640px){
   .site-header-terminal{background:#f7f7f2;border-color:#e7ddd2}
