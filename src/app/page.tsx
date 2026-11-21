@@ -1,9 +1,7 @@
 import Link from "next/link";
 import { ArrowDown, ArrowRight, ArrowUpRight } from "lucide-react";
-import { siteContent } from "@/lib/content";
 import { createPageMetadata } from "@/lib/seo";
 import { getPublicCourses, getPublicScenarios } from "@/lib/public-content";
-import { RotatingForexGlobe } from "@/components/rotating-forex-globe";
 import { PublicMarketTicker } from "@/components/public-market-ticker";
 
 export const metadata = createPageMetadata({
@@ -14,15 +12,12 @@ export const metadata = createPageMetadata({
 
 export default async function Home() {
   const [courses, scenarios] = await Promise.all([getPublicCourses(), getPublicScenarios()]);
-  return <main>
+  return <main className="homepage-main">
   <section className="hero" data-market-scene="network">
     <div className="hero-visual">
-      <div className="hero-copy"><h1>{siteContent.headline.split(/(markets?\.?|strategy\.?)/i).map((part,index)=>/^markets?\.?$/i.test(part)?<span className="hero-highlight" key={index}>{part}</span>:/^strategy\.?$/i.test(part)?<span className="hero-highlight hero-strategy" key={index}>{part}</span>:part)}</h1><Link className="button button-orange hero-explore-cta" href="/courses">Explore Courses</Link></div>
-      <div className="hero-globe-stage">
-        <div className="hero-globe" aria-hidden="true"><RotatingForexGlobe/></div>
-      </div>
+      <img className="hero-photo" src="/hero.png" alt="" fetchPriority="high" />
     </div>
-    <div className="hero-caption"><span>Thoughtful education. Independent decisions.</span><span>Scroll to explore <ArrowDown size={14}/></span></div>
+    <div className="hero-caption"><Link className="button button-orange hero-explore-cta" href="/courses">Explore Courses</Link><span>Thoughtful education. Independent decisions.</span><span>Scroll to explore <ArrowDown size={14}/></span></div>
   </section>
 
   <PublicMarketTicker/>

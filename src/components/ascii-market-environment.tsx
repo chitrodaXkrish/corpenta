@@ -100,6 +100,7 @@ export function AsciiMarketEnvironment() {
     let frame = 0;
     let lastFrame = 0;
     let lastSceneCheck = 0;
+    let lastScrollAt = 0;
     let width = window.innerWidth;
     let height = window.innerHeight;
     let startedAt = performance.now();
@@ -124,7 +125,7 @@ export function AsciiMarketEnvironment() {
         frame = 0;
         return;
       }
-      if (now - lastFrame >= 1000 / 30) {
+      if (now - lastFrame >= 1000 / 15 && now - lastScrollAt > 140) {
         if (now - lastSceneCheck >= 250) {
           updateScene();
           lastSceneCheck = now;
@@ -152,7 +153,11 @@ export function AsciiMarketEnvironment() {
       } else start();
     };
     const onScroll = () => {
-      updateScene();
+      lastScrollAt = performance.now();
+      if (lastScrollAt - lastSceneCheck > 250) {
+        updateScene();
+        lastSceneCheck = lastScrollAt;
+      }
       if (reducedMotion.matches) drawCanvas(canvas, width, height, 0, activeScene);
     };
 
