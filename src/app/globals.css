@@ -1806,3 +1806,6 @@ html{scroll-behavior:auto}
 @media(max-width:760px){
   .homepage-main .hero-points{left:auto;bottom:auto;width:fit-content;margin-top:20px;grid-template-columns:repeat(2,max-content);column-gap:0}
 }
+
+/* Keep the Founder’s Desk portrait at the complete source image ratio. */
+.founders-profile-photo{width:100%;height:auto;max-height:none;aspect-ratio:1672/941;object-fit:contain;object-position:center;border-radius:8px}

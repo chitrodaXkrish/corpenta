@@ -80,7 +80,7 @@ export default function FoundersDeskPage(){
     <script type="application/ld+json" dangerouslySetInnerHTML={{__html:jsonLdScript(personSchema)}}/>
     <header className="founders-desk-heading" id="home">
       <span className="eyebrow">FOUNDER PROFILE</span>
-      <div className="founders-profile-hero-main"><h1>Avanish<br/><em>Yadav.</em></h1><Image className="founders-profile-photo" src="/founder%27s%20desk/founder.png" alt="Avanish Yadav, Founder and CEO" width={888} height={1006} sizes="(max-width: 640px) 34vw, 300px" priority/></div>
+      <div className="founders-profile-hero-main"><h1>Avanish<br/><em>Yadav.</em></h1><Image className="founders-profile-photo" src="/founder%27s%20desk/founder.png" alt="Avanish Yadav, Founder and CEO" width={1672} height={941} sizes="(max-width: 640px) 34vw, 300px" priority/></div>
       <p className="founders-desk-role">Founder &amp; CEO <span>·</span> Global Financial Markets Educator</p>
       <p>Empowering people through financial market knowledge, education &amp; leadership.</p>
     </header>
