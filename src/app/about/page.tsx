@@ -1,11 +1,43 @@
-import { createPageMetadata } from "@/lib/seo";
 import Image from "next/image";
+import { Handshake, ShieldCheck, TrendingUp } from "lucide-react";
+import { createPageMetadata } from "@/lib/seo";
 
 export const metadata = createPageMetadata({
-  title: "Our Approach to Financial Market Education",
-  description: "Learn how Corpenta Global approaches financial education with a focus on clarity, discipline and thoughtful decisions. Company mission and mentor information are being finalized.",
+  title: "About Us",
+  description: "Meet the people behind Corpenta and learn how we support entrepreneurs across the UAE.",
   path: "/about",
-  index: false,
 });
 
-export default function AboutPage(){return <main className="page-main wrap about-page" data-market-scene="currencies"><div className="page-heading"><span className="eyebrow">OUR APPROACH · CORPENTA GLOBAL</span><h1>Knowledge before<br/><em>conviction.</em></h1><p>We believe financial education should help people think clearly about markets, uncertainty and their own decisions.</p></div><figure className="about-editorial-scene" data-market-scene="network"><Image src="/sessions/4269c677-3105-431c-9ba0-8ce675ffa8e9.jpg" alt="Financial markets educator sharing ideas with an in-person audience" width={1600} height={1200} sizes="(max-width: 760px) 100vw, 70vw"/><figcaption><span>LEARNING IN PRACTICE</span><span>PEOPLE · PROCESS · PERSPECTIVE</span></figcaption><span className="about-editorial-coordinate">17°23′N&nbsp; 78°29′E</span></figure><div className="simple-grid" data-market-scene="network"><article className="simple-card"><span className="eyebrow">MISSION</span><h2>Make markets more legible.</h2><p>Our mission statement is awaiting confirmation from Corpenta Global.</p></article><article className="simple-card"><span className="eyebrow">VISION</span><h2>Education with perspective.</h2><p>Our vision statement is awaiting confirmation from Corpenta Global.</p></article><article className="simple-card"><span className="eyebrow">VALUES</span><h2>Clarity. Discipline. Humility.</h2><p>Brand values are draft themes and should be reviewed by the client before publication.</p></article></div><div className="page-heading about-mentors"><span className="eyebrow">THE PEOPLE WHO TEACH</span><h2>Mentors, to be introduced.</h2><p>Mentor names, biographies, experience and credentials have not been provided. Profiles will be published after verification.</p></div><div className="notice-box">All company, mentor and academy content on this page is editable in the CMS. No founder biographies, professional credentials, awards or performance claims have been invented.</div></main>}
+const benefits = [
+  { icon: Handshake, title: "Trusted by Entrepreneurs", copy: "Across the Globe" },
+  { icon: TrendingUp, title: "Business Growth", copy: "Is Our Priority" },
+  { icon: ShieldCheck, title: "End-to-End Support", copy: "From Setup to Success" },
+];
+
+const team = [
+  { name: "Avanish Yadav", role: "Managing Director & Co-Founder", image: "/founder's desk/founder.png", position: "center 18%" },
+  { name: "Ayten Garayeva", role: "Client Success & Social Media Manager" },
+  { name: "VJ Sharma", role: "Head – Business Intelligence & Technology Lead" },
+];
+
+export default function AboutPage() {
+  return <main className="about-screen" aria-labelledby="about-title">
+    <section className="about-screen-hero">
+      <div className="about-screen-heading"><span>The People Behind Corpenta</span><h1 id="about-title">Leadership Built On Trust<i>.</i></h1><p>Helping entrepreneurs build successful businesses across the UAE with<br/> experience, transparency and long-term partnership.</p></div>
+
+      <div className="about-screen-shape" aria-hidden="true"/>
+      <div className="about-screen-mission"><span className="about-screen-quote">“</span><p>Our mission is simple —</p><h2>To make your <em>UAE journey</em><br/>simpler, faster and<br/><em>successful.</em></h2><p className="about-screen-mission-copy">At Corpenta, we combine expertise with personalised support so you can focus on growing your business, while we handle the rest.</p><strong>Mohd Jameel</strong></div>
+
+      <div className="about-screen-founder"><Image src="/mohd-jameel.webp" alt="Mohd Jameel, Founder and Chief Executive Officer" fill priority sizes="(max-width: 760px) 75vw, 390px"/></div>
+      <div className="about-screen-nameplate"><span className="about-screen-mark">C</span><span><strong>Mohd Jameel</strong><small>Founder &amp; Chief Executive Officer</small></span></div>
+
+      <div className="about-screen-benefits">{benefits.map(({icon: Icon,title,copy}) => <article key={title}><span><Icon size={20}/></span><div><strong>{title}</strong><small>{copy}</small></div></article>)}</div>
+    </section>
+
+    <section className="about-screen-team" aria-labelledby="leadership-team-title">
+      <h2 id="leadership-team-title">Meet The Leadership Team</h2><span className="about-screen-team-rule"/>
+      <div className="about-screen-team-grid">{team.map((member) => <article key={member.name}><div className={`about-screen-team-photo${member.image ? " has-image" : ""}`}>{member.image ? <Image src={member.image} alt={member.name} fill sizes="(max-width: 760px) 100vw, 260px" style={{objectPosition:member.position}}/> : <span aria-hidden="true"/>}</div><div><strong>{member.name}</strong><p>{member.role}</p></div></article>)}</div>
+      <p className="about-screen-values">EXPERTISE <i/> TRANSPARENCY <i/> PARTNERSHIP <i/> SUCCESS</p>
+    </section>
+  </main>;
+}
