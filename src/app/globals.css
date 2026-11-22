@@ -1813,6 +1813,28 @@ html{scroll-behavior:auto}
 .site-header-terminal{position:absolute;top:0;left:0;right:0;height:76px;margin:0 auto;}
 .homepage-main .hero-visual{height:auto;min-height:0;aspect-ratio:6550 / 3418;}
 @media(max-width:640px){.site-header-terminal{top:0;height:64px;margin:0 auto}.homepage-main .hero-visual{aspect-ratio:6550 / 3418}.homepage-main .hero-copy{top:17%}}
+
+/* Keep homepage hero copy inside the clear left area of the artwork. */
+.homepage-main .hero-copy{top:13%;width:min(52%,840px)}
+.homepage-main .hero-kicker{margin-bottom:22px}
+.homepage-main .hero h1{max-width:840px;font-size:clamp(54px,5vw,86px);line-height:1.02;letter-spacing:-.065em;text-wrap:balance}
+.homepage-main .hero-copy>p{max-width:560px;margin:20px 0 24px;font-size:clamp(16px,1.35vw,20px);line-height:1.55}
+@media(max-width:760px){
+  .homepage-main .hero-visual{position:relative;display:block;min-height:720px;height:auto;aspect-ratio:auto;padding:0;overflow:hidden}
+  .homepage-main .hero-photo{object-position:72% center}
+  .homepage-main .hero-visual:after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(255,250,245,.97) 0%,rgba(255,250,245,.9) 54%,rgba(255,250,245,.45) 100%)}
+  .homepage-main .hero-copy{top:92px;left:6%;right:auto;width:88%;max-width:560px;z-index:2}
+  .homepage-main .hero-kicker{max-width:300px;margin-bottom:16px;font-size:8px;line-height:1.5}
+  .homepage-main .hero h1{max-width:520px;margin:0;font-size:clamp(40px,8vw,58px);line-height:1.02;letter-spacing:-.06em}
+  .homepage-main .hero-copy>p{max-width:420px;margin:15px 0 18px;font-size:clamp(14px,2.5vw,17px);line-height:1.5}
+  .homepage-main .hero-copy .hero-explore-cta{min-height:46px;padding-inline:20px;font-size:14px}
+  .homepage-main .hero-points{left:6%;right:6%;bottom:22px;width:auto;z-index:2;grid-template-columns:repeat(2,minmax(0,1fr));row-gap:3px}
+  .homepage-main .hero-points>div{min-height:42px;gap:8px;padding:5px 8px;border-top:1px solid rgba(201,104,30,.25);border-right:0}
+  .homepage-main .hero-points>div:first-child{padding-left:8px}
+  .homepage-main .hero-points span{font-size:11px}
+}
+@media(max-width:420px){.homepage-main .hero-visual{min-height:680px}.homepage-main .hero-copy{top:88px}.homepage-main .hero h1{font-size:clamp(37px,9vw,43px)}.homepage-main .hero-points{bottom:18px}}
+
 .home-founder-section{width:min(1240px,calc(100% - 96px));margin:0 auto;padding:clamp(72px,9vw,118px) 0;display:grid;grid-template-columns:minmax(280px,.86fr) minmax(0,1.14fr);align-items:center;gap:clamp(44px,8vw,118px);border-bottom:1px solid #e8d8c8;color:#2b2520}
 .home-founder-portrait{position:relative;overflow:hidden;aspect-ratio:1672/941;border:1px solid rgba(112,83,60,.22);border-radius:12px;background:transparent}
 .home-founder-portrait img{object-fit:contain;object-position:center}

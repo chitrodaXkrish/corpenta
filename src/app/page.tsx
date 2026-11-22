@@ -19,7 +19,7 @@ export default async function Home() {
       <img className="hero-photo" src="/hero.png" alt="" fetchPriority="high" />
       <div className="hero-copy">
         <span className="hero-kicker">MARKET EDUCATION FOR CLEARER DECISIONS</span>
-        <h1>Learn currency trading.<br/>Build <span>real market skills.</span></h1>
+        <h1>Learn currency<br/>trading. Build <span>real market skills.</span></h1>
         <p>Structured learning to help you understand currency markets, develop a process, and approach risk with care.</p>
         <Link className="button button-orange hero-explore-cta" href="/courses">Explore Courses <ArrowRight size={18}/></Link>
         <div className="hero-points" aria-label="Learning features">
