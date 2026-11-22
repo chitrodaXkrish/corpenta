@@ -84,11 +84,11 @@ export default function FoundersDeskPage(){
         </div>
         <div className="founders-desk-location-groups">
           <section aria-labelledby="founder-india-locations-title">
-            <header><h2 id="founder-india-locations-title">India</h2><span>OFFLINE SEMINARS · 06 CITIES</span></header>
+            <header><h2 id="founder-india-locations-title">India</h2></header>
             <ul><li>Hyderabad</li><li>Mumbai</li><li>Nashik</li><li>Pune</li><li>Delhi</li><li>Lucknow</li></ul>
           </section>
           <section aria-labelledby="founder-international-locations-title">
-            <header><h2 id="founder-international-locations-title">International</h2><span>SESSION LOCATIONS · 05</span></header>
+            <header><h2 id="founder-international-locations-title">International</h2></header>
             <ul><li>United Kingdom</li><li>Nigeria</li><li>Malaysia</li><li>Thailand</li><li>Dubai</li></ul>
           </section>
         </div>
