@@ -67,13 +67,6 @@ const onlineSessions:{src:string;alt:string;width:number;height:number}[]=[
   {src:"/sessions/zoomlive9.png",alt:"A Zoom group follows a shared currency chart during an online session.",width:1536,height:1024},
 ];
 
-const seminarCityGroups=[
-  {city:"Hyderabad",photos:["/sessions/4269c677-3105-431c-9ba0-8ce675ffa8e9.jpg","/sessions/9f9a00e7-7964-4c96-b538-7a5a4216f14d.jpg","/sessions/469050323_556256587162020_103688542105115320_n.jpg","/sessions/469099495_556256430495369_5054417133126015039_n.jpg","/sessions/469235814_556256470495365_2892969306640324014_n.jpg","/sessions/469237657_556256497162029_5777819565907551968_n.jpg","/sessions/469351768_556256500495362_3748451148070726430_n.jpg","/sessions/469398456_556256220495390_1588049222564727968_n.jpg","/sessions/469445964_556256230495389_3776649010904668728_n.jpg"]},
-  {city:"Mumbai",photos:["/sessions/IMG_0831.jpg","/sessions/IMG_0878.JPG","/sessions/IMG_0943.JPG"]},
-  {city:"Pune",photos:["/sessions/IMG_5842.JPG","/sessions/IMG_3192.jpg","/sessions/IMG_7455.jpg","/sessions/IMG_7456.jpg"]},
-  {city:"Delhi",photos:["/sessions/0a8f9ce5-6f53-4569-8fc8-69bb87df2eba.jpg","/sessions/11757801-d849-453a-be04-c9fbdc3160a3.jpg","/sessions/e672e6c9-b13d-430f-ad73-715b77c94370.jpg","/sessions/fb11979c-9ca8-4070-86c2-abda6c5f044d.jpg"]},
-];
-
 export default function FoundersDeskPage(){
   const personSchema={"@context":"https://schema.org","@type":"Person","@id":`${SITE_URL}/founders-desk#avanish-yadav`,name:"Avanish Yadav",jobTitle:"Founder & CEO | Global Financial Markets Educator",image:`${SITE_URL}/founder%27s%20desk/founder.png`,worksFor:{"@id":`${SITE_URL}/#organization`},url:`${SITE_URL}/founders-desk`};
   return <main className="page-main wrap founders-desk-page" data-market-scene="network">
@@ -82,31 +75,30 @@ export default function FoundersDeskPage(){
       <span className="eyebrow">FOUNDER PROFILE</span>
       <div className="founders-profile-hero-main"><h1>Avanish<br/><em>Yadav.</em></h1><Image className="founders-profile-photo" src="/founder%27s%20desk/founder.png" alt="Avanish Yadav, Founder and CEO" width={1672} height={941} sizes="(max-width: 640px) 34vw, 300px" priority/></div>
       <p className="founders-desk-role">Founder &amp; CEO <span>·</span> Global Financial Markets Educator</p>
-      <p>Empowering people through financial market knowledge, education &amp; leadership.</p>
+      <p className="founders-desk-intro">Empowering people through financial market knowledge, education &amp; leadership.</p>
+      <div className="founders-desk-location-footprint" aria-label="Founder-led session locations">
+        <div className="founders-desk-location-heading">
+          <span className="eyebrow">SESSION REACH</span>
+          <h2>Locations where sessions have been conducted</h2>
+          <p>These are the Indian cities and international locations where founder-led sessions have taken place.</p>
+        </div>
+        <div className="founders-desk-location-groups">
+          <section aria-labelledby="founder-india-locations-title">
+            <header><h2 id="founder-india-locations-title">India</h2><span>OFFLINE SEMINARS · 06 CITIES</span></header>
+            <ul><li>Hyderabad</li><li>Mumbai</li><li>Nashik</li><li>Pune</li><li>Delhi</li><li>Lucknow</li></ul>
+          </section>
+          <section aria-labelledby="founder-international-locations-title">
+            <header><h2 id="founder-international-locations-title">International</h2><span>SESSION LOCATIONS · 05</span></header>
+            <ul><li>United Kingdom</li><li>Nigeria</li><li>Malaysia</li><li>Thailand</li><li>Dubai</li></ul>
+          </section>
+        </div>
+      </div>
     </header>
 
     <section className="founders-session-gallery" id="sessions" data-market-scene="candles" aria-labelledby="founder-gallery-title">
       <div className="founders-session-gallery-heading"><span className="eyebrow">03 · SESSIONS CONDUCTED</span><h2 id="founder-gallery-title">Learning in<br/><em>every format.</em></h2></div>
-      <section className="founders-session-group" aria-labelledby="founder-offline-title"><div className="founders-session-group-heading"><h3 id="founder-offline-title">Offline Seminars</h3><p>In-person seminars, workshops and learning events.</p></div>{seminarCityGroups.map((group)=><section className="founders-session-city" key={group.city} aria-labelledby={`founder-city-${group.city.toLowerCase()}`}><header className="founders-session-city-heading"><h3 id={`founder-city-${group.city.toLowerCase()}`}>{group.city}</h3></header><div className="founders-session-gallery-grid">{offlineSeminars.filter((session)=>group.photos.includes(session.src)).map((session)=><figure key={session.src}><Image src={session.src} alt={session.alt} width={session.width} height={session.height} sizes="(max-width: 760px) 33vw, (max-width: 1200px) 30vw, 360px" loading="lazy"/></figure>)}</div></section>)}</section>
-      <section className="founders-session-group" aria-labelledby="founder-online-title"><div className="founders-session-group-heading"><h3 id="founder-online-title">Online Sessions</h3><p>Live remote sessions with participants joining digitally.</p></div><div className="founders-session-gallery-grid">{onlineSessions.map((session)=><figure key={session.src}><Image src={session.src} alt={session.alt} width={session.width} height={session.height} sizes="(max-width: 760px) 33vw, (max-width: 1200px) 30vw, 360px" loading="lazy"/></figure>)}</div></section>
-    </section>
-
-    <section className="founder-live-sessions" aria-labelledby="founder-live-sessions-title">
-      <div className="founder-live-sessions-intro">
-        <span className="eyebrow">A GLOBAL LEARNING COMMUNITY</span>
-        <h2 id="founder-live-sessions-title">Live sessions.<br/><em>Worldwide reach.</em></h2>
-        <p>Founder-led live financial markets sessions are conducted across India and in international locations.</p>
-      </div>
-      <div className="founder-live-sessions-regions">
-        <section className="founder-region-india" aria-labelledby="founder-live-india-title">
-          <h3 id="founder-live-india-title">India</h3>
-          <ul><li>Hyderabad</li><li>Mumbai</li><li>Nashik</li><li>Pune</li><li>Delhi</li><li>Lucknow</li></ul>
-        </section>
-        <section className="founder-region-international" aria-labelledby="founder-live-international-title">
-          <h3 id="founder-live-international-title">International</h3>
-          <ul><li>United Kingdom</li><li>Nigeria</li><li>Malaysia</li><li>Thailand</li><li>Dubai</li></ul>
-        </section>
-      </div>
+      <section className="founders-session-group" aria-labelledby="founder-offline-title"><div className="founders-session-group-heading"><h3 id="founder-offline-title">Offline Seminars Across Hyderabad, Mumbai, Pune &amp; Delhi</h3></div><div className="founders-session-gallery-grid">{offlineSeminars.map((session)=><figure key={session.src}><Image src={session.src} alt={session.alt} width={session.width} height={session.height} sizes="(max-width: 760px) 33vw, (max-width: 1200px) 30vw, 360px" loading="lazy"/></figure>)}</div></section>
+      <section className="founders-session-group" aria-labelledby="founder-online-title"><div className="founders-session-group-heading"><h3 id="founder-online-title">Online Sessions Across the United Kingdom, Nigeria, Malaysia, Thailand &amp; Dubai</h3><p>Live remote sessions with participants joining digitally.</p></div><div className="founders-session-gallery-grid">{onlineSessions.map((session)=><figure key={session.src}><Image src={session.src} alt={session.alt} width={session.width} height={session.height} sizes="(max-width: 760px) 33vw, (max-width: 1200px) 30vw, 360px" loading="lazy"/></figure>)}</div></section>
     </section>
 
     <section className="founders-profile-milestones" id="impact" data-market-scene="ticker" aria-labelledby="founder-milestones-title">
@@ -116,10 +108,6 @@ export default function FoundersDeskPage(){
         <div className="founders-profile-milestone-list">{milestones.map((item,index)=><article key={item.label}><span>{String(index+1).padStart(2,"0")}</span><strong>{item.value}</strong><p>{item.label}</p></article>)}</div>
       </div>
     </section>
-
-    <nav className="founders-profile-nav" aria-label="Founder profile sections">
-      <a href="#home">Home</a><a href="#about">About</a><a href="#sessions">Sessions</a><a href="#impact">Impact</a><a href="#projects">Projects &amp; Activities</a><a href="#contact">Contact</a>
-    </nav>
 
     <section className="founders-profile-about" id="about" aria-labelledby="founder-about-title">
       <div className="founders-profile-section-label"><span>01</span><span>ABOUT THE FOUNDER</span></div>
@@ -157,7 +145,7 @@ export default function FoundersDeskPage(){
     <section className="founders-profile-philosophy" data-market-scene="currencies" aria-labelledby="founder-philosophy-title">
       <div className="founders-profile-section-label"><span>04</span><span>HIS PHILOSOPHY</span></div>
       <div className="founders-profile-philosophy-copy">
-        <h2 id="founder-philosophy-title">Knowledge.<br/>Discipline.<br/><em>Perspective.</em></h2>
+        <h2 id="founder-philosophy-title">KNOWLEDGE.<br/>DISCIPLINE.<br/>PERSPECTIVE.</h2>
         <blockquote>“Success in financial markets is not just about identifying opportunities. It is about developing knowledge, discipline, patience, and the ability to manage risk.”</blockquote>
         <p>Avanish Yadav <span>Founder &amp; CEO | Global Financial Markets Educator</span></p>
       </div>

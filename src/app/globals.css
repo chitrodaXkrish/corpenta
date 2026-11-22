@@ -933,6 +933,27 @@ body{font-family:var(--sans)}
 @media(max-width:760px){.founder-live-sessions{grid-template-columns:1fr;gap:34px;padding:48px 0 42px}.founder-live-sessions::before{top:14px;font-size:8px}.founder-live-sessions-intro{padding-top:14px}.founder-live-sessions-intro h2{max-width:460px;font-size:clamp(46px,11vw,62px)}.founder-live-sessions-regions{grid-template-columns:1fr 1fr;gap:24px;padding:0}.founder-live-sessions-regions section{padding-top:13px}.founder-live-sessions-regions h3{margin-bottom:17px;font-size:9px}.founder-live-sessions-regions li{font-size:clamp(18px,4vw,23px)}.founder-live-sessions-regions li:first-child{font-size:clamp(18px,4vw,23px)}}
 @media(max-width:390px){.founder-live-sessions-regions{gap:16px}.founder-live-sessions-regions li{font-size:17px}.founder-live-sessions-regions li:first-child{font-size:17px}}
 
+/* Curated location footprint inside the founder profile feature. */
+.founders-desk-location-footprint{margin-top:clamp(30px,4vw,52px);padding-top:24px;border-top:1px solid #e7d9ca}
+.founders-desk-location-groups{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(24px,4vw,56px)}
+.founders-desk-location-groups section{min-width:0;padding-top:14px;border-top:2px solid #ed8025}
+.founders-desk-location-groups header{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:10px}
+.founders-desk-location-groups h2{margin:0;color:#38291e;font:700 clamp(18px,1.6vw,22px)/1.2 var(--display);letter-spacing:-.03em}
+.founders-desk-location-groups header>span{color:#94745d;font:600 9px/1.4 ui-monospace,monospace;letter-spacing:.1em;text-align:right}
+.founders-desk-location-groups ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 20px;margin:0;padding:0;list-style:none}
+.founders-desk-location-groups li{display:flex;align-items:center;gap:10px;min-height:44px;padding:8px 0;border-bottom:1px solid rgba(231,217,202,.8);color:#55483e;font-size:clamp(14px,1.2vw,17px);font-weight:600;line-height:1.4;transition:color .2s ease,transform .2s ease}
+.founders-desk-location-groups li::before{content:"";flex:none;width:6px;height:6px;border-radius:50%;background:#ed8025;box-shadow:0 0 0 4px rgba(237,128,37,.11)}
+.founders-desk-location-groups li:hover{color:#c9681e;transform:translateX(3px)}
+.founders-desk-location-heading{margin:0 0 24px}
+.founders-desk-location-heading .eyebrow{color:#9b561f}
+.founders-desk-location-heading h2{margin:8px 0 7px;color:#38291e;font:600 clamp(22px,2vw,29px)/1.2 var(--display);letter-spacing:-.04em}
+.founders-desk-location-heading p{margin:0;color:#655c54;font-size:14px;line-height:1.6}
+@media(max-width:760px){.founders-desk-location-footprint{margin-top:30px;padding-top:20px}.founders-desk-location-groups{grid-template-columns:1fr;gap:22px}.founders-desk-location-groups h2{font-size:19px}.founders-desk-location-groups li{font-size:15px}}
+@media(max-width:760px){.founders-desk-location-heading h2{font-size:22px}.founders-desk-location-heading p{font-size:13px}}
+@media(max-width:390px){.founders-desk-location-groups ul{grid-template-columns:1fr}}
+.founders-desk-intro{margin-bottom:0;color:#62564d;font-size:clamp(15px,1.2vw,17px);line-height:1.75}
+@media(max-width:760px){.founders-desk-intro{font-size:14px}}
+
 /* Founder’s Desk visual refresh. Keep all market, globe, and ticker components global. */
 .founders-desk-page{padding-top:96px;padding-bottom:72px}
 .founders-desk-heading{max-width:1120px;margin-bottom:86px;padding:clamp(28px,5vw,64px);border:1px solid #304335;border-radius:10px;background:linear-gradient(125deg,rgba(20,32,24,.97),rgba(10,15,11,.94) 68%,rgba(18,31,22,.92));box-shadow:0 26px 80px rgba(0,0,0,.18)}
@@ -1882,8 +1903,68 @@ html{scroll-behavior:auto}
 .founders-desk-risk{color:#5f5147;border-color:#e2d5c8}
 .founders-session-group-heading h3,.founders-session-city-heading h3{color:#38291e}
 .founders-session-group-heading p{color:#65584d}
+.founders-session-gallery-heading .eyebrow{font-size:clamp(16px,1.25vw,20px);line-height:1.4;letter-spacing:.13em}
+@media(max-width:760px){.founders-session-gallery-heading .eyebrow{font-size:16px}}
+.founders-profile-milestone-list article,.founders-profile-milestone-list article:last-child{background:transparent;border:0;border-bottom:1px solid #e7ddd2;border-radius:0;box-shadow:none}
+.founders-profile-milestone-list article>span{left:-5px;width:auto;padding:0;transform:translateY(-50%);background:transparent;text-align:left}
+.founders-profile-section-label{font-size:clamp(13px,1vw,15px);line-height:1.35;letter-spacing:.11em}
+.founders-profile-section-label span:first-child{flex:none;font-size:clamp(16px,1.25vw,19px);line-height:1.1}
+@media(max-width:760px){.founders-profile-section-label{font-size:13px}.founders-profile-section-label span:first-child{font-size:17px}}
+
+/* Stack each impact metric with its description and give both room to read. */
+.founders-profile-milestone-list article,.founders-profile-milestone-list article:last-child{min-height:150px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:8px;padding:24px 20px 24px 50px}
+.founders-profile-milestone-list strong{font-size:clamp(30px,3.2vw,44px);line-height:1.05}
+.founders-profile-milestone-list p{max-width:100%;font-size:clamp(17px,1.65vw,22px);line-height:1.4}
+@media(max-width:760px){.founders-profile-milestone-list article,.founders-profile-milestone-list article:last-child{min-height:126px;gap:7px;padding:22px 14px 22px 34px}.founders-profile-milestone-list strong{font-size:clamp(28px,7vw,36px)}.founders-profile-milestone-list p{font-size:clamp(16px,4vw,19px)}}
 .founder-live-sessions::before{color:#80624f}
 .founder-live-sessions-intro .eyebrow{color:#9b561f}
 .founder-live-sessions-regions h3{color:#685344}
 .founder-live-sessions-regions li,.founder-live-sessions-regions li:first-child{color:#30251e}
 @media(max-width:760px){.founders-profile-hero-main{grid-template-columns:minmax(0,1fr) minmax(170px,.8fr);gap:20px}.founders-profile-photo{max-width:100%}}
+
+/* Let the philosophy feature span the viewport and give the quote room to breathe. */
+.founders-profile-philosophy{width:100vw;max-width:none;margin:0 0 92px calc(50% - 50vw);padding:clamp(40px,5.5vw,76px) clamp(24px,7vw,140px);grid-template-columns:minmax(150px,.22fr) minmax(0,1fr);gap:clamp(28px,5vw,88px);border-radius:0}
+.founders-profile-philosophy-copy{width:100%;max-width:none}
+.founders-profile-philosophy-copy blockquote{width:100%;max-width:none}
+.founders-profile-philosophy-copy{grid-template-columns:minmax(0,1fr) minmax(220px,.45fr);gap:0 clamp(24px,4vw,64px);align-items:end}
+.founders-profile-philosophy-copy h2{grid-column:1/-1;text-transform:uppercase;font-style:normal}
+.founders-profile-philosophy-copy blockquote{grid-column:1/-1;grid-row:auto}
+.founders-profile-philosophy-copy>p{grid-column:2;grid-row:auto;justify-self:end;text-align:left}
+@media(max-width:760px){.founders-profile-philosophy{margin-bottom:64px;padding:34px 24px;grid-template-columns:1fr;gap:24px}}
+@media(max-width:760px){.founders-profile-philosophy-copy{grid-template-columns:1fr;gap:0}.founders-profile-philosophy-copy h2,.founders-profile-philosophy-copy blockquote,.founders-profile-philosophy-copy>p{grid-column:1;grid-row:auto}.founders-profile-philosophy-copy>p{justify-self:start}}
+
+/* Keep the activities heading dark and give each activity a clear padded frame. */
+.founders-profile-activities .founders-profile-section-content>h2{color:#2b2520}
+.founders-profile-activities-grid{gap:14px}
+.founders-profile-activities-grid article{padding:22px 24px;border:1px solid #d87524;border-radius:6px}
+.founders-profile-activities-grid article>span{font-size:clamp(15px,1.15vw,18px);font-weight:600;line-height:1.2}
+@media(max-width:760px){.founders-profile-activities-grid{gap:12px}.founders-profile-activities-grid article{padding:20px}}
+
+/* Normalize all six expertise cards, including the former alternating rows. */
+.founders-profile-expertise-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;border:0}
+.founders-profile-expertise-grid article,.founders-profile-expertise-grid article:nth-child(odd){min-height:190px;padding:26px 26px 24px 56px;background:#fffaf5;border:1px solid #e7ddd2;border-radius:8px}
+.founders-profile-expertise-grid article>span{left:24px;top:28px}
+.founders-profile-expertise-grid article:hover{background:#fff5eb;border-color:#d87524;transform:translateY(-2px)}
+.founders-profile-expertise-grid h3{margin:0 0 12px;line-height:1.25}
+.founders-profile-expertise-grid p{max-width:none;line-height:1.6}
+@media(max-width:760px){.founders-profile-expertise-grid{grid-template-columns:1fr;gap:12px}.founders-profile-expertise-grid article,.founders-profile-expertise-grid article:nth-child(odd){min-height:150px;padding:24px 20px 22px 52px}.founders-profile-expertise-grid article>span{left:20px;top:26px}}
+
+/* Keep milestone numbers plain; remove the round marker and its pale backing. */
+.founders-profile-milestone-list article::before{content:none}
+.founders-profile-milestone-list article>span{background:transparent}
+.founders-profile-milestone-list article>span{top:50%;left:-20px;width:46px;display:block;padding:5px 0;transform:translate(-50%,-50%);border-radius:0;background:#f7f7f2;color:#a95720;text-align:center;font-size:clamp(17px,1.35vw,20px);line-height:1;font-variant-numeric:tabular-nums}
+.founder-live-sessions::before{content:none}
+.founder-live-sessions-regions section{padding:0;background:transparent;border:0;border-radius:0;box-shadow:none}
+.founder-live-sessions-regions li:hover{color:#d87524}
+.founder-live-sessions-regions{grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(22px,4vw,52px);align-items:start}
+.founder-live-sessions-regions h3{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:0 0 12px;padding-bottom:12px;border-bottom:1px solid #e7ddd2;color:#80624f;font:700 13px/1.3 var(--display);letter-spacing:.12em;text-transform:uppercase}
+.founder-live-sessions-regions h3 span{flex:none;color:#a99a8c;font:600 9px/1.3 ui-monospace,monospace;letter-spacing:.1em}
+.founder-live-sessions-regions ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 22px;margin:0;padding:0;list-style:none}
+.founder-live-sessions-regions li{display:flex;align-items:center;gap:10px;min-height:58px;padding:10px 0;border-bottom:1px solid rgba(231,221,210,.72);color:#38291e;font-size:clamp(15px,1.25vw,18px);font-weight:600;line-height:1.35;letter-spacing:0;text-transform:none;transition:color .2s ease,transform .2s ease}
+.founder-live-sessions-regions li::before{content:"";flex:none;width:7px;height:7px;border:1px solid #c46a25;border-radius:50%;background:#ed8025;box-shadow:0 0 0 4px rgba(237,128,37,.1);transition:transform .2s ease,box-shadow .2s ease}
+.founder-live-sessions-regions li:first-child{color:#38291e;font-size:clamp(15px,1.25vw,18px);line-height:1.4;letter-spacing:0}
+.founder-live-sessions-regions li:hover{color:#d87524;transform:translateX(3px)}
+.founder-live-sessions-regions li:hover::before{transform:scale(1.2);box-shadow:0 0 0 5px rgba(237,128,37,.16)}
+@media(max-width:760px){.founder-live-sessions-regions{grid-template-columns:1fr;gap:26px}.founder-live-sessions-regions h3{font-size:12px}.founder-live-sessions-regions ul{gap:0 16px}.founder-live-sessions-regions li,.founder-live-sessions-regions li:first-child{font-size:16px}}
+@media(max-width:390px){.founder-live-sessions-regions ul{grid-template-columns:1fr}}
+.site-header-terminal{position:fixed;top:0;left:0;right:0;z-index:100}
