@@ -12,20 +12,20 @@ const manrope=localFont({src:"./fonts/manrope-latin-wght-normal.woff2",variable:
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: { default: "Forex Trading Education & Market Learning | Corpenta Global", template: "%s | Corpenta Global" },
+  title: { default: "Currency Trading Education & Market Learning | Corpenta Global", template: "%s | Corpenta Global" },
   description: DEFAULT_DESCRIPTION,
   openGraph: {
     type: "website",
     url: SITE_URL,
     siteName: SITE_NAME,
     locale: "en_US",
-    title: "Forex Trading Education & Market Learning | Corpenta Global",
+    title: "Currency Trading Education & Market Learning | Corpenta Global",
     description: DEFAULT_DESCRIPTION,
     images: [{ url: DEFAULT_OG_IMAGE, width: 1837, height: 856, alt: "Corpenta Global market education" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Forex Trading Education & Market Learning | Corpenta Global",
+    title: "Currency Trading Education & Market Learning | Corpenta Global",
     description: DEFAULT_DESCRIPTION,
     images: [DEFAULT_OG_IMAGE],
   },

@@ -13,7 +13,7 @@ export const metadata=createPageMetadata({
 });
 
 const expertise=[
-  {title:"Forex markets",copy:"Currency trading, technical analysis, market structure, and trading strategies."},
+  {title:"Currency markets",copy:"Currency trading, technical analysis, market structure, and trading strategies."},
   {title:"Cryptocurrency markets",copy:"Digital asset markets, crypto trading, and market analysis."},
   {title:"Stock markets",copy:"Equity market fundamentals, technical analysis, and trading methodologies."},
   {title:"Trading education",copy:"Professional training programs, mentorship, and practical market learning."},
@@ -64,7 +64,7 @@ const onlineSessions:{src:string;alt:string;width:number;height:number}[]=[
   {src:"/sessions/zoomlive6.png",alt:"Avanish leads a live online session with participants joining by video.",width:1672,height:941},
   {src:"/sessions/zoomlive7.png",alt:"Online participants join a live financial markets learning session on Zoom.",width:1672,height:941},
   {src:"/sessions/zoomlive8.png",alt:"A live online trading lesson with a market chart and video participants.",width:1672,height:941},
-  {src:"/sessions/zoomlive9.png",alt:"A Zoom group follows a shared forex chart during an online session.",width:1536,height:1024},
+  {src:"/sessions/zoomlive9.png",alt:"A Zoom group follows a shared currency chart during an online session.",width:1536,height:1024},
 ];
 
 const seminarCityGroups=[
@@ -127,7 +127,7 @@ export default function FoundersDeskPage(){
         <h2 id="founder-about-title">Education shaped<br/>by <em>experience.</em></h2>
         <div className="founders-profile-prose">
           <p>Avanish Yadav is a financial markets professional, entrepreneur, and global financial markets educator with over 10 years of experience in the financial markets industry.</p>
-          <p>With a strong foundation in Forex, Cryptocurrency, and Stock Markets, he has dedicated more than 8 years to educating individuals and developing trading knowledge across domestic and international markets.</p>
+          <p>With a strong foundation in currency, cryptocurrency, and stock markets, he has dedicated more than 8 years to educating individuals and developing trading knowledge across domestic and international markets.</p>
           <p>Throughout his professional journey, Avanish has educated and mentored 5,000–7,000+ individuals, helping them understand financial markets, trading methodologies, market analysis, risk management, and trading psychology.</p>
           <p>His experience extends beyond individual education. He has conducted 500+ offline seminars across India, delivering financial market education to diverse audiences and building awareness about global trading opportunities.</p>
           <p>Avanish has also conducted international educational sessions and training engagements in countries including Dubai and Singapore, working with students and participants from different international backgrounds.</p>
@@ -150,7 +150,7 @@ export default function FoundersDeskPage(){
         <h2 id="founder-vision-title">Make markets<br/>more <em>accessible.</em></h2>
         <p>Avanish believes that financial education is one of the most powerful tools for creating informed and confident individuals.</p>
         <p>His vision is to build a globally recognized financial education ecosystem that combines practical market knowledge, structured learning, professional mentorship, and responsible trading practices.</p>
-        <p>Through continuous innovation, education, and leadership, he aims to make global financial markets more accessible to individuals who aspire to develop their understanding of Forex, Cryptocurrency, and Stock Markets.</p>
+        <p>Through continuous innovation, education, and leadership, he aims to make global financial markets more accessible to individuals who aspire to develop their understanding of currency, cryptocurrency, and stock markets.</p>
       </div>
     </section>
 
@@ -168,7 +168,7 @@ export default function FoundersDeskPage(){
       <div className="founders-profile-section-content">
         <h2 id="founder-activities-title">Education put<br/>into <em>practice.</em></h2>
         <div className="founders-profile-activities-grid">
-          <article><span>01</span><h3>Financial markets education</h3><p>Seminars, workshops and learning sessions focused on Forex, cryptocurrency and stock markets.</p></article>
+          <article><span>01</span><h3>Financial markets education</h3><p>Seminars, workshops and learning sessions focused on currency, cryptocurrency and stock markets.</p></article>
           <article><span>02</span><h3>Student learning &amp; mentorship</h3><p>Education and mentorship for individuals learning market analysis, trading methods, risk management and trading psychology.</p></article>
           <article><span>03</span><h3>Online learning sessions</h3><p>Live remote sessions that extend founder-led financial education to online participants.</p></article>
           <article><span>04</span><h3>Market initiatives</h3><p>Experience supporting business organizations with financial market initiatives and fund-management-related operations.</p></article>
@@ -178,6 +178,6 @@ export default function FoundersDeskPage(){
 
     <section className="founders-profile-contact" id="contact" aria-labelledby="founder-contact-title"><div><span className="eyebrow">CONTACT &amp; COLLABORATION</span><h2 id="founder-contact-title">Begin with a<br/><em>better question.</em></h2><p>For course information, training enquiries and collaboration requests, contact the Corpenta Global team.</p></div><div className="founders-desk-contact-actions"><Link className="button button-dark" href="/contact">Send an enquiry</Link><Link className="button button-dark" href="/courses">Explore courses</Link></div></section>
 
-    <p className="founders-desk-risk">Forex and leveraged trading involve substantial financial risk. Educational material is not personalized financial advice and does not guarantee profitability.</p>
+    <p className="founders-desk-risk">Currency and leveraged trading involve substantial financial risk. Educational material is not personalized financial advice and does not guarantee profitability.</p>
   </main>;
 }

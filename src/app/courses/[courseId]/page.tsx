@@ -13,7 +13,7 @@ export async function generateMetadata({params}:{params:Promise<{courseId:string
   const {data:course}=db?await db.from("courses").select("title,short_description,is_published").eq("id",courseId).is("archived_at",null).maybeSingle():{data:null};
   const published=!!course?.is_published;
   return createPageMetadata({
-    title:published?`${course.title} — Forex Education Course`:"Course details",
+    title:published?`${course.title} — Currency Education Course`:"Course details",
     description:published?(course.short_description||`Explore ${course.title}, a financial markets education program from ${SITE_NAME}.`):"This course is not currently available for public enrollment.",
     path:`/courses/${courseId}`,
     index:published,

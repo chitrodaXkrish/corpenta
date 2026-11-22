@@ -3,7 +3,7 @@ import type { Metadata, MetadataRoute } from "next";
 export const SITE_URL = "https://corpentaglobal.in";
 export const SITE_NAME = "Corpenta Global";
 export const DEFAULT_DESCRIPTION =
-  "Explore considered forex and financial markets education from Corpenta Global, grounded in knowledge, discipline and risk awareness.";
+  "Explore considered currency and financial markets education from Corpenta Global, grounded in knowledge, discipline and risk awareness.";
 export const DEFAULT_OG_IMAGE = "/hero.png";
 
 type PageMetadataOptions = {

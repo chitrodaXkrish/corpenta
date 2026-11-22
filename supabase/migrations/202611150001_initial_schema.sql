@@ -253,5 +253,5 @@ from generate_series(1,6) n;
 
 insert into public.cms_pages(slug,title,is_published) values
  ('home','Homepage',true),('about','About Corpenta Global',true),('contact','Contact information',true),
- ('terms','Terms & Conditions',false),('refunds','Refund Policy',false),('risk','Forex Trading Risk Disclaimer',false)
+ ('terms','Terms & Conditions',false),('refunds','Refund Policy',false),('risk','Currency Trading Risk Disclaimer',false)
 on conflict(slug) do nothing;

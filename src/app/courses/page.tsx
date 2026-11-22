@@ -9,8 +9,8 @@ export async function generateMetadata():Promise<Metadata>{
   const db=await createClient();
   const {count}=db?await db.from("courses").select("id",{count:"exact",head:true}).eq("is_published",true).is("archived_at",null):{count:0};
   return createPageMetadata({
-    title:"Forex and Financial Market Courses",
-    description:"Browse Corpenta Global’s published learning programs in forex and financial markets. Course details, availability and enrollment information are maintained by the academy.",
+    title:"Currency and Financial Market Courses",
+    description:"Browse Corpenta Global’s published learning programs in currency and financial markets. Course details, availability and enrollment information are maintained by the academy.",
     path:"/courses",
     index:(count??0)>0,
   });

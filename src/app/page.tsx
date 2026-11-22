@@ -6,8 +6,8 @@ import { getPublicCourses, getPublicScenarios } from "@/lib/public-content";
 import { PublicMarketTicker } from "@/components/public-market-ticker";
 
 export const metadata = createPageMetadata({
-  title: "Forex Education for Clearer Market Decisions",
-  description: "Build a thoughtful understanding of forex and financial markets with Corpenta Global’s structured education, market context and risk-aware learning.",
+  title: "Currency Education for Clearer Market Decisions",
+  description: "Build a thoughtful understanding of currency and financial markets with Corpenta Global’s structured education, market context and risk-aware learning.",
   path: "/",
 });
 
@@ -19,7 +19,7 @@ export default async function Home() {
       <img className="hero-photo" src="/hero.png" alt="" fetchPriority="high" />
       <div className="hero-copy">
         <span className="hero-kicker">MARKET EDUCATION FOR CLEARER DECISIONS</span>
-        <h1>Learn forex trading.<br/>Build <span>real market skills.</span></h1>
+        <h1>Learn currency trading.<br/>Build <span>real market skills.</span></h1>
         <p>Structured learning to help you understand currency markets, develop a process, and approach risk with care.</p>
         <Link className="button button-orange hero-explore-cta" href="/courses">Explore Courses <ArrowRight size={18}/></Link>
         <div className="hero-points" aria-label="Learning features">
@@ -48,7 +48,7 @@ export default async function Home() {
     </div>
   </section>
 
-  <section className="intro-section wrap section-pad" data-market-scene="currencies"><div className="section-kicker"><span>01 / THE ACADEMY</span></div><div className="intro-grid"><h2>Markets reward<br/><em>preparation,</em><br/>not certainty.</h2><div className="intro-copy"><p>Corpenta Global is a home for people who want to understand how financial markets, including forex, move and build a more disciplined relationship with risk.</p><p>We bring structured learning and market context together—without promises, shortcuts, or the noise of prediction.</p><Link className="underlined-link" href="/about">Get to know our approach <ArrowUpRight size={15}/></Link></div></div></section>
+  <section className="intro-section wrap section-pad" data-market-scene="currencies"><div className="section-kicker"><span>01 / THE ACADEMY</span></div><div className="intro-grid"><h2>Markets reward<br/><em>preparation,</em><br/>not certainty.</h2><div className="intro-copy"><p>Corpenta Global is a home for people who want to understand how financial markets, including currency markets, move and build a more disciplined relationship with risk.</p><p>We bring structured learning and market context together—without promises, shortcuts, or the noise of prediction.</p><Link className="underlined-link" href="/about">Get to know our approach <ArrowUpRight size={15}/></Link></div></div></section>
 
   <section className="method-section" data-market-scene="pairs"><div className="wrap method-inner"><div className="method-heading"><div className="section-kicker"><span>02 / HOW WE TEACH</span><span>A FRAMEWORK FOR LEARNING</span></div><h2>Build understanding<br/>that <em>travels with you.</em></h2><p>Good education creates better questions. Our learning journey is designed to make the unfamiliar more legible, one concept at a time.</p></div><div className="method-steps"><article><span>01</span><div><h3>Understand the context</h3><p>Learn the forces, language and market structure behind price movement.</p></div><ArrowUpRight size={17}/></article><article><span>02</span><div><h3>Develop a framework</h3><p>Explore repeatable ways to observe, plan and review decisions.</p></div><ArrowUpRight size={17}/></article><article><span>03</span><div><h3>Practice with perspective</h3><p>Build a reflective process that accounts for uncertainty and risk.</p></div><ArrowUpRight size={17}/></article></div></div></section>
 
