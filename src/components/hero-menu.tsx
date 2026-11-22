@@ -46,8 +46,8 @@ export function HeroMenu(){
   },[open]);
 
   const menu=mounted?createPortal(
-    <div id="site-navigation-overlay" className={`site-menu-overlay${open?" is-open":""}`} aria-hidden={!open}>
-      <div className="site-menu-panel" role="dialog" aria-modal="true" aria-label="Site navigation" aria-hidden={!open}>
+    <div id="site-navigation-overlay" className={`site-menu-overlay${open?" is-open":""}`} aria-hidden={!open} onClick={(event)=>{if(event.target===event.currentTarget)setOpen(false)}}>
+      <div className="site-menu-panel" role="dialog" aria-modal="true" aria-label="Site navigation" aria-hidden={!open} onClick={(event)=>event.stopPropagation()}>
         <div className="site-menu-top"><Link className="site-menu-wordmark" href="/" onClick={()=>setOpen(false)}>CORPENTA <span>GLOBAL</span></Link><button ref={closeRef} className="site-menu-close" type="button" aria-label="Close navigation menu" onClick={()=>setOpen(false)}><X size={21}/></button></div>
         <nav className="site-menu-primary" aria-label="Main pages">{primaryLinks.map((item,index)=><Link href={item.href} key={item.href} onClick={()=>setOpen(false)}><span className="site-menu-number">0{index+1}</span><span>{item.label}</span><ArrowUpRight className="site-menu-arrow" size={20}/></Link>)}</nav>
         <div className="site-menu-secondary">
