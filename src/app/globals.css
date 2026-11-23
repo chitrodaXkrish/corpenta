@@ -2201,3 +2201,10 @@ input:-webkit-autofill,input:-webkit-autofill:hover,input:-webkit-autofill:focus
 .course-product-cta:disabled{cursor:default;opacity:.72}
 @media(max-width:900px){.course-product-row{grid-template-columns:minmax(200px,.8fr) minmax(0,1.2fr);gap:26px;padding:30px 22px}.course-product-purchase{grid-column:2;display:flex;align-items:center;justify-content:space-between;gap:20px}.course-product-learning ul{grid-template-columns:1fr}}
 @media(max-width:600px){.course-product-row{grid-template-columns:1fr;gap:22px;padding:26px 18px}.course-product-identity h2{margin:14px 0 8px;font-size:29px}.course-product-tagline{font-size:17px}.course-product-learning ul{gap:8px}.course-product-purchase{grid-column:1;width:100%;padding-top:16px;border-top:1px solid #e7ddd2}.course-product-purchase strong{font-size:27px}.course-product-cta{min-height:44px;font-size:13px}}
+.course-enroll-control{display:grid;justify-items:start;gap:8px;max-width:100%}
+.course-enroll-control .form-status{max-width:360px;margin:0}
+.course-enroll-unavailable{display:grid;gap:6px;max-width:350px}
+.course-enroll-unavailable strong{font-size:15px}
+.course-enroll-unavailable p{margin:0;font-size:13px;line-height:1.5}
+.course-claims-note{margin-block:24px}
+.course-claims-note p{margin:7px 0 0;line-height:1.65}
