@@ -7,11 +7,16 @@ import {ArrowUpRight, Menu, X} from "lucide-react";
 
 const primaryLinks=[
   {label:"Home",href:"/"},
-  {label:"Our approach",href:"/about"},
+  {label:"About Us",href:"/about"},
   {label:"Founder’s Desk",href:"/founders-desk"},
-  {label:"Academy",href:"/courses"},
-  {label:"Market notes",href:"/scenarios"},
-  {label:"Contact",href:"/contact"},
+  {label:"Mission & Vision",href:"/founders-desk#mission-vision"},
+  {label:"Financial Literacy",href:"/#financial-literacy"},
+  {label:"Currency Market Education",href:"/#currency-market-education"},
+  {label:"Programs & Courses",href:"/courses"},
+  {label:"Events & Seminars",href:"/founders-desk#sessions"},
+  {label:"Global Presence",href:"/founders-desk#global-presence"},
+  {label:"Our Impact",href:"/founders-desk#impact"},
+  {label:"Contact Us",href:"/contact"},
 ];
 const studentLinks=[
   {label:"Student login",href:"/login"},
