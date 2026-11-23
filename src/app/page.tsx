@@ -1,8 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowDown, ArrowRight, ArrowUpRight, ChartNoAxesColumnIncreasing, Globe2, Monitor, ShieldCheck } from "lucide-react";
+import { ArrowRight, ArrowUpRight, ChartNoAxesColumnIncreasing, Globe2, Monitor, ShieldCheck } from "lucide-react";
 import { createPageMetadata } from "@/lib/seo";
-import { getPublicCourses, getPublicScenarios } from "@/lib/public-content";
 import { PublicMarketTicker } from "@/components/public-market-ticker";
 
 export const metadata = createPageMetadata({
@@ -11,16 +10,18 @@ export const metadata = createPageMetadata({
   path: "/",
 });
 
+const courseNames=["MONEY CODE","MONEY MINDSET","CAPITAL SHIELD","CORPENTA WEALTH ARCHITECT","NISM CERTIFY","CORPENTA FUNDED","CRYPTO CODE"];
+
 export default async function Home() {
-  const [courses, scenarios] = await Promise.all([getPublicCourses(), getPublicScenarios()]);
   return <main className="homepage-main">
   <section className="hero" data-market-scene="network">
     <div className="hero-visual">
       <img className="hero-photo" src="/hero.png" alt="" fetchPriority="high" />
       <div className="hero-copy">
-        <span className="hero-kicker">MARKET EDUCATION FOR CLEARER DECISIONS</span>
-        <h1>Learn currency<br/>trading. Build <span>real market skills.</span></h1>
-        <p>Structured learning to help you understand currency markets, develop a process, and approach risk with care.</p>
+        <span className="hero-kicker">OUR VISION</span>
+        <p className="hero-vision-title">A Financially Literate Nation. A Financially Empowered World.</p>
+        <h1>Educate India.<br/><span>Empower the World.</span></h1>
+        <p>Financial Knowledge Without Borders.</p>
         <Link className="button button-orange hero-explore-cta" href="/courses">Explore Courses <ArrowRight size={18}/></Link>
         <div className="hero-points" aria-label="Learning features">
           <div><ChartNoAxesColumnIncreasing/><span>Structured<br/>learning</span></div>
@@ -30,7 +31,6 @@ export default async function Home() {
         </div>
       </div>
     </div>
-    <div className="hero-caption"><span>Thoughtful education. Independent decisions.</span><span>Scroll to explore <ArrowDown size={14}/></span></div>
   </section>
 
   <PublicMarketTicker/>
@@ -52,10 +52,8 @@ export default async function Home() {
 
   <section className="method-section" data-market-scene="pairs"><div className="wrap method-inner"><div className="method-heading"><div className="section-kicker"><span>02 / HOW WE TEACH</span><span>A FRAMEWORK FOR LEARNING</span></div><h2>Build understanding<br/>that <em>travels with you.</em></h2><p>Good education creates better questions. Our learning journey is designed to make the unfamiliar more legible, one concept at a time.</p></div><div className="method-steps"><article><span>01</span><div><h3>Understand the context</h3><p>Learn the forces, language and market structure behind price movement.</p></div><ArrowUpRight size={17}/></article><article><span>02</span><div><h3>Develop a framework</h3><p>Explore repeatable ways to observe, plan and review decisions.</p></div><ArrowUpRight size={17}/></article><article><span>03</span><div><h3>Practice with perspective</h3><p>Build a reflective process that accounts for uncertainty and risk.</p></div><ArrowUpRight size={17}/></article></div></div></section>
 
-  <section className="courses-section wrap section-pad" data-market-scene="candles"><div className="section-kicker"><span>03 / THE ACADEMY</span><span>COURSES · {courses.length} PROGRAMS</span></div><div className="section-title-row"><h2>A place to <em>begin.</em></h2><Link className="underlined-link" href="/courses">View the academy <ArrowUpRight size={15}/></Link></div><p className="section-lead">Explore the learning programs currently published by Corpenta Global.</p>{courses.length?<div className="course-grid">{courses.slice(0,3).map((course,i)=><Link className="course-card" key={course.id} href={`/courses/${course.id}`}><div className={`course-art course-art-${i+1}`}><span>0{i+1}</span><div className="art-orbit"/><ArrowUpRight size={18}/></div><div className="course-meta"><span>{course.duration_label||"ACADEMY PROGRAM"}</span><span>{course.price===null?"ENROLLMENT DETAILS SOON":`${course.currency} ${Number(course.price).toLocaleString()}`}</span></div><h3>{course.title}</h3><p>{course.short_description}</p><div className="course-bottom"><span>View course details</span><ArrowRight size={15}/></div></Link>)}</div>:<div className="locked-panel"><div><strong>Courses are being prepared</strong><p>Published programs will appear here when the academy has confirmed their details.</p></div></div>}</section>
+  <section className="courses-section wrap section-pad" data-market-scene="candles"><div className="section-kicker"><span>03 / THE ACADEMY</span><span>7 PROGRAMMES</span></div><div className="section-title-row"><h2>A place to <em>begin.</em></h2></div><p className="section-lead">Explore the Corpenta Global learning programmes.</p><ol className="home-course-list">{courseNames.map((name,index)=><li key={name}><span>{String(index+1).padStart(2,"0")}</span><strong>{name}</strong><ArrowUpRight size={16}/></li>)}</ol><Link className="button button-orange home-courses-cta" href="/courses">Explore Courses <ArrowRight size={17}/></Link></section>
 
-  <section className="scenario-section" data-market-scene="research"><div className="wrap scenario-inner"><div><div className="section-kicker"><span>04 / MARKET NOTES</span><span>EDUCATIONAL COMMENTARY</span></div><h2>Observation over<br/><em>prediction.</em></h2><p>Occasional market scenarios, shared for learning and discussion. Not a signal service or a recommendation to trade.</p><Link className="underlined-link" href="/scenarios">Explore market notes <ArrowUpRight size={15}/></Link></div><div className="scenario-list">{scenarios.length?scenarios.map((s)=><article className="scenario-row" key={s.id}><div className="scenario-symbol">↗</div><div className="scenario-info"><div><strong>{s.pair}</strong><span className="scenario-tag">{s.direction||"Watching"}</span></div><p>{s.commentary||s.description||"Educational market scenario."}</p></div><span className="scenario-time">{new Date(s.published_at).toLocaleDateString("en",{month:"short",day:"numeric"})}</span></article>):<div className="locked-panel"><div><strong>No public market notes yet</strong><p>Published educational scenarios will appear here.</p></div></div>}</div></div></section>
-
-  <section className="closing-section wrap" data-market-scene="ticker"><div className="closing-card"><div className="closing-orb"/><span className="eyebrow">BEGIN WITH A BETTER QUESTION</span><h2>Curiosity is a<br/><em>good first step.</em></h2><p>Explore the academy and find the learning path that fits your starting point.</p><Link className="button button-orange" href="/courses">Explore courses</Link><span className="closing-mark">C</span></div></section>
+  <section className="closing-section wrap" data-market-scene="ticker"><div className="closing-card"><div className="closing-orb"/><span className="eyebrow">BEGIN WITH A BETTER QUESTION</span><h2>Curiosity is a<br/><em>good first step.</em></h2><p>Explore the academy and find the learning path that fits your starting point.</p><Link className="button button-orange" href="/courses">Explore courses</Link><Image className="closing-company-logo" src="/logo.png" alt="Corpenta Global" width={393} height={350}/></div></section>
   </main>;
 }
