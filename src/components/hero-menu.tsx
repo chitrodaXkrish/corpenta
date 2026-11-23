@@ -30,7 +30,8 @@ const studentLinks=[
 const legalLinks=[
   {label:"Terms & Conditions",href:"/legal/terms"},
   {label:"Refund policy",href:"/legal/refunds"},
-  {label:"Trading risk",href:"/legal/risk"},
+  {label:"Privacy policy",href:"/legal/privacy"},
+  {label:"Risk disclosure",href:"/legal/risk"},
 ];
 
 export function HeroMenu(){
