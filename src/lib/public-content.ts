@@ -47,7 +47,7 @@ export function getPublicCourses() {
     is_published: "eq.true",
     archived_at: "is.null",
     order: "sort_order.asc,created_at.asc",
-    limit: "6",
+    limit: "7",
   });
 }
 
