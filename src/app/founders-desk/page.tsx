@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import {Eye, Target} from "lucide-react";
 import {createPageMetadata, jsonLdScript, SITE_URL} from "@/lib/seo";
 
 export const metadata=createPageMetadata({
@@ -132,13 +133,27 @@ export default function FoundersDeskPage(){
       </div>
     </section>
 
-    <section className="founders-profile-vision" data-market-scene="network" aria-labelledby="founder-vision-title">
+    <section className="founders-profile-vision" data-market-scene="network" aria-label="Mission and vision">
       <div className="founders-profile-section-label"><span>03</span><span>MISSION &amp; VISION</span></div>
       <div className="founders-profile-vision-copy">
-        <h2 id="founder-vision-title">Make markets<br/>more <em>accessible.</em></h2>
-        <p>Avanish believes that financial education is one of the most powerful tools for creating informed and confident individuals.</p>
-        <p>His vision is to build a globally recognized financial education ecosystem that combines practical market knowledge, structured learning, professional mentorship, and responsible trading practices.</p>
-        <p>Through continuous innovation, education, and leadership, he aims to make global financial markets more accessible to individuals who aspire to develop their understanding of currency, cryptocurrency, and stock markets.</p>
+        <article className="founders-profile-purpose">
+          <span className="founders-profile-purpose-icon" aria-hidden="true"><Target size={30} strokeWidth={1.8}/></span>
+          <h3>Our mission</h3>
+          <p>Our mission is to make financial education accessible, practical and meaningful for everyone, building awareness across the nation and reaching communities around the globe. We are dedicated to educating students, young professionals and individuals about financial literacy, personal finance, money management, investment awareness and global financial markets, including the international currency market. Through educational programs, institutional collaborations, workshops, seminars and digital learning, we aim to bridge the gap between traditional education and real-world financial knowledge. We strive to develop a generation that understands financial opportunities, respects financial risks and makes responsible financial decisions.</p>
+        </article>
+        <article className="founders-profile-purpose">
+          <span className="founders-profile-purpose-icon" aria-hidden="true"><Eye size={30} strokeWidth={1.8}/></span>
+          <h3>Our vision</h3>
+          <p>To build a financially educated and empowered world, beginning with strong financial-literacy initiatives across the nation and expanding across nations. We envision a future where students, young professionals and individuals have access to quality financial education and the knowledge required to understand money, global economies and financial markets. We aspire to make financial literacy an essential part of modern education, empowering individuals to make informed financial decisions and work towards long-term financial stability and independence.</p>
+        </article>
+      </div>
+    </section>
+
+    <section className="founders-profile-goals" aria-labelledby="founder-goals-title">
+      <header><span className="eyebrow">OUR DIRECTION</span><h2 id="founder-goals-title">Goals &amp; <em>objectives.</em></h2></header>
+      <div className="founders-profile-goals-grid">
+        <article><h3>Our goals</h3><ul><li>Build financial literacy and empowerment across the nation and around the world.</li><li>Make quality financial education an essential part of modern learning.</li><li>Support long-term financial stability and independence through informed decisions.</li></ul></article>
+        <article><h3>Our objectives</h3><ul><li>Deliver practical learning through programs, institutional collaborations, workshops, seminars and digital formats.</li><li>Teach personal finance, money management, investment awareness and global markets.</li><li>Help learners understand financial opportunities, respect risks and make responsible decisions.</li></ul></article>
       </div>
     </section>
 
