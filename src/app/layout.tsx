@@ -12,6 +12,7 @@ const manrope=localFont({src:"./fonts/manrope-latin-wght-normal.woff2",variable:
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  icons: { icon: "/logo.png", shortcut: "/logo.png", apple: "/logo.png" },
   title: { default: "Currency Trading Education & Market Learning | Corpenta Global", template: "%s | Corpenta Global" },
   description: DEFAULT_DESCRIPTION,
   openGraph: {
