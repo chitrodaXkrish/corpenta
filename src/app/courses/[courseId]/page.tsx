@@ -53,8 +53,8 @@ export default async function CourseDetail({params}:{params:Promise<{courseId:st
     }
     let query=db.from("courses").select("id,slug,title,short_description,full_description,price,currency,duration_label,is_published").eq("id",courseId).is("archived_at",null);
     if(!isAdmin)query=query.eq("is_published",true);
-    const {data}=await query.maybeSingle();
-    databaseCourse=data as CourseRecord|null;
+    const {data:courseData}=await query.maybeSingle();
+    databaseCourse=courseData as CourseRecord|null;
   }
 
   const fallback=courseCatalog.find(item=>item.id===courseId);
