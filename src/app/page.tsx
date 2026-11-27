@@ -3,14 +3,13 @@ import Image from "next/image";
 import { ArrowRight, ArrowUpRight, ChartNoAxesColumnIncreasing, Globe2, Monitor, ShieldCheck } from "lucide-react";
 import { createPageMetadata } from "@/lib/seo";
 import { PublicMarketTicker } from "@/components/public-market-ticker";
+import { HomeCourses } from "@/components/home-courses";
 
 export const metadata = createPageMetadata({
   title: "Currency Education for Clearer Market Decisions",
   description: "Build a thoughtful understanding of currency and financial markets with Corpenta Global’s structured education, market context and risk-aware learning.",
   path: "/",
 });
-
-const courseNames=["MONEY CODE","MONEY MINDSET","CAPITAL SHIELD","CORPENTA WEALTH ARCHITECT","NISM CERTIFY","CORPENTA FUNDED","CRYPTO CODE"];
 
 export default async function Home() {
   return <main className="homepage-main">
@@ -52,7 +51,7 @@ export default async function Home() {
 
   <section className="method-section" data-market-scene="pairs"><div className="wrap method-inner"><div className="method-heading"><div className="section-kicker"><span>02 / HOW WE TEACH</span><span>A FRAMEWORK FOR LEARNING</span></div><h2>Build understanding<br/>that <em>travels with you.</em></h2><p>Good education creates better questions. Our learning journey is designed to make the unfamiliar more legible, one concept at a time.</p></div><div className="method-steps"><article><span>01</span><div><h3>Understand the context</h3><p>Learn the forces, language and market structure behind price movement.</p></div><ArrowUpRight size={17}/></article><article><span>02</span><div><h3>Develop a framework</h3><p>Explore repeatable ways to observe, plan and review decisions.</p></div><ArrowUpRight size={17}/></article><article><span>03</span><div><h3>Practice with perspective</h3><p>Build a reflective process that accounts for uncertainty and risk.</p></div><ArrowUpRight size={17}/></article></div></div></section>
 
-  <section className="courses-section wrap section-pad" data-market-scene="candles"><div className="section-kicker"><span>03 / THE ACADEMY</span><span>7 PROGRAMMES</span></div><div className="section-title-row"><h2>A place to <em>begin.</em></h2></div><p className="section-lead">Explore the Corpenta Global learning programmes.</p><ol className="home-course-list">{courseNames.map((name,index)=><li key={name}><span>{String(index+1).padStart(2,"0")}</span><strong>{name}</strong><ArrowUpRight size={16}/></li>)}</ol><Link className="button button-orange home-courses-cta" href="/courses">Explore Courses <ArrowRight size={17}/></Link></section>
+  <section className="courses-section wrap section-pad" data-market-scene="candles"><div className="section-kicker"><span>03 / COURSES</span><span>7 PROGRAMMES</span></div><div className="section-title-row"><h2>Find your place to <em>begin.</em></h2></div><p className="section-lead">Explore the Corpenta Global learning programmes.</p><HomeCourses/><Link className="button button-orange home-courses-cta" href="/courses">Explore Courses <ArrowRight size={17}/></Link></section>
 
   <section className="closing-section wrap" data-market-scene="ticker"><div className="closing-card"><div className="closing-orb"/><span className="eyebrow">BEGIN WITH A BETTER QUESTION</span><h2>Curiosity is a<br/><em>good first step.</em></h2><p>Explore the academy and find the learning path that fits your starting point.</p><Link className="button button-orange" href="/courses">Explore courses</Link><Image className="closing-company-logo" src="/logo.png" alt="Corpenta Global" width={393} height={350}/></div></section>
   </main>;
