@@ -21,7 +21,6 @@ export function HomeCourses() {
         <div className={`home-course-detail-shell${isOpen ? " is-open" : ""}`} id={`course-detail-${course.id}`} aria-hidden={!isOpen}>
           <div className="home-course-detail">
             <div className="home-course-summary"><p className="home-course-tagline">{course.tagline}</p><span>{course.duration} · Self-paced learning</span></div>
-            <div className="home-course-outcomes"><h3>What you’ll learn</h3><ul>{course.outcomes.map((outcome) => <li key={outcome}>{outcome}</li>)}</ul></div>
             <div className="home-course-enrollment"><span>Programme fee</span><strong>₹{new Intl.NumberFormat("en-IN").format(course.price)}</strong><Link href={`/courses/${course.id}`} className="home-course-detail-link" tabIndex={isOpen ? 0 : -1}>Course details <ArrowRight size={16}/></Link></div>
           </div>
         </div>

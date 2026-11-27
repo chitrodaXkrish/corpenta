@@ -1,7 +1,7 @@
 import Link from "next/link";
 import {notFound} from "next/navigation";
 import type {Metadata} from "next";
-import {LockKeyhole} from "lucide-react";
+import {ArrowUpRight,LockKeyhole} from "lucide-react";
 import {CourseEnrollButton} from "@/components/course-enroll-button";
 import {courseCatalog} from "@/lib/course-catalog";
 import {createClient} from "@/lib/supabase/server";
@@ -24,8 +24,8 @@ type CourseRecord={
 export async function generateMetadata({params}:{params:Promise<{courseId:string}>}):Promise<Metadata>{
   const {courseId}=await params;
   const db=await createClient();
-  const {data:course}=db?await db.from("courses").select("title,slug,short_description,is_published").eq("id",courseId).is("archived_at",null).maybeSingle():{data:null};
-  const fallback=courseCatalog.find(item=>item.id===courseId);
+  const {data:course}=db?await db.from("courses").select("title,slug,short_description,is_published").or(`id.eq.${courseId},slug.eq.${courseId}`).is("archived_at",null).maybeSingle():{data:null};
+  const fallback=courseCatalog.find(item=>item.id===courseId||item.slug===courseId);
   const title=course?.title||fallback?.title;
   const description=course?.short_description||fallback?.tagline;
   const published=Boolean(course?.is_published||(!course&&fallback));
@@ -51,13 +51,13 @@ export default async function CourseDetail({params}:{params:Promise<{courseId:st
       const {data:role}=await db.from("user_roles").select("user_id").eq("user_id",user.id).eq("role","admin").maybeSingle();
       isAdmin=Boolean(role);
     }
-    let query=db.from("courses").select("id,slug,title,short_description,full_description,price,currency,duration_label,is_published").eq("id",courseId).is("archived_at",null);
+    let query=db.from("courses").select("id,slug,title,short_description,full_description,price,currency,duration_label,is_published").or(`id.eq.${courseId},slug.eq.${courseId}`).is("archived_at",null);
     if(!isAdmin)query=query.eq("is_published",true);
     const {data:courseData}=await query.maybeSingle();
     databaseCourse=courseData as CourseRecord|null;
   }
 
-  const fallback=courseCatalog.find(item=>item.id===courseId);
+  const fallback=courseCatalog.find(item=>item.id===courseId||item.slug===courseId);
   if(!databaseCourse&&!fallback)notFound();
   const course:CourseRecord=databaseCourse||{
     id:fallback!.id,
@@ -78,13 +78,13 @@ export default async function CourseDetail({params}:{params:Promise<{courseId:st
   const courseSchema=course.is_published?{"@context":"https://schema.org","@type":"Course","@id":`${SITE_URL}/courses/${course.id}#course`,name:course.title,description:course.short_description||course.full_description||undefined,url:`${SITE_URL}/courses/${course.id}`,provider:{"@type":"Organization","@id":`${SITE_URL}/#organization`,name:SITE_NAME,url:SITE_URL}}:null;
   const breadcrumbSchema={"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem",position:1,name:"Home",item:SITE_URL},{"@type":"ListItem",position:2,name:"Courses",item:`${SITE_URL}/courses`},{"@type":"ListItem",position:3,name:course.title}]};
 
-  return <main className="page-main wrap">
+  return <main className="page-main wrap course-detail-page">
     {courseSchema&&<script type="application/ld+json" dangerouslySetInnerHTML={{__html:jsonLdScript(courseSchema)}}/>}
     <script type="application/ld+json" dangerouslySetInnerHTML={{__html:jsonLdScript(breadcrumbSchema)}}/>
     <nav className="seo-breadcrumbs" aria-label="Breadcrumb"><ol><li><Link href="/">Home</Link></li><li><Link href="/courses">Courses</Link></li><li aria-current="page">{course.title}</li></ol></nav>
-    <div className="page-heading"><span className="eyebrow">CORPENTA GLOBAL · ACADEMY{course.duration_label?` · ${course.duration_label.toUpperCase()}`:""}</span><h1>{course.title}</h1><p>{course.short_description}</p></div>
+    <div className="page-heading"><span className="eyebrow">CORPENTA GLOBAL · ACADEMY{course.duration_label?` · ${course.duration_label.toUpperCase()}`:""}</span><div className="course-detail-title-row"><h1>{course.title}</h1><button type="button" className="course-detail-enroll-cta">Enroll Now <ArrowUpRight size={18}/></button></div><p>{course.short_description}</p></div>
     {isAdmin&&!course.is_published&&<div className="course-draft-notice"><strong>Draft preview</strong><span>Only administrators can see this course until you publish it in the course editor.</span></div>}
-    {course.full_description&&<section className="course-detail-copy"><h2>What you’ll get</h2>{courseTagline&&<p className="course-tagline">{courseTagline}</p>}{courseOutcomes.length?<ul>{courseOutcomes.map(outcome=><li key={outcome}>{outcome}</li>)}</ul>:!courseTagline&&<p>{course.full_description}</p>}</section>}
+    {course.full_description&&<section className="course-detail-copy"><h2>What you’ll learn</h2>{courseTagline&&<p className="course-tagline">{courseTagline}</p>}{courseOutcomes.length?<ul>{courseOutcomes.map(outcome=><li key={outcome}>{outcome}</li>)}</ul>:!courseTagline&&<p>{course.full_description}</p>}</section>}
     {(course.slug==="nism-certify"||course.slug==="corpenta-funded")&&<aside className="notice-box course-claims-note">{course.slug==="nism-certify"?<p>The exam module and certification requirements are pending confirmation. Course completion does not itself confer NISM certification.</p>:<p>Funding is not guaranteed. Eligibility, evaluation criteria, provider terms, fees and funding conditions are pending confirmation.</p>}</aside>}
     <div className="locked-panel">
       <div><strong><LockKeyhole size={16} style={{verticalAlign:"middle",marginRight:8}}/>{course.price===null?"Enrollment details are being prepared":`${course.currency} ${new Intl.NumberFormat("en-IN").format(Number(course.price))}`}</strong><p>{course.duration_label?`Duration: ${course.duration_label}. `:""}Course access is enabled after confirmed payment and active enrollment.</p></div>
