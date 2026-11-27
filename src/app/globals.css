@@ -2313,9 +2313,9 @@ input:-webkit-autofill,input:-webkit-autofill:hover,input:-webkit-autofill:focus
 
 /* Homepage hero: full-bleed Corpenta orange with an animated 3D globe. */
 .homepage-main .hero{width:100vw;margin-inline:calc(50% - 50vw);padding:0}
-.homepage-main .hero-visual{width:100%;height:max(2000px,100svh);min-height:2000px;max-height:none;margin:0;aspect-ratio:auto;overflow:hidden;border-radius:0;background:radial-gradient(ellipse 75% 36% at 50% 27%,rgba(255,206,137,.4),transparent 70%),radial-gradient(ellipse 48% 38% at 8% 68%,rgba(105,45,11,.2),transparent 72%),radial-gradient(ellipse 45% 42% at 92% 72%,rgba(255,194,103,.26),transparent 70%),#ed8025;color:#201a14}
-.homepage-main .hero-visual::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:url("/textures/forex-hero-overlay.svg") center/cover no-repeat;opacity:.56;mix-blend-mode:soft-light}
-.homepage-main .hero-visual:after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.34;background:linear-gradient(rgba(87,44,18,.22) 1px,transparent 1px),linear-gradient(90deg,rgba(87,44,18,.22) 1px,transparent 1px),repeating-linear-gradient(135deg,transparent 0 74px,rgba(255,240,207,.11) 75px 76px,transparent 77px 150px),radial-gradient(circle at 10% 24%,rgba(255,240,207,.58) 0 2px,transparent 2.5px),radial-gradient(circle at 83% 68%,rgba(255,240,207,.5) 0 2px,transparent 2.5px);background-size:160px 160px,160px 160px,auto,37px 37px,43px 43px;mix-blend-mode:multiply}
+.homepage-main .hero-visual{width:100%;height:max(2000px,100svh);min-height:2000px;max-height:none;margin:0;aspect-ratio:auto;overflow:hidden;border-radius:0;background:radial-gradient(ellipse 78% 32% at 50% 24%,rgba(255,218,161,.5),transparent 72%),radial-gradient(ellipse 46% 34% at 4% 65%,rgba(102,43,10,.22),transparent 72%),radial-gradient(ellipse 42% 38% at 96% 78%,rgba(255,197,106,.3),transparent 72%),repeating-linear-gradient(0deg,rgba(91,43,14,.1) 0 1px,transparent 1px 92px),#ed8025;color:#201a14}
+.homepage-main .hero-visual::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:url("/textures/forex-hero-overlay.svg") center/cover no-repeat;opacity:.72;mix-blend-mode:normal}
+.homepage-main .hero-visual:after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.38;background:linear-gradient(rgba(87,44,18,.25) 1px,transparent 1px),linear-gradient(90deg,rgba(87,44,18,.25) 1px,transparent 1px),repeating-linear-gradient(135deg,transparent 0 74px,rgba(255,240,207,.14) 75px 76px,transparent 77px 150px),radial-gradient(circle at 8% 22%,rgba(255,240,207,.7) 0 2px,transparent 2.5px),radial-gradient(circle at 84% 70%,rgba(255,240,207,.65) 0 2px,transparent 2.5px),radial-gradient(ellipse at 50% 54%,transparent 0 28%,rgba(97,43,12,.12) 48%,transparent 70%);background-size:160px 160px,160px 160px,auto,37px 37px,43px 43px,auto;mix-blend-mode:multiply}
 .homepage-main .hero-globe{position:absolute;z-index:1;top:50%;right:2%;width:min(58vw,940px);height:min(58vw,940px);transform:translateY(-50%);pointer-events:none}
 .homepage-main .hero-copy{top:17%;left:6%;width:min(46%,760px);max-width:760px}
 .homepage-main .hero-kicker{color:#392316}
@@ -2345,7 +2345,7 @@ input:-webkit-autofill,input:-webkit-autofill:hover,input:-webkit-autofill:focus
 @media(max-width:760px){.homepage-main .hero-globe{top:auto;bottom:-650px;left:50%;right:auto;width:min(178vw,1300px);height:min(178vw,1300px);transform:translateX(-50%);opacity:.95}}
 
 .homepage-main .hero-globe{top:12%;bottom:auto;left:50%;right:auto;width:min(142.2vw,1800px);height:min(142.2vw,1800px);transform:translateX(-50%);opacity:1}
-@media(max-width:760px){.homepage-main .hero-globe{top:12%;left:50%;right:auto;width:min(160.2vw,1170px);height:min(160.2vw,1170px);transform:translateX(-50%);opacity:1}}
+@media(max-width:760px){.homepage-main .hero-globe{top:12%;left:50%;right:auto;width:min(100vw,720px);height:min(100vw,720px);transform:translateX(-50%);opacity:1}}
 .homepage-main .hero-globe-title{position:absolute;z-index:5;top:94px;left:50%;width:max-content;max-width:calc(100% - 48px);margin:0;transform:translateX(-50%);color:#201a14;font:700 clamp(16px,4vw,72px)/1 var(--display);letter-spacing:-.055em;white-space:nowrap;text-align:center}
 .homepage-main .hero-globe-title span{color:#fff0d0}
 @media(max-width:760px){.homepage-main .hero-globe-title{top:76px;max-width:calc(100% - 24px);font-size:clamp(14px,4.4vw,28px);letter-spacing:-.04em}}
@@ -2358,6 +2358,9 @@ input:-webkit-autofill,input:-webkit-autofill:hover,input:-webkit-autofill:focus
 .homepage-main .hero-points{left:auto;right:auto;width:fit-content;margin-inline:auto;grid-template-columns:repeat(4,max-content);justify-content:center}
 .homepage-main .hero-points>div:first-child{padding-left:9px}
 @media(max-width:760px){.homepage-main .hero-copy{left:50%;width:calc(100% - 32px);transform:translateX(-50%)}.homepage-main .hero-copy::before{inset:-34px -28px -30px;filter:blur(14px)}.homepage-main .hero-points{grid-template-columns:repeat(2,max-content)}}
+
+@media(max-width:760px){.homepage-main .hero-copy .hero-explore-cta{margin-bottom:38px}}
+@media(max-width:760px){.homepage-main .hero-globe{top:23%}}
 
 /* 02 / How we teach */
 .homepage-main .method-section{background:#ed8025;color:#fff7ef}
