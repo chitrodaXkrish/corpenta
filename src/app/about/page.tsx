@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Handshake, ShieldCheck, TrendingUp } from "lucide-react";
+import { Handshake, ShieldCheck, TrendingUp, BookOpen, Globe2, Compass, Sparkles } from "lucide-react";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata = createPageMetadata({
@@ -26,10 +26,21 @@ export default function AboutPage() {
       <div className="about-screen-heading"><span>The People Behind Corpenta</span><h1 id="about-title">Leadership Built On Trust<i>.</i></h1><p>Helping entrepreneurs build successful businesses across the UAE with<br/> experience, transparency and long-term partnership.</p></div>
 
       <div className="about-screen-shape" aria-hidden="true"/>
-      <div className="about-screen-mission"><span className="about-screen-quote">“</span><p>Our mission is simple —</p><h2>To make your <em>UAE journey</em><br/>simpler, faster and<br/><em>successful.</em></h2><p className="about-screen-mission-copy">At Corpenta, we combine expertise with personalised support so you can focus on growing your business, while we handle the rest.</p><strong>Avanish Yadav</strong></div>
+      <div className="about-screen-mission">
+        <span className="about-screen-quote">OUR MISSION</span>
+        <h2>Beyond education,<br/><em>towards empowerment.</em></h2>
+        <p className="about-screen-mission-copy">We make financial knowledge practical, accessible and globally relevant—so people can make confident decisions in an evolving financial world.</p>
+        <div className="about-screen-mission-grid">
+          <article><BookOpen size={16}/><span><strong>Make finance clear</strong><small>Simplify complex concepts.</small></span></article>
+          <article><Globe2 size={16}/><span><strong>Think globally</strong><small>Understand markets and institutions.</small></span></article>
+          <article><Compass size={16}/><span><strong>Learn by doing</strong><small>Build practical trading skills.</small></span></article>
+          <article><Sparkles size={16}/><span><strong>Choose responsibly</strong><small>Grow confidence with care.</small></span></article>
+        </div>
+        <strong className="about-screen-mission-tagline">Educate globally. Empower financially.</strong>
+      </div>
 
       <div className="about-screen-founder"><Image src="/founder.png" alt="Avanish Yadav, Founder and Managing Director" fill priority sizes="(max-width: 760px) 75vw, 390px"/></div>
-      <div className="about-screen-nameplate"><span className="about-screen-mark">C</span><span><strong>Avanish Yadav</strong><small>Founder &amp; Managing Director</small></span></div>
+      <div className="about-screen-nameplate"><span><strong>Avanish Yadav</strong><small>Founder &amp; Managing Director</small></span></div>
 
       <div className="about-screen-benefits">{benefits.map(({icon: Icon,title,copy}) => <article key={title}><span><Icon size={20}/></span><div><strong>{title}</strong><small>{copy}</small></div></article>)}</div>
     </section>
