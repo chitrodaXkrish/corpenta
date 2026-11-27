@@ -17,7 +17,7 @@ export default async function Home() {
   <section className="hero" data-market-scene="network">
     <div className="hero-visual">
       <FinancialGlobe className="hero-globe" rotationSpeed={0.018} glowIntensity={1.15} globeSize={1}/>
-      <h1 className="hero-globe-title">Educate India. <span>Empower the World.</span></h1>
+      <h1 className="hero-globe-title">Educate Nation. <span>Empower the World.</span></h1>
       <div className="hero-copy">
         <p className="hero-vision-title">A Financially Literate Nation. A Financially Empowered World.</p>
         <p>Financial Knowledge Without Borders.</p>
@@ -36,7 +36,7 @@ export default async function Home() {
 
   <section className="home-founder-section" aria-labelledby="home-founder-name">
     <div className="home-founder-portrait">
-      <Image src="/founder%27s%20desk/founder.png" alt="Avanish Yadav, Founder and CEO of Corpenta Global" fill sizes="(max-width: 760px) 100vw, 38vw" priority />
+      <Image src="/founder.png" alt="Avanish Yadav, Founder and CEO of Corpenta Global" fill sizes="(max-width: 760px) 100vw, 38vw" priority />
     </div>
     <div className="home-founder-copy">
       <span className="home-founder-kicker">A NOTE FROM THE FOUNDER</span>
