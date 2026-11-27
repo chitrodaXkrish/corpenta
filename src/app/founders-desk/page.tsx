@@ -7,7 +7,7 @@ export const metadata=createPageMetadata({
   title:"Avanish Yadav, Founder and Financial Markets Educator",
   description:"Meet Avanish Yadav, Founder and CEO of Corpenta Global, and learn about his financial markets education experience, areas of expertise and global vision.",
   path:"/founders-desk",
-  image:"/founder%27s%20desk/founder.png",
+  image:"/founder.png",
   imageWidth:888,
   imageHeight:1006,
   imageAlt:"Avanish Yadav, Founder and CEO of Corpenta Global",
@@ -58,23 +58,24 @@ const offlineSeminars:{src:string;alt:string;width:number;height:number}[]=[
 ];
 
 const onlineSessions:{src:string;alt:string;width:number;height:number}[]=[
-  {src:"/sessions/Zoomlive.jpeg",alt:"Participants attending an online financial education session.",width:1600,height:900},
-  {src:"/sessions/zoomlive2.png",alt:"Attendees in a live online learning session.",width:1672,height:941},
-  {src:"/sessions/zoomlive3.png",alt:"Participants joining a remote learning session.",width:1672,height:941},
-  {src:"/sessions/zoomlive5.png",alt:"Online participants follow a lesson on market structure and higher highs and higher lows.",width:1672,height:941},
-  {src:"/sessions/zoomlive6.png",alt:"Avanish leads a live online session with participants joining by video.",width:1672,height:941},
-  {src:"/sessions/zoomlive7.png",alt:"Online participants join a live financial markets learning session on Zoom.",width:1672,height:941},
-  {src:"/sessions/zoomlive8.png",alt:"A live online trading lesson with a market chart and video participants.",width:1672,height:941},
-  {src:"/sessions/zoomlive9.png",alt:"A Zoom group follows a shared currency chart during an online session.",width:1536,height:1024},
+  {src:"/sessions/Zoomlive.png?v=2",alt:"Participants attending an online financial education session.",width:1672,height:941},
+  {src:"/sessions/zoomlive2.png?v=2",alt:"Attendees in a live online learning session.",width:1672,height:941},
+  {src:"/sessions/zoomlive3.png?v=2",alt:"Participants joining a remote learning session.",width:1672,height:941},
+  {src:"/sessions/zoomlive4.png?v=2",alt:"Participants attending a live financial markets learning session.",width:1672,height:941},
+  {src:"/sessions/zoomlive5.png?v=2",alt:"Online participants follow a lesson on market structure and higher highs and higher lows.",width:1672,height:941},
+  {src:"/sessions/zoomlive6.png?v=2",alt:"Avanish leads a live online session with participants joining by video.",width:1672,height:941},
+  {src:"/sessions/zoomlive7.png?v=2",alt:"Online participants join a live financial markets learning session on Zoom.",width:1672,height:941},
+  {src:"/sessions/zoomlive8.png?v=2",alt:"A live online trading lesson with a market chart and video participants.",width:1672,height:941},
+  {src:"/sessions/zoomlive9.png?v=2",alt:"A Zoom group follows a shared currency chart during an online session.",width:1536,height:1024},
 ];
 
 export default function FoundersDeskPage(){
-  const personSchema={"@context":"https://schema.org","@type":"Person","@id":`${SITE_URL}/founders-desk#avanish-yadav`,name:"Avanish Yadav",jobTitle:"Founder & CEO | Global Financial Markets Educator",image:`${SITE_URL}/founder%27s%20desk/founder.png`,worksFor:{"@id":`${SITE_URL}/#organization`},url:`${SITE_URL}/founders-desk`};
+  const personSchema={"@context":"https://schema.org","@type":"Person","@id":`${SITE_URL}/founders-desk#avanish-yadav`,name:"Avanish Yadav",jobTitle:"Founder & CEO | Global Financial Markets Educator",image:`${SITE_URL}/founder.png`,worksFor:{"@id":`${SITE_URL}/#organization`},url:`${SITE_URL}/founders-desk`};
   return <main className="page-main wrap founders-desk-page" data-market-scene="network">
     <script type="application/ld+json" dangerouslySetInnerHTML={{__html:jsonLdScript(personSchema)}}/>
     <header className="founders-desk-heading" id="home">
       <span className="eyebrow">FOUNDER PROFILE</span>
-      <div className="founders-profile-hero-main"><h1>Avanish<br/><em>Yadav.</em></h1><Image className="founders-profile-photo" src="/founder%27s%20desk/founder.png" alt="Avanish Yadav, Founder and CEO" width={1672} height={941} sizes="(max-width: 640px) 34vw, 300px" priority/></div>
+      <div className="founders-profile-hero-main"><h1>Avanish<br/><em>Yadav.</em></h1><Image className="founders-profile-photo" src="/founder.png" alt="Avanish Yadav, Founder and CEO" width={1672} height={941} sizes="(max-width: 640px) 34vw, 300px" priority/></div>
       <p className="founders-desk-role">Founder &amp; CEO <span>·</span> Global Financial Markets Educator</p>
       <p className="founders-desk-intro">Empowering people through financial market knowledge, education &amp; leadership.</p>
       <div className="founders-desk-location-footprint" aria-label="Founder-led session locations">
