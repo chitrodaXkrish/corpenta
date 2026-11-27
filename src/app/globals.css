@@ -2230,6 +2230,8 @@ input:-webkit-autofill,input:-webkit-autofill:hover,input:-webkit-autofill:focus
 .course-product-row[class*="course-"] .course-product-purchase strong{color:#241b16}
 .course-product-row[class*="course-"] .course-product-purchase small{color:#5c4b40}
 .course-product-row[class*="course-"] .course-product-cta{background:#d87524;color:#fff;border-color:#d87524}
+.course-product-row[class*="course-"] .course-product-identity h2{position:relative;text-shadow:0 2px 14px rgba(0,0,0,.45)}
+.course-product-row[class*="course-"] .course-product-identity h2::after{content:"";position:absolute;left:0;right:18%;bottom:-18px;height:28px;background:linear-gradient(to bottom,rgba(0,0,0,.22),transparent);filter:blur(10px);pointer-events:none}
 .course-product-row.course-crypto-code>*{position:relative;z-index:1}
 .course-product-row.course-crypto-code .eyebrow,.course-product-row.course-crypto-code .course-product-label{color:#f2d6a7}
 .course-product-row.course-crypto-code .course-product-identity h2{color:#fff8ea;font-family:var(--display);letter-spacing:-.045em}
