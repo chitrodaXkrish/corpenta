@@ -15,26 +15,26 @@ const benefits = [
 ];
 
 const team = [
-  { name: "Avanish Yadav", role: "Managing Director & Co-Founder", image: "/founder's desk/founder.png", position: "center 18%" },
-  { name: "Ayten Garayeva", role: "Client Success & Social Media Manager" },
-  { name: "VJ Sharma", role: "Head – Business Intelligence & Technology Lead" },
+  { name: "Mohd Jameel", role: "Co-Founder & Executive Director", image: "/mohd-jameel.webp", position: "center top" },
+  { name: "Deepak Gaikwad", role: "Head of Business Development & Marketing", image: "/deepak.png", position: "center top" },
+  { name: "Sumit Jogdand", role: "Head of IT & Digital Communications", image: "/sumit.png", position: "center top" },
 ];
 
 export default function AboutPage() {
   return <main className="about-screen" aria-labelledby="about-title">
-    <section className="about-screen-hero">
+    <section className="about-screen-hero" data-center-burst>
       <div className="about-screen-heading"><span>The People Behind Corpenta</span><h1 id="about-title">Leadership Built On Trust<i>.</i></h1><p>Helping entrepreneurs build successful businesses across the UAE with<br/> experience, transparency and long-term partnership.</p></div>
 
       <div className="about-screen-shape" aria-hidden="true"/>
-      <div className="about-screen-mission"><span className="about-screen-quote">“</span><p>Our mission is simple —</p><h2>To make your <em>UAE journey</em><br/>simpler, faster and<br/><em>successful.</em></h2><p className="about-screen-mission-copy">At Corpenta, we combine expertise with personalised support so you can focus on growing your business, while we handle the rest.</p><strong>Mohd Jameel</strong></div>
+      <div className="about-screen-mission"><span className="about-screen-quote">“</span><p>Our mission is simple —</p><h2>To make your <em>UAE journey</em><br/>simpler, faster and<br/><em>successful.</em></h2><p className="about-screen-mission-copy">At Corpenta, we combine expertise with personalised support so you can focus on growing your business, while we handle the rest.</p><strong>Avanish Yadav</strong></div>
 
-      <div className="about-screen-founder"><Image src="/mohd-jameel.webp" alt="Mohd Jameel, Founder and Chief Executive Officer" fill priority sizes="(max-width: 760px) 75vw, 390px"/></div>
-      <div className="about-screen-nameplate"><span className="about-screen-mark">C</span><span><strong>Mohd Jameel</strong><small>Founder &amp; Chief Executive Officer</small></span></div>
+      <div className="about-screen-founder"><Image src="/founder.png" alt="Avanish Yadav, Founder and Managing Director" fill priority sizes="(max-width: 760px) 75vw, 390px"/></div>
+      <div className="about-screen-nameplate"><span className="about-screen-mark">C</span><span><strong>Avanish Yadav</strong><small>Founder &amp; Managing Director</small></span></div>
 
       <div className="about-screen-benefits">{benefits.map(({icon: Icon,title,copy}) => <article key={title}><span><Icon size={20}/></span><div><strong>{title}</strong><small>{copy}</small></div></article>)}</div>
     </section>
 
-    <section className="about-screen-team" aria-labelledby="leadership-team-title">
+    <section className="about-screen-team" data-center-burst aria-labelledby="leadership-team-title">
       <h2 id="leadership-team-title">Meet The Leadership Team</h2><span className="about-screen-team-rule"/>
       <div className="about-screen-team-grid">{team.map((member) => <article key={member.name}><div className={`about-screen-team-photo${member.image ? " has-image" : ""}`}>{member.image ? <Image src={member.image} alt={member.name} fill sizes="(max-width: 760px) 100vw, 260px" style={{objectPosition:member.position}}/> : <span aria-hidden="true"/>}</div><div><strong>{member.name}</strong><p>{member.role}</p></div></article>)}</div>
       <p className="about-screen-values">EXPERTISE <i/> TRANSPARENCY <i/> PARTNERSHIP <i/> SUCCESS</p>
