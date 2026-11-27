@@ -2246,6 +2246,9 @@ input:-webkit-autofill,input:-webkit-autofill:hover,input:-webkit-autofill:focus
 .course-product-row.course-crypto-code .course-product-cta{background:#d87524;color:#fff8ea;border-color:#d87524}
 .course-product-row.course-crypto-code .course-product-cta:hover{background:#ef8b34;color:#fff}
 .course-product-row.course-crypto-code .course-product-purchase{align-self:end;justify-self:end}
+.course-product-row.course-crypto-code .course-product-purchase{align-self:center;justify-self:stretch}
+.course-product-row.course-crypto-code .course-product-purchase .course-product-label{color:#513522;text-shadow:none}
+.course-product-row.course-crypto-code .course-product-purchase small{color:#5c4b40}
 .course-detail-title-row{display:flex;align-items:center;justify-content:space-between;gap:28px}
 .course-detail-page .page-heading{max-width:none}
 .founders-profile-hero-main h1 em,.founders-desk-heading h1 em,.home-founder-copy h2 em{color:var(--ink)!important;font-weight:700!important;font-style:normal!important}
