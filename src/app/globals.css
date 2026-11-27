@@ -2389,6 +2389,11 @@ input:-webkit-autofill,input:-webkit-autofill:hover,input:-webkit-autofill:focus
 .homepage-main .hero-copy>p{color:#3b2a20}
 .homepage-main .hero-copy .hero-explore-cta{background:#171720;color:#fff}
 .homepage-main .hero-copy .hero-explore-cta:hover{background:#2c2b35}
+.homepage-main .hero-copy .hero-go-live-cta{display:flex;width:max-content;min-height:60px;margin:10px auto 0;padding:0 29px;border-radius:999px;background:#fff;color:#171720;font-size:17px;border:1px solid rgba(25,25,35,.12);box-shadow:0 8px 22px rgba(25,25,35,.12)}
+.homepage-main .hero-live-dot{width:8px;height:8px;border-radius:50%;background:#e3262e;box-shadow:0 0 0 3px rgba(227,38,46,.13),0 0 12px rgba(227,38,46,.8);animation:hero-live-pulse 1.5s ease-in-out infinite}
+@keyframes hero-live-pulse{0%,100%{opacity:.72;transform:scale(.9)}50%{opacity:1;transform:scale(1.12)}}
+@media(max-width:760px){.homepage-main .hero-copy .hero-explore-cta{margin-bottom:0}.homepage-main .hero-copy .hero-go-live-cta{min-height:46px;padding-inline:20px;font-size:14px;margin-bottom:38px}}
+.homepage-main .hero-copy .hero-go-live-cta:hover{background:#f7f7f7}
 .homepage-main .hero-points{left:6%;bottom:7%;width:min(44%,660px)}
 .homepage-main .hero-points>div{border-color:rgba(32,26,20,.28);color:#201a14}
 .homepage-main .hero-points svg{color:#fff0d0}

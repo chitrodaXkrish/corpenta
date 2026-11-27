@@ -22,6 +22,7 @@ export default async function Home() {
         <p className="hero-vision-title">A Financially Literate Nation. A Financially Empowered World.</p>
         <p>Financial Knowledge Without Borders.</p>
         <Link className="button button-orange hero-explore-cta" href="/courses">Explore Courses <ArrowRight size={18}/></Link>
+        <Link className="button hero-go-live-cta" href="/student/live-classes"><span className="hero-live-dot" aria-hidden="true"/>GO LIVE</Link>
         <div className="hero-points" aria-label="Learning features">
           <div><ChartNoAxesColumnIncreasing/><span>Structured<br/>learning</span></div>
           <div><Monitor/><span>Online<br/>courses</span></div>
