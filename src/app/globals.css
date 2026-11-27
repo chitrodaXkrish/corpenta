@@ -2115,6 +2115,29 @@ body:has(.about-screen) .footer{display:none}
 
 /* Portrait cards keep each person's full face inside the image frame. */
 .about-screen-team-photo.has-image img{object-position:center top!important}
+.about-screen-nameplate>span:last-child{padding-left:0;border-left:0}
+
+/* Use one consistent sans-serif typographic system across the site. */
+:root{--serif:var(--display)}
+em,i,blockquote{font-family:var(--display)!important;font-style:normal!important}
+
+/* Present the founder portrait on a clean white surface in both placements. */
+.home-founder-portrait,.founders-profile-photo{background:#fff}
+
+/* Mission panel: concise lead copy with scannable principle cards. */
+.about-screen-mission{width:390px}
+.about-screen-mission .about-screen-quote{margin-bottom:18px;color:#b7450e;font:700 13px/1 var(--display);letter-spacing:.2em}
+.about-screen-mission h2{margin-bottom:14px;font-size:30px;line-height:1.12}
+.about-screen-mission h2 em{font-style:italic}
+.about-screen-mission-copy{max-width:370px!important;margin:0 0 18px!important;font-size:15px!important;line-height:1.5!important}
+.about-screen-mission-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.about-screen-mission-grid article{display:flex;align-items:flex-start;gap:8px;padding:10px 9px;border:1px solid rgba(183,69,14,.18);border-radius:10px;background:rgba(255,250,245,.82)}
+.about-screen-mission-grid article>svg{flex:0 0 auto;margin-top:2px;color:#b7450e}
+.about-screen-mission-grid article span{display:grid;gap:3px}
+.about-screen-mission-grid strong{margin:0!important;font:700 12px/1.15 var(--display)!important;letter-spacing:0!important}
+.about-screen-mission-grid small{color:#666064;font-size:11px;line-height:1.25}
+.about-screen-mission-tagline{display:block;margin-top:16px!important;color:#b7450e;font:700 12px/1.2 var(--display)!important;letter-spacing:.08em;text-transform:uppercase}
+@media(max-width:700px){.about-screen-mission{width:calc(100% - 40px)}.about-screen-mission h2{font-size:27px}.about-screen-mission-grid{gap:7px}.about-screen-mission-grid article{padding:9px 8px}.about-screen-mission-tagline{font-size:11px!important}}
 
 /* Shared public form system: contact, sign in, and registration. */
 .auth-flow-page{display:flex;justify-content:center;align-items:center;min-height:calc(100vh - 170px);padding-top:52px;padding-bottom:72px}
@@ -2189,9 +2212,43 @@ input:-webkit-autofill,input:-webkit-autofill:hover,input:-webkit-autofill:focus
 
 /* Editorial course catalogue rows */
 .course-catalogue{display:grid;border-top:1px solid #e7ddd2}
-.course-product-row{display:grid;grid-template-columns:minmax(240px,.82fr) minmax(360px,1.35fr) minmax(190px,.62fr);gap:clamp(28px,4vw,64px);align-items:center;padding:34px 28px;border-bottom:1px solid #e7ddd2;background:#fffaf5;transition:background-color .2s ease,border-color .2s ease}
-.course-product-row:nth-child(even){background:#fff}
-.course-product-row:hover{background:#fff5eb}
+.course-product-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(190px,.42fr);gap:clamp(28px,6vw,96px);align-items:center;min-height:clamp(240px,25vw,360px);aspect-ratio:2172/724;padding:34px 28px;border:1px solid #e7ddd2;border-radius:18px;margin-bottom:14px;overflow:hidden;background:#fffaf5;transition:background-color .2s ease,border-color .2s ease}
+.course-product-row.course-crypto-code{position:relative;background-image:linear-gradient(90deg,rgba(8,5,2,.82) 0%,rgba(8,5,2,.5) 46%,rgba(8,5,2,.7) 100%),url('/courses/crypto-code.png');background-size:cover;background-position:center;color:#fffaf0}
+.course-product-row.course-money-code{background-image:url('/courses/money-code.png');background-size:cover;background-position:center}
+.course-product-row.course-money-mindset{background-image:url('/courses/money-mindset.png');background-size:cover;background-position:center}
+.course-product-row.course-capital-shield{background-image:url('/courses/capital-shield.png');background-size:cover;background-position:center}
+.course-product-row.course-corpenta-wealth-architect{background-image:url('/courses/corpenta-wealth-architect.png');background-size:cover;background-position:center}
+.course-product-row.course-nism-certify{background-image:url('/courses/nism-certify.png');background-size:cover;background-position:center}
+.course-product-row.course-corpenta-funded{background-image:url('/courses/corpenta-funded.png');background-size:cover;background-position:center}
+.course-product-row[class*="course-"]{color:#fffaf0}
+.course-product-row[class*="course-"] .course-product-identity h2{color:#fffaf0;text-shadow:0 2px 14px rgba(0,0,0,.65)}
+.course-product-row[class*="course-"] .course-product-tagline{color:#fff3df;text-shadow:0 1px 8px rgba(0,0,0,.65)}
+.course-product-row[class*="course-"] .eyebrow,.course-product-row[class*="course-"] .course-product-label{color:#f6d7a9;text-shadow:0 1px 7px rgba(0,0,0,.7)}
+.course-product-row[class*="course-"] .underlined-link{color:#fffaf0;border-color:rgba(255,250,240,.72)}
+.course-product-row[class*="course-"] .course-product-purchase{padding:20px;border:1px solid rgba(255,255,255,.4);border-radius:14px;background:rgba(255,255,255,.76);backdrop-filter:blur(8px);box-shadow:0 10px 28px rgba(0,0,0,.2)}
+.course-product-row[class*="course-"] .course-product-purchase .course-product-label{color:#513522;text-shadow:none}
+.course-product-row[class*="course-"] .course-product-purchase strong{color:#241b16}
+.course-product-row[class*="course-"] .course-product-purchase small{color:#5c4b40}
+.course-product-row[class*="course-"] .course-product-cta{background:#d87524;color:#fff;border-color:#d87524}
+.course-product-row.course-crypto-code>*{position:relative;z-index:1}
+.course-product-row.course-crypto-code .eyebrow,.course-product-row.course-crypto-code .course-product-label{color:#f2d6a7}
+.course-product-row.course-crypto-code .course-product-identity h2{color:#fff8ea;font-family:var(--display);letter-spacing:-.045em}
+.course-product-row.course-crypto-code .course-product-tagline{color:#f5e8d3}
+.course-product-row.course-crypto-code .underlined-link{color:#fff8ea;border-color:rgba(255,248,234,.65)}
+.course-product-row.course-crypto-code .course-product-purchase{border-color:rgba(255,221,171,.35)}
+.course-product-row.course-crypto-code .course-product-purchase strong{color:#fff8ea}
+.course-product-row.course-crypto-code .course-product-purchase small{color:#ead9bf}
+.course-product-row.course-crypto-code .course-product-cta{background:#d87524;color:#fff8ea;border-color:#d87524}
+.course-product-row.course-crypto-code .course-product-cta:hover{background:#ef8b34;color:#fff}
+.course-product-row.course-crypto-code .course-product-purchase{align-self:end;justify-self:end}
+.course-detail-title-row{display:flex;align-items:center;justify-content:space-between;gap:28px}
+.course-detail-page .page-heading{max-width:none}
+.founders-profile-hero-main h1 em,.founders-desk-heading h1 em,.home-founder-copy h2 em{color:var(--ink)!important;font-weight:700!important;font-style:normal!important}
+.course-detail-title-row h1{margin-bottom:0}
+.course-detail-enroll-cta{display:inline-flex;align-items:center;justify-content:center;gap:14px;flex:0 0 auto;padding:16px 24px;border:0;border-radius:8px;background:var(--orange);color:var(--ink);font:700 15px var(--display);cursor:default;box-shadow:0 10px 24px rgba(201,104,30,.18)}
+@media(max-width:700px){.course-detail-title-row{align-items:flex-start;flex-direction:column;gap:18px}.course-detail-enroll-cta{padding:13px 18px}}
+.course-product-row:nth-child(even){background-color:#fff}
+.course-product-row:hover{background-color:#fff5eb}
 .course-product-identity,.course-product-learning,.course-product-purchase{min-width:0}
 .course-product-identity .eyebrow,.course-product-label{color:#805d43;font-size:14px;font-style:normal;font-weight:700;letter-spacing:.12em}
 .course-product-identity .eyebrow i{padding:0 4px;color:#c9681e;font-style:normal}
@@ -2210,8 +2267,8 @@ input:-webkit-autofill,input:-webkit-autofill:hover,input:-webkit-autofill:focus
 .course-product-cta:hover{border-color:#a94f14;background:#a94f14}
 .course-product-cta:hover svg{transform:translate(2px,-2px)}
 .course-product-cta:disabled{cursor:default;opacity:.72}
-@media(max-width:900px){.course-product-row{grid-template-columns:minmax(200px,.8fr) minmax(0,1.2fr);gap:26px;padding:30px 22px}.course-product-purchase{grid-column:2;display:flex;align-items:center;justify-content:space-between;gap:20px}.course-product-learning ul{grid-template-columns:1fr}}
-@media(max-width:600px){.course-product-row{grid-template-columns:1fr;gap:22px;padding:26px 18px}.course-product-identity h2{margin:14px 0 8px;font-size:29px}.course-product-tagline{font-size:17px}.course-product-learning ul{gap:8px}.course-product-purchase{grid-column:1;width:100%;padding-top:16px;border-top:1px solid #e7ddd2}.course-product-purchase strong{font-size:27px}.course-product-cta{min-height:44px;font-size:14px}}
+@media(max-width:900px){.course-product-row{grid-template-columns:minmax(0,1fr) minmax(180px,.55fr);gap:26px;padding:30px 22px}.course-product-purchase{grid-column:2;display:flex;align-items:center;justify-content:space-between;gap:20px}}
+@media(max-width:600px){.course-product-row{grid-template-columns:1fr;gap:22px;min-height:0;aspect-ratio:auto;padding:26px 18px}.course-product-identity h2{margin:14px 0 8px;font-size:29px}.course-product-tagline{font-size:17px}.course-product-learning ul{gap:8px}.course-product-purchase{grid-column:1;width:100%;padding-top:16px;border-top:1px solid #e7ddd2}.course-product-purchase strong{font-size:27px}.course-product-cta{min-height:44px;font-size:14px}}
 .course-enroll-control{display:grid;justify-items:start;gap:8px;max-width:100%}
 .course-enroll-control .form-status{max-width:360px;margin:0}
 .course-enroll-unavailable{display:grid;gap:6px;max-width:350px}
@@ -2283,12 +2340,12 @@ input:-webkit-autofill,input:-webkit-autofill:hover,input:-webkit-autofill:focus
 .home-course-list .home-course-item.is-open{border-color:rgba(25,25,35,.24);border-radius:16px;background:var(--paper)}
 .home-course-list .home-course-item .home-course-trigger{padding-inline:24px}
 .home-course-list .home-course-item.is-open .home-course-trigger{padding-inline:24px}
-.home-course-detail{grid-template-columns:minmax(260px,.9fr) minmax(500px,1.4fr) minmax(180px,.35fr);gap:clamp(28px,4vw,68px);padding:30px 28px 34px}
+.home-course-detail{grid-template-columns:minmax(0,1fr) minmax(180px,.35fr);gap:clamp(28px,4vw,68px);padding:30px 28px 34px}
 .home-course-detail ul{width:100%;min-width:0}
 .home-course-list .home-course-detail li{display:block;min-height:0;grid-template-columns:none;align-items:initial;gap:0;margin:0;padding:0 0 12px 25px;border:0;border-bottom:1px solid rgba(25,25,35,.12);color:var(--ink);font-size:15px;line-height:1.5}
 .home-course-list .home-course-detail li:last-child{padding-bottom:0;border-bottom:0}
 .home-course-list .home-course-detail li::before{left:0}
-@media(max-width:900px){.home-course-list .home-course-item .home-course-trigger{padding-inline:18px}.home-course-list .home-course-item.is-open .home-course-trigger{padding-inline:18px}.home-course-detail{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);padding:26px 22px 30px}.home-course-list .home-course-detail li{display:block}}
+@media(max-width:900px){.home-course-list .home-course-item .home-course-trigger{padding-inline:18px}.home-course-list .home-course-item.is-open .home-course-trigger{padding-inline:18px}.home-course-detail{grid-template-columns:minmax(0,1fr) minmax(180px,.5fr);padding:26px 22px 30px}.home-course-list .home-course-detail li{display:block}}
 @media(max-width:600px){.home-course-list .home-course-item .home-course-trigger{padding-inline:14px}.home-course-list .home-course-item.is-open .home-course-trigger{padding-inline:14px}.home-course-detail{grid-template-columns:1fr;padding:22px 16px 26px}.home-course-list .home-course-detail li{padding-left:25px}}
 
 /* Animate the accordion open and closed instead of mounting it abruptly. */
@@ -2362,6 +2419,9 @@ input:-webkit-autofill,input:-webkit-autofill:hover,input:-webkit-autofill:focus
 @media(max-width:760px){.homepage-main .hero-copy .hero-explore-cta{margin-bottom:38px}}
 @media(max-width:760px){.homepage-main .hero-globe{top:23%}}
 
+/* Keep the header menu compact without changing its layout or button sizing. */
+.site-header-terminal .header-nav-links a{font-size:12px}
+
 /* 02 / How we teach */
 .homepage-main .method-section{background:#ed8025;color:#fff7ef}
 .homepage-main .method-section::before{opacity:.16;background:repeating-linear-gradient(135deg,transparent 0 40px,rgba(255,240,207,.22) 41px,transparent 42px 82px)}
@@ -2377,3 +2437,7 @@ input:-webkit-autofill,input:-webkit-autofill:hover,input:-webkit-autofill:focus
 .homepage-main .method-steps article svg{color:#b95716}
 
 .homepage-main .hero-points svg{color:#2b2520}
+
+/* Keep the full-screen menu titles more compact and easier to scan. */
+.site-menu-primary>a>span:nth-child(2){font-weight:500;font-size:clamp(10px,1.2vw,16px);letter-spacing:0}
+@media(max-width:640px){.site-menu-primary>a>span:nth-child(2){font-weight:500;font-size:10px;letter-spacing:0}}
