@@ -125,7 +125,7 @@ export function AsciiMarketEnvironment() {
         frame = 0;
         return;
       }
-      if (now - lastFrame >= 1000 / 15 && now - lastScrollAt > 140) {
+      if (now - lastFrame >= 1000 / 10 && now - lastScrollAt > 140) {
         if (now - lastSceneCheck >= 250) {
           updateScene();
           lastSceneCheck = now;

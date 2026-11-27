@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" fill="none">
+  <g stroke="#572c12" stroke-width="1" opacity=".34">
+    <path d="M0 150H1600M0 300H1600M0 450H1600M0 600H1600M0 750H1600"/>
+    <path d="M160 0V900M320 0V900M480 0V900M640 0V900M800 0V900M960 0V900M1120 0V900M1280 0V900M1440 0V900"/>
+    <path d="M0 680 120 645 205 672 315 590 405 610 510 520 610 540 725 440 840 480 950 355 1040 385 1148 292 1268 315 1380 186 1490 220 1600 125" stroke-width="3"/>
+    <path d="m1540 125 60 0-5 58" stroke-width="3"/>
+    <path d="M105 760v-85m-14 85h28m114-20V620m-14 120h28m114-10V555m-14 155h28m114-40V480m-14 190h28m114-20V420m-14 230h28m114-110V345m-14 195h28m114-10V295m-14 185h28m114-110V235m-14 135h28m114-20V170m-14 180h28m114-40V120m-14 150h28"/>
+    <path d="M91 710h28v28H91zM205 655h28v42h-28zM319 605h28v38h-28zM433 520h28v76h-28zM547 470h28v64h-28zM661 395h28v70h-28zM775 365h28v48h-28zM889 320h28v38h-28zM1003 266h28v45h-28zM1117 220h28v38h-28zM1231 183h28v30h-28zM1345 136h28v39h-28zM1459 95h28v35h-28z" fill="#572c12" fill-opacity=".12"/>
+    <circle cx="205" cy="672" r="5" fill="#fff0cf"/><circle cx="510" cy="520" r="5" fill="#fff0cf"/><circle cx="840" cy="480" r="5" fill="#fff0cf"/><circle cx="1148" cy="292" r="5" fill="#fff0cf"/><circle cx="1490" cy="220" r="5" fill="#fff0cf"/>
+  </g>
+  <g fill="#fff0cf" opacity=".26" font-family="Arial,sans-serif" font-weight="700">
+    <text x="95" y="230" font-size="90">$</text><text x="1350" y="520" font-size="76">€</text>
+    <text x="1160" y="110" font-size="72">¥</text><text x="360" y="820" font-size="64">₹</text>
+  </g>
+  <g fill="#572c12" opacity=".32" font-family="Arial,sans-serif" font-weight="700" letter-spacing="4">
+    <text x="82" y="95" font-size="18">EUR/USD · 1.0964</text>
+    <text x="1120" y="760" font-size="18">GBP/USD · 1.3133</text>
+    <text x="890" y="635" font-size="16">USD/JPY · 159.46</text>
+    <text x="145" y="540" font-size="15">FX MARKET · LIVE DATA</text>
+    <text x="1270" y="355" font-size="15">XAU/USD · 3669.43</text>
+  </g>
+  <g stroke="#fff0cf" stroke-width="1.5" opacity=".3">
+    <path d="M-60 380C210 210 330 650 585 455S1025 165 1270 350s305 100 395-72" stroke-dasharray="8 13"/>
+    <path d="M-25 836C185 740 310 820 498 690s315-185 488-84 360 91 640-105" stroke-dasharray="4 12"/>
+    <circle cx="585" cy="455" r="11"/><circle cx="1270" cy="350" r="11"/>
+  </g>
+  <g fill="#fff0cf" opacity=".24">
+    <circle cx="62" cy="430" r="3"/><circle cx="95" cy="452" r="3"/><circle cx="128" cy="474" r="3"/>
+    <circle cx="1450" cy="690" r="3"/><circle cx="1483" cy="668" r="3"/><circle cx="1516" cy="646" r="3"/>
+  </g>
+  <g stroke="#572c12" stroke-width="2" opacity=".24">
+    <path d="M84 350v150m-13-118h26m-26 61h26m55-128v188m-13-145h26m-26 82h26m55-218v205m-13-164h26m-26 102h26m55-76v184m-13-151h26m-26 82h26"/>
+    <path d="M1316 510v185m-13-146h26m-26 92h26m55-220v219m-13-181h26m-26 108h26m55-168v226m-13-185h26m-26 108h26m55-250v235m-13-193h26m-26 94h26"/>
+    <path d="M42 560H360M1240 730H1560" stroke-dasharray="2 12"/>
+  </g>
+  <g fill="#fff0cf" opacity=".19" font-family="Arial,sans-serif" font-weight="700" letter-spacing="7">
+    <text x="60" y="310" font-size="24">MARKET DEPTH</text>
+    <text x="1202" y="482" font-size="24">PRICE ACTION</text>
+    <text x="83" y="875" font-size="20">GLOBAL FX NETWORK</text>
+    <text x="1040" y="850" font-size="20">SESSION · LONDON · NEW YORK · TOKYO</text>
+  </g>
+  <g fill="none" stroke="#fff0cf" opacity=".2">
+    <circle cx="215" cy="145" r="78" stroke-width="2"/>
+    <circle cx="215" cy="145" r="48" stroke-width="1" stroke-dasharray="4 9"/>
+    <circle cx="1380" cy="175" r="90" stroke-width="2"/>
+    <circle cx="1380" cy="175" r="56" stroke-width="1" stroke-dasharray="4 9"/>
+    <path d="M170 145h90M215 100v90M1330 175h100M1380 125v100"/>
+  </g>
+</svg>

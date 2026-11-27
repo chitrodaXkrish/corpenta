@@ -4,6 +4,7 @@ import { ArrowRight, ArrowUpRight, ChartNoAxesColumnIncreasing, Globe2, Monitor,
 import { createPageMetadata } from "@/lib/seo";
 import { PublicMarketTicker } from "@/components/public-market-ticker";
 import { HomeCourses } from "@/components/home-courses";
+import { FinancialGlobe } from "@/components/financial-globe";
 
 export const metadata = createPageMetadata({
   title: "Currency Education for Clearer Market Decisions",
@@ -15,11 +16,10 @@ export default async function Home() {
   return <main className="homepage-main">
   <section className="hero" data-market-scene="network">
     <div className="hero-visual">
-      <img className="hero-photo" src="/hero.png" alt="" fetchPriority="high" />
+      <FinancialGlobe className="hero-globe" rotationSpeed={0.018} glowIntensity={1.15} globeSize={1}/>
+      <h1 className="hero-globe-title">Educate India. <span>Empower the World.</span></h1>
       <div className="hero-copy">
-        <span className="hero-kicker">OUR VISION</span>
         <p className="hero-vision-title">A Financially Literate Nation. A Financially Empowered World.</p>
-        <h1>Educate India.<br/><span>Empower the World.</span></h1>
         <p>Financial Knowledge Without Borders.</p>
         <Link className="button button-orange hero-explore-cta" href="/courses">Explore Courses <ArrowRight size={18}/></Link>
         <div className="hero-points" aria-label="Learning features">
@@ -53,6 +53,5 @@ export default async function Home() {
 
   <section className="courses-section wrap section-pad" data-market-scene="candles"><div className="section-kicker"><span>03 / COURSES</span><span>7 PROGRAMMES</span></div><div className="section-title-row"><h2>Find your place to <em>begin.</em></h2></div><p className="section-lead">Explore the Corpenta Global learning programmes.</p><HomeCourses/><Link className="button button-orange home-courses-cta" href="/courses">Explore Courses <ArrowRight size={17}/></Link></section>
 
-  <section className="closing-section wrap" data-market-scene="ticker"><div className="closing-card"><div className="closing-orb"/><span className="eyebrow">BEGIN WITH A BETTER QUESTION</span><h2>Curiosity is a<br/><em>good first step.</em></h2><p>Explore the academy and find the learning path that fits your starting point.</p><Link className="button button-orange" href="/courses">Explore courses</Link><Image className="closing-company-logo" src="/logo.png" alt="Corpenta Global" width={393} height={350}/></div></section>
   </main>;
 }

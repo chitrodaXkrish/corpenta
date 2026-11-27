@@ -35,5 +35,5 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const graph = jsonLdScript([organizationSchema, websiteSchema]);
-  return <html lang="en" className={`${dmSans.variable} ${manrope.variable}`}><body><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: graph }}/><AsciiMarketEnvironment/><VisualReveal/><SiteHeader/>{children}<Footer/></body></html>;
+  return <html lang="en" className={`${dmSans.variable} ${manrope.variable}`}><head><link rel="preload" href="/textures/earth-land-mask.png" as="image" fetchPriority="high"/></head><body><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: graph }}/><AsciiMarketEnvironment/><VisualReveal/><SiteHeader/>{children}<Footer/></body></html>;
 }

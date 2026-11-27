@@ -1,14 +1,7 @@
 "use client";
 
 import {useEffect,useRef} from "react";
-
-const symbols=[
-  {proName:"FX:EURUSD",title:"EUR/USD"},
-  {proName:"FX:GBPUSD",title:"GBP/USD"},
-  {proName:"FX:USDJPY",title:"USD/JPY"},
-  {proName:"OANDA:XAUUSD",title:"XAU/USD"},
-  {proName:"TVC:USOIL",title:"USOIL"},
-];
+import { marketTickerSymbols } from "@/lib/market-ticker";
 
 export function PublicMarketTicker(){
   const containerRef=useRef<HTMLDivElement>(null);
@@ -25,7 +18,7 @@ export function PublicMarketTicker(){
     script.type="text/javascript";
     script.src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js";
     script.async=true;
-    script.text=JSON.stringify({symbols,showSymbolLogo:true,colorTheme:"dark",isTransparent:true,displayMode:"adaptive",locale:"en",largeChartUrl:""});
+    script.text=JSON.stringify({symbols:marketTickerSymbols,showSymbolLogo:true,colorTheme:"dark",isTransparent:true,displayMode:"adaptive",locale:"en",largeChartUrl:""});
     container.append(widget,script);
     return()=>{container.replaceChildren()};
   },[]);
