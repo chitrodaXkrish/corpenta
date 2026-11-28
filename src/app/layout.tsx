@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { PortalChrome } from "@/components/portal-chrome";
+import { Footer } from "@/components/footer";
 import { AsciiMarketEnvironment } from "@/components/ascii-market-environment";
 import { VisualReveal } from "@/components/visual-reveal";
 import { DEFAULT_DESCRIPTION, DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL, jsonLdScript, organizationSchema, websiteSchema } from "@/lib/seo";
@@ -34,5 +35,5 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const graph = jsonLdScript([organizationSchema, websiteSchema]);
-  return <html lang="en" className={`${dmSans.variable} ${manrope.variable}`}><head><link rel="preload" href="/textures/earth-land-mask.png" as="image" fetchPriority="high"/></head><body><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: graph }}/><AsciiMarketEnvironment/><VisualReveal/><PortalChrome/>{children}</body></html>;
+  return <html lang="en" className={`${dmSans.variable} ${manrope.variable}`}><head><link rel="preload" href="/textures/earth-land-mask.png" as="image" fetchPriority="high"/></head><body><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: graph }}/><AsciiMarketEnvironment/><VisualReveal/><PortalChrome/>{children}<Footer/></body></html>;
 }
