@@ -3,20 +3,20 @@
 import Link from "next/link";
 import {createPortal} from "react-dom";
 import {useEffect, useRef, useState} from "react";
-import {ArrowUpRight, Menu, X} from "lucide-react";
+import {ArrowUpRight, Menu, X, House, Info, UserRound, Compass, BookOpen, Coins, GraduationCap, CalendarDays, Globe2, ChartNoAxesColumnIncreasing, Mail} from "lucide-react";
 
 const primaryLinks=[
-  {label:"Home",href:"/"},
-  {label:"About Us",href:"/about"},
-  {label:"Founder’s Desk",href:"/founders-desk"},
-  {label:"Mission & Vision",href:"/founders-desk#mission-vision"},
-  {label:"Financial Literacy",href:"/#financial-literacy"},
-  {label:"Currency Market Education",href:"/#currency-market-education"},
-  {label:"Programs & Courses",href:"/courses"},
-  {label:"Events & Seminars",href:"/founders-desk#sessions"},
-  {label:"Global Presence",href:"/founders-desk#global-presence"},
-  {label:"Our Impact",href:"/founders-desk#impact"},
-  {label:"Contact Us",href:"/contact"},
+  {label:"Home",href:"/",icon:House},
+  {label:"About Us",href:"/about",icon:Info},
+  {label:"Founder’s Desk",href:"/founders-desk",icon:UserRound},
+  {label:"Mission & Vision",href:"/founders-desk#mission-vision",icon:Compass},
+  {label:"Financial Literacy",href:"/#financial-literacy",icon:BookOpen},
+  {label:"Currency Market Education",href:"/#currency-market-education",icon:Coins},
+  {label:"Programs & Courses",href:"/courses",icon:GraduationCap},
+  {label:"Events & Seminars",href:"/founders-desk#sessions",icon:CalendarDays},
+  {label:"Global Presence",href:"/founders-desk#global-presence",icon:Globe2},
+  {label:"Our Impact",href:"/founders-desk#impact",icon:ChartNoAxesColumnIncreasing},
+  {label:"Contact Us",href:"/contact",icon:Mail},
 ];
 const studentLinks=[
   {label:"Student login",href:"/login"},
@@ -55,7 +55,7 @@ export function HeroMenu(){
     <div id="site-navigation-overlay" className={`site-menu-overlay${open?" is-open":""}`} aria-hidden={!open} onClick={(event)=>{if(event.target===event.currentTarget)setOpen(false)}}>
       <div className="site-menu-panel" role="dialog" aria-modal="true" aria-label="Site navigation" aria-hidden={!open} onClick={(event)=>event.stopPropagation()}>
         <div className="site-menu-top"><Link className="site-menu-wordmark" href="/" onClick={()=>setOpen(false)}>CORPENTA <span>GLOBAL</span></Link><button ref={closeRef} className="site-menu-close" type="button" aria-label="Close navigation menu" onClick={()=>setOpen(false)}><X size={21}/></button></div>
-        <nav className="site-menu-primary" aria-label="Main pages">{primaryLinks.map((item,index)=><Link href={item.href} key={item.href} onClick={()=>setOpen(false)}><span className="site-menu-number">0{index+1}</span><span>{item.label}</span><ArrowUpRight className="site-menu-arrow" size={20}/></Link>)}</nav>
+        <nav className="site-menu-primary" aria-label="Main pages">{primaryLinks.map(item=><Link href={item.href} key={item.href} onClick={()=>setOpen(false)}><item.icon className="site-menu-number" size={19} aria-hidden="true"/><span>{item.label}</span><ArrowUpRight className="site-menu-arrow" size={20}/></Link>)}</nav>
         <div className="site-menu-secondary">
           <section><h2>STUDENT SPACE</h2><div className="site-menu-small-links">{studentLinks.map(item=><Link href={item.href} key={item.href} onClick={()=>setOpen(false)}>{item.label}</Link>)}</div></section>
           <section><h2>INFORMATION</h2><div className="site-menu-small-links">{legalLinks.map(item=><Link href={item.href} key={item.href} onClick={()=>setOpen(false)}>{item.label}</Link>)}</div></section>
