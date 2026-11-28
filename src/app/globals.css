@@ -2113,8 +2113,9 @@ body:has(.about-screen) .footer{display:none}
 .about-screen-hero.is-center-bursting .about-screen-heading{animation-delay:.04s}.about-screen-hero.is-center-bursting .about-screen-founder{animation-delay:.1s}.about-screen-hero.is-center-bursting .about-screen-mission{animation-delay:.18s}.about-screen-hero.is-center-bursting .about-screen-nameplate{animation-delay:.24s}.about-screen-hero.is-center-bursting .about-screen-benefits article:nth-child(1){animation-delay:.2s}.about-screen-hero.is-center-bursting .about-screen-benefits article:nth-child(2){animation-delay:.3s}.about-screen-hero.is-center-bursting .about-screen-benefits article:nth-child(3){animation-delay:.4s}.about-screen-team.is-center-bursting>.about-screen-team-rule{animation-delay:.08s}.about-screen-team.is-center-bursting .about-screen-team-grid article:nth-child(1){animation-delay:.14s}.about-screen-team.is-center-bursting .about-screen-team-grid article:nth-child(2){animation-delay:.22s}.about-screen-team.is-center-bursting .about-screen-team-grid article:nth-child(3){animation-delay:.3s}.about-screen-team.is-center-bursting .about-screen-values{animation-delay:.38s}
 @media(prefers-reduced-motion:reduce){.about-screen-hero.is-center-bursting .about-screen-heading,.about-screen-hero.is-center-bursting .about-screen-mission,.about-screen-hero.is-center-bursting .about-screen-founder,.about-screen-hero.is-center-bursting .about-screen-nameplate,.about-screen-hero.is-center-bursting .about-screen-benefits article,.about-screen-team.is-center-bursting>h2,.about-screen-team.is-center-bursting>.about-screen-team-rule,.about-screen-team.is-center-bursting .about-screen-team-grid article,.about-screen-team.is-center-bursting .about-screen-values{animation:none}}
 
-/* Portrait cards keep each person's full face inside the image frame. */
-.about-screen-team-photo.has-image img{object-position:center top!important}
+/* Keep portrait frames proportional to their source photos to avoid blank tails. */
+.about-screen-team-photo{height:auto;aspect-ratio:1 / 1}
+.about-screen-team-photo.has-image img{object-fit:cover!important;object-position:center top!important}
 .about-screen-nameplate>span:last-child{padding-left:0;border-left:0}
 
 /* Use one consistent sans-serif typographic system across the site. */
